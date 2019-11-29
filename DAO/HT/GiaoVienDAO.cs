@@ -62,6 +62,66 @@ namespace DAO.HT
             return giaoVien;
         }
 
+        public GiaoVien FindOneGiaoVienOnEmail(string Email)
+        {
+            /*
+             * Tìm giáo viên thông qua Email
+             * Nếu không tìm thấy -> trả về null
+             * Nếu tìm thấy -> trả về giáo viên
+             */
+            GiaoVien giaoVien = new GiaoVien();
+            var findOne = from giaovien in DB.GiaoViens
+                          where giaovien.Email == Email
+                          select giaovien;
+            if (findOne.Count() == 0)
+            {
+                return null;
+            }
+            foreach (var temp in findOne)
+            {
+                giaoVien.MaGiaVien = temp.MaGiaVien;
+                giaoVien.DiaChi = temp.DiaChi;
+                giaoVien.Email = temp.Email;
+                giaoVien.HoTen = temp.HoTen;
+                giaoVien.MaKhoi = temp.MaKhoi;
+                giaoVien.Password = temp.Password;
+                giaoVien.SDT = temp.SDT;
+            }
+            return giaoVien;
+        }
+
+        public GiaoVien FindOneGiaoVienOnSDT(string SDT)
+        {
+            /*
+             * Tìm giáo viên thông qua số điện thoại
+             * Nếu không tìm thấy -> trả về null
+             * Nếu tìm thấy -> trả về giáo viên
+             */
+            GiaoVien giaoVien = new GiaoVien();
+            var findOne = from giaovien in DB.GiaoViens
+                          where giaovien.SDT == SDT
+                          select giaovien;
+            if (findOne.Count() == 0)
+            {
+                return null;
+            }
+            foreach (var temp in findOne)
+            {
+                giaoVien.MaGiaVien = temp.MaGiaVien;
+                giaoVien.DiaChi = temp.DiaChi;
+                giaoVien.Email = temp.Email;
+                giaoVien.HoTen = temp.HoTen;
+                giaoVien.MaKhoi = temp.MaKhoi;
+                giaoVien.Password = temp.Password;
+                giaoVien.SDT = temp.SDT;
+            }
+            return giaoVien;
+        }
+
+
+
+
+
         public GiaoVien FindGiaoVienOnEmailAndPassword(string Email,string Password)
         {
             /*
@@ -165,6 +225,29 @@ namespace DAO.HT
             return 0;
         }
 
+        public int  DeleteGiaoVienOnMaGV(string MaGV)
+        {
+            /*
+             * Xóa giáo viên thông qua mã giáo viên
+             * Nếu tìm thấy  , xóa thành công -> trả về 0
+             * Nếu không tìm thấy -> trả về 1
+             */
+
+            var KiemTraGiaoVienCoTonTaiHayKhong = from giaovien in DB.GiaoViens
+                                                   where giaovien.MaGiaVien == MaGV
+                                                   select giaovien;
+            if(KiemTraGiaoVienCoTonTaiHayKhong.Count() != 0)
+            {
+                return 1;
+            }
+
+            foreach(var men in KiemTraGiaoVienCoTonTaiHayKhong)
+            {
+                DB.GiaoViens.DeleteOnSubmit(men);
+            }
+            DB.SubmitChanges();
+            return 0;
+        }
 
     }
 }
