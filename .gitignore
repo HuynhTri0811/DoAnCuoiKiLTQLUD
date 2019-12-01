@@ -325,3 +325,6 @@ ASALocalRun/
 
 # MFractors (Xamarin productivity tool) working folder 
 .mfractor/
+# SQL Server files
+*.mdf
+*.ldf

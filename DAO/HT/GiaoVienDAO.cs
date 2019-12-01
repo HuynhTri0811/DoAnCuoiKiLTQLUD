@@ -245,27 +245,27 @@ namespace DAO.HT
             return true;
         }
 
-        public bool UpdateGiaoVienOnEmail(string MaGV,string Email)
+        public int UpdateGiaoVienOnEmail(string MaGV,string Email)
         {
             /*
              * Update Email của giáo viên thông qua Email
-             * Nếu không tồn tại MaGV -> trả về false
-             * Nếu Email đã tồn tại -> trả về false
-             * Nếu Email không không tồn tại -> update thành công -> true
+             * Nếu không tồn tại MaGV -> trả về 1
+             * Nếu Email đã tồn tại -> trả về 2
+             * Nếu Email không không tồn tại -> update thành công -> 0
              */
             int FindMaGVGiaoVienTemp = (from giaovien in DB.GiaoViens
                                         where giaovien.MaGiaVien == MaGV
                                         select giaovien).Count();
             if(FindMaGVGiaoVienTemp == 0)
             {
-                return false;
+                return 1;
             }
             int FindEmailGiaoVien = (from giaovien in DB.GiaoViens
                                      where giaovien.Email == Email && giaovien.MaGiaVien != MaGV
                                      select giaovien ).Count();
             if(FindEmailGiaoVien != 0)
             {
-                return false;
+                return 2;
             }
             var FindMaGVGiaoVien = from giaovien in DB.GiaoViens
                                    where giaovien.MaGiaVien == MaGV
@@ -275,7 +275,7 @@ namespace DAO.HT
                 giaovientemp.Email = Email;
             }
             DB.SubmitChanges();
-            return true;
+            return 0;
         }
 
         public bool UpdateGiaoVienOnDiaChi(string MaGV,string DiaChi)
@@ -337,18 +337,59 @@ namespace DAO.HT
              * Nếu tồn tại MaGV -> update họ tên thành công -> trả về true
              */
 
-            int FindMaGVGiaoVien = (from giaovien in DB.GiaoViens
+            var FindMaGVGiaoVien = from giaovien in DB.GiaoViens
                                     where giaovien.MaGiaVien == MaGV
-                                    select giaovien).Count();
-            if(FindMaGVGiaoVien == 0)
+                                    select giaovien;
+            if(FindMaGVGiaoVien.Count() == 0)
             {
                 return false;
             }
-
-
-
-
+            foreach(var temp in FindMaGVGiaoVien)
+            {
+                temp.HoTen = HoTen;
+            }
+            DB.SubmitChanges();
             return true;
+        }
+
+        public int UpdateGiaoVienOnSDT(string MaGV,string SDT)
+        {
+            /*
+             * Update số điện thoại của giáo viên 
+             * Nếu MaGV không tồn tại , trả về 1
+             * Nếu tìm thấy SDT trùng với 1 giáo viên khác , trả về 2
+             * Update thành công , trả về 0
+             */
+
+            var FindMaGVGiaoVien = from giaovien in DB.GiaoViens
+                                    where giaovien.MaGiaVien == MaGV
+                                    select giaovien;
+            if(FindMaGVGiaoVien.Count() == 0)
+            {
+                return 1;
+            }
+            int FindSDTGiaoVien = (from giaovien in DB.GiaoViens
+                                   where giaovien.MaGiaVien != MaGV && giaovien.SDT == SDT
+                                   select giaovien).Count();
+            if(FindSDTGiaoVien != 0)
+            {
+                return 2;
+            }
+
+            foreach(var men in FindMaGVGiaoVien)
+            {
+                men.SDT = SDT;
+            }
+            DB.SubmitChanges();
+            return 0;
+        }
+
+        public int UpdateGiaoVienOnMaKhoi(string MaGV,int MaKhoi)
+        {
+            /*
+             * 
+             */
+            return 0;
         }
     }
 }
