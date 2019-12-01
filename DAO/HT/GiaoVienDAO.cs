@@ -387,8 +387,31 @@ namespace DAO.HT
         public int UpdateGiaoVienOnMaKhoi(string MaGV,int MaKhoi)
         {
             /*
-             * 
+             * Update Giao Viên với mã khối 
+             * Nếu không tìm thấy MaGV  -> trả về 1
+             * Nếu không tìm thấy MaKhoi -> trả về 2
+             * Update thanh công -> trả về 3
              */
+
+            var FindMaGVGiaoVien = from giaovien in DB.GiaoViens
+                                   where giaovien.MaGiaVien == MaGV
+                                   select giaovien;
+            if(FindMaGVGiaoVien.Count() == 0)
+            {
+                return 1;
+            }
+            int FindMaKhoi = (from khoi in DB.Khois
+                              where khoi.MaKhoi == MaKhoi
+                              select khoi).Count();
+            if(FindMaKhoi == 0)
+            {
+                return 2;
+            }
+            foreach(var men in FindMaGVGiaoVien)
+            {
+                men.MaKhoi = MaKhoi;
+            }
+            DB.SubmitChanges();
             return 0;
         }
     }

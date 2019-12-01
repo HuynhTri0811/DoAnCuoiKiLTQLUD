@@ -7,20 +7,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using DTO;
+using DTO.HT;
 
 namespace GUI
 {
     public partial class GiaoVienGUI : Form
     {
-        public GiaoVienGUI()
+        GiaoVien newGiaoVien;
+        public GiaoVienGUI(GiaoVien GiaoViens)
         {
             InitializeComponent();
-            
+            newGiaoVien = GiaoViens;
         }
 
         private void GiaoVienGUI_Load(object sender, EventArgs e)
         {
+            lbNameGiaoVien.Text = newGiaoVien.HoTen;
         }
 
         private void btnUpdateGiaoVien_Click(object sender, EventArgs e)
