@@ -96,6 +96,9 @@
     <EmbeddedResource Include="GiaoVienGUI.resx">
       <DependentUpon>GiaoVienGUI.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="HocSinhGUI.resx">
+      <DependentUpon>HocSinhGUI.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
