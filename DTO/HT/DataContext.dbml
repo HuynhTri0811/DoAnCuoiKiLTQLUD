@@ -1,49 +1,50 @@
-﻿<?xml version="1.0" encoding="utf-8"?><Database Name="CSDL" Class="DataContextDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\CSDL.mdf;Integrated Security=True" SettingsObjectName="DTO.Properties.Settings" SettingsPropertyName="CSDLConnectionString" Provider="System.Data.SqlClient" />
-  <Table Name="dbo.CauHoiTrongDeNao" Member="CauHoiTrongDeNaos">
-    <Type Name="CauHoiTrongDeNao">
-      <Column Name="MaCauHoi" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="MaDe" Type="System.String" DbType="NChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="MaKhoi" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Association Name="CauHoi_CauHoiTrongDeNao" Member="CauHoi" ThisKey="MaCauHoi" OtherKey="MaCauHoi" Type="CauHoi" IsForeignKey="true" />
-      <Association Name="De_CauHoiTrongDeNao" Member="De" ThisKey="MaDe,MaKhoi" OtherKey="MaDe,MaKhoi" Type="De" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.CauHoi" Member="CauHois">
-    <Type Name="CauHoi">
-      <Column Name="MaCauHoi" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="CauHoi" Member="CauHoi1" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
-      <Column Name="CauA" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="CauB" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="CauC" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="CauD" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="CauDung" Type="System.String" DbType="NChar(5)" CanBeNull="true" />
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="QuanLyTracNghiemHocSinh-LTQLUD" Class="DataContextDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-AJ69G9K\SQLEXPRESS;Initial Catalog=QuanLyTracNghiemHocSinh-LTQLUD;Integrated Security=True;Encrypt=False;TrustServerCertificate=True" SettingsObjectName="DTO.Properties.Settings" SettingsPropertyName="QuanLyTracNghiemHocSinh_LTQLUDConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.MaDeVaKhoiTrongKiThi" Member="MaDeVaKhoiTrongKiThis">
+    <Type Name="MaDeVaKhoiTrongKiThi">
+      <Column Name="MaKiThi" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="MaDe" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
       <Column Name="MaKhoi" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="CauHoi_CauHoiTrongDeNao" Member="CauHoiTrongDeNaos" ThisKey="MaCauHoi" OtherKey="MaCauHoi" Type="CauHoiTrongDeNao" />
-      <Association Name="Khoi_CauHoi" Member="Khoi" ThisKey="MaKhoi" OtherKey="MaKhoi" Type="Khoi" IsForeignKey="true" />
+      <Column Name="MaDeVaKhoiTrongKiThi" Member="MaDeVaKhoiTrongKiThi1" Type="System.String" DbType="NChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="MaDeVaKhoiTrongKiThi_HocSinhTrongKiThi" Member="HocSinhTrongKiThis" ThisKey="MaDeVaKhoiTrongKiThi1" OtherKey="MaDeVaKhoiTrongKiThi" Type="HocSinhTrongKiThi" />
+      <Association Name="KiThi_MaDeVaKhoiTrongKiThi" Member="KiThi" ThisKey="MaKiThi" OtherKey="MaKiThi" Type="KiThi" IsForeignKey="true" />
+      <Association Name="De_MaDeVaKhoiTrongKiThi" Member="De" ThisKey="MaDe,MaKhoi" OtherKey="MaDe,MaKhoi" Type="De" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.De" Member="Des">
-    <Type Name="De">
-      <Column Name="MaDe" Type="System.String" DbType="NChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="TenDe" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+  <Table Name="dbo.Lop" Member="Lops">
+    <Type Name="Lop">
+      <Column Name="MaLop" Type="System.String" DbType="NChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TenLop" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MaKhoi" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Lop_HocSinh" Member="HocSinhs" ThisKey="MaLop" OtherKey="MaLop" Type="HocSinh" />
+      <Association Name="Khoi_Lop" Member="Khoi" ThisKey="MaKhoi" OtherKey="MaKhoi" Type="Khoi" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.KiThi" Member="KiThis">
+    <Type Name="KiThi">
+      <Column Name="MaKiThi" Type="System.String" DbType="NChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TenKiThi" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="NgayThi" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Association Name="KiThi_MaDeVaKhoiTrongKiThi" Member="MaDeVaKhoiTrongKiThis" ThisKey="MaKiThi" OtherKey="MaKiThi" Type="MaDeVaKhoiTrongKiThi" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Khoi" Member="Khois">
+    <Type Name="Khoi">
       <Column Name="MaKhoi" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="DoKho" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
-      <Association Name="De_CauHoiTrongDeNao" Member="CauHoiTrongDeNaos" ThisKey="MaDe,MaKhoi" OtherKey="MaDe,MaKhoi" Type="CauHoiTrongDeNao" />
-      <Association Name="De_DeOnTap" Member="DeOnTaps" ThisKey="MaDe,MaKhoi" OtherKey="MaDe,MaKhoi" Type="DeOnTap" />
-      <Association Name="De_MaDeVaKhoiTrongKiThi" Member="MaDeVaKhoiTrongKiThis" ThisKey="MaDe,MaKhoi" OtherKey="MaDe,MaKhoi" Type="MaDeVaKhoiTrongKiThi" />
-      <Association Name="Khoi_De" Member="Khoi" ThisKey="MaKhoi" OtherKey="MaKhoi" Type="Khoi" IsForeignKey="true" />
+      <Column Name="TenKhoi" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="Khoi_Lop" Member="Lops" ThisKey="MaKhoi" OtherKey="MaKhoi" Type="Lop" />
+      <Association Name="Khoi_GiaoVien" Member="GiaoViens" ThisKey="MaKhoi" OtherKey="MaKhoi" Type="GiaoVien" />
+      <Association Name="Khoi_De" Member="Des" ThisKey="MaKhoi" OtherKey="MaKhoi" Type="De" />
+      <Association Name="Khoi_CauHoi" Member="CauHois" ThisKey="MaKhoi" OtherKey="MaKhoi" Type="CauHoi" />
     </Type>
   </Table>
-  <Table Name="dbo.DeOnTap" Member="DeOnTaps">
-    <Type Name="DeOnTap">
+  <Table Name="dbo.HocSinhTrongKiThi" Member="HocSinhTrongKiThis">
+    <Type Name="HocSinhTrongKiThi">
       <Column Name="MaHocSinh" Type="System.String" DbType="NChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="MaDe" Type="System.String" DbType="NChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="MaKhoi" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="NgayGioiHan" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="MaDeVaKhoiTrongKiThi" Type="System.String" DbType="NChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="Diem" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Association Name="De_DeOnTap" Member="De" ThisKey="MaDe,MaKhoi" OtherKey="MaDe,MaKhoi" Type="De" IsForeignKey="true" />
-      <Association Name="HocSinh_DeOnTap" Member="HocSinh" ThisKey="MaHocSinh" OtherKey="MaHocSinh" Type="HocSinh" IsForeignKey="true" />
+      <Association Name="MaDeVaKhoiTrongKiThi_HocSinhTrongKiThi" Member="MaDeVaKhoiTrongKiThi1" ThisKey="MaDeVaKhoiTrongKiThi" OtherKey="MaDeVaKhoiTrongKiThi1" Type="MaDeVaKhoiTrongKiThi" IsForeignKey="true" />
+      <Association Name="HocSinh_HocSinhTrongKiThi" Member="HocSinh" ThisKey="MaHocSinh" OtherKey="MaHocSinh" Type="HocSinh" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.GiaoVien" Member="GiaoViens">
@@ -58,64 +59,65 @@
       <Association Name="Khoi_GiaoVien" Member="Khoi" ThisKey="MaKhoi" OtherKey="MaKhoi" Type="Khoi" IsForeignKey="true" />
     </Type>
   </Table>
+  <Table Name="dbo.DeOnTap" Member="DeOnTaps">
+    <Type Name="DeOnTap">
+      <Column Name="MaHocSinh" Type="System.String" DbType="NChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MaDe" Type="System.String" DbType="NChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MaKhoi" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="NgayGioiHan" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Diem" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Association Name="De_DeOnTap" Member="De" ThisKey="MaDe,MaKhoi" OtherKey="MaDe,MaKhoi" Type="De" IsForeignKey="true" />
+      <Association Name="HocSinh_DeOnTap" Member="HocSinh" ThisKey="MaHocSinh" OtherKey="MaHocSinh" Type="HocSinh" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.De" Member="Des">
+    <Type Name="De">
+      <Column Name="MaDe" Type="System.String" DbType="NChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TenDe" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MaKhoi" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="DoKho" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Association Name="De_MaDeVaKhoiTrongKiThi" Member="MaDeVaKhoiTrongKiThis" ThisKey="MaDe,MaKhoi" OtherKey="MaDe,MaKhoi" Type="MaDeVaKhoiTrongKiThi" />
+      <Association Name="De_DeOnTap" Member="DeOnTaps" ThisKey="MaDe,MaKhoi" OtherKey="MaDe,MaKhoi" Type="DeOnTap" />
+      <Association Name="De_CauHoiTrongDeNao" Member="CauHoiTrongDeNaos" ThisKey="MaDe,MaKhoi" OtherKey="MaDe,MaKhoi" Type="CauHoiTrongDeNao" />
+      <Association Name="Khoi_De" Member="Khoi" ThisKey="MaKhoi" OtherKey="MaKhoi" Type="Khoi" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CauHoiTrongDeNao" Member="CauHoiTrongDeNaos">
+    <Type Name="CauHoiTrongDeNao">
+      <Column Name="MaCauHoi" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MaDe" Type="System.String" DbType="NChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MaKhoi" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="De_CauHoiTrongDeNao" Member="De" ThisKey="MaDe,MaKhoi" OtherKey="MaDe,MaKhoi" Type="De" IsForeignKey="true" />
+      <Association Name="CauHoi_CauHoiTrongDeNao" Member="CauHoi" ThisKey="MaCauHoi" OtherKey="MaCauHoi" Type="CauHoi" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CauHoi" Member="CauHois">
+    <Type Name="CauHoi">
+      <Column Name="MaCauHoi" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CauHoi" Member="CauHoi1" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="CauA" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CauB" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CauC" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CauD" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CauDung" Type="System.String" DbType="NChar(5)" CanBeNull="true" />
+      <Column Name="MaKhoi" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="HocSinhDongGop" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="CauHoi_CauHoiTrongDeNao" Member="CauHoiTrongDeNaos" ThisKey="MaCauHoi" OtherKey="MaCauHoi" Type="CauHoiTrongDeNao" />
+      <Association Name="Khoi_CauHoi" Member="Khoi" ThisKey="MaKhoi" OtherKey="MaKhoi" Type="Khoi" IsForeignKey="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.HocSinh" Member="HocSinhs">
     <Type Name="HocSinh">
       <Column Name="MaHocSinh" Type="System.String" DbType="NChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="Password" Type="System.String" DbType="NChar(50)" CanBeNull="true" />
+      <Column Name="Password" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
       <Column Name="HoTen" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="NgaySinh" Type="System.DateTime" DbType="Date" CanBeNull="true" />
       <Column Name="DiaChi" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
       <Column Name="MaLop" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
-      <Association Name="HocSinh_DeOnTap" Member="DeOnTaps" ThisKey="MaHocSinh" OtherKey="MaHocSinh" Type="DeOnTap" />
+      <Column Name="SoilPass" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
       <Association Name="HocSinh_HocSinhTrongKiThi" Member="HocSinhTrongKiThis" ThisKey="MaHocSinh" OtherKey="MaHocSinh" Type="HocSinhTrongKiThi" />
+      <Association Name="HocSinh_DeOnTap" Member="DeOnTaps" ThisKey="MaHocSinh" OtherKey="MaHocSinh" Type="DeOnTap" />
       <Association Name="Lop_HocSinh" Member="Lop" ThisKey="MaLop" OtherKey="MaLop" Type="Lop" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.HocSinhTrongKiThi" Member="HocSinhTrongKiThis">
-    <Type Name="HocSinhTrongKiThi">
-      <Column Name="MaHocSinh" Type="System.String" DbType="NChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="MaDeVaKhoiTrongKiThi" Type="System.String" DbType="NChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="Diem" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Association Name="HocSinh_HocSinhTrongKiThi" Member="HocSinh" ThisKey="MaHocSinh" OtherKey="MaHocSinh" Type="HocSinh" IsForeignKey="true" />
-      <Association Name="MaDeVaKhoiTrongKiThi_HocSinhTrongKiThi" Member="MaDeVaKhoiTrongKiThi1" ThisKey="MaDeVaKhoiTrongKiThi" OtherKey="MaDeVaKhoiTrongKiThi1" Type="MaDeVaKhoiTrongKiThi" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Khoi" Member="Khois">
-    <Type Name="Khoi">
-      <Column Name="MaKhoi" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="TenKhoi" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Association Name="Khoi_CauHoi" Member="CauHois" ThisKey="MaKhoi" OtherKey="MaKhoi" Type="CauHoi" />
-      <Association Name="Khoi_De" Member="Des" ThisKey="MaKhoi" OtherKey="MaKhoi" Type="De" />
-      <Association Name="Khoi_GiaoVien" Member="GiaoViens" ThisKey="MaKhoi" OtherKey="MaKhoi" Type="GiaoVien" />
-      <Association Name="Khoi_Lop" Member="Lops" ThisKey="MaKhoi" OtherKey="MaKhoi" Type="Lop" />
-    </Type>
-  </Table>
-  <Table Name="dbo.KiThi" Member="KiThis">
-    <Type Name="KiThi">
-      <Column Name="MaKiThi" Type="System.String" DbType="NChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="TenKiThi" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
-      <Column Name="NgayThi" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Association Name="KiThi_MaDeVaKhoiTrongKiThi" Member="MaDeVaKhoiTrongKiThis" ThisKey="MaKiThi" OtherKey="MaKiThi" Type="MaDeVaKhoiTrongKiThi" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Lop" Member="Lops">
-    <Type Name="Lop">
-      <Column Name="MaLop" Type="System.String" DbType="NChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="TenLop" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="MaKhoi" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="Lop_HocSinh" Member="HocSinhs" ThisKey="MaLop" OtherKey="MaLop" Type="HocSinh" />
-      <Association Name="Khoi_Lop" Member="Khoi" ThisKey="MaKhoi" OtherKey="MaKhoi" Type="Khoi" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.MaDeVaKhoiTrongKiThi" Member="MaDeVaKhoiTrongKiThis">
-    <Type Name="MaDeVaKhoiTrongKiThi">
-      <Column Name="MaKiThi" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
-      <Column Name="MaDe" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
-      <Column Name="MaKhoi" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="MaDeVaKhoiTrongKiThi" Member="MaDeVaKhoiTrongKiThi1" Type="System.String" DbType="NChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Association Name="MaDeVaKhoiTrongKiThi_HocSinhTrongKiThi" Member="HocSinhTrongKiThis" ThisKey="MaDeVaKhoiTrongKiThi1" OtherKey="MaDeVaKhoiTrongKiThi" Type="HocSinhTrongKiThi" />
-      <Association Name="De_MaDeVaKhoiTrongKiThi" Member="De" ThisKey="MaDe,MaKhoi" OtherKey="MaDe,MaKhoi" Type="De" IsForeignKey="true" />
-      <Association Name="KiThi_MaDeVaKhoiTrongKiThi" Member="KiThi" ThisKey="MaKiThi" OtherKey="MaKiThi" Type="KiThi" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

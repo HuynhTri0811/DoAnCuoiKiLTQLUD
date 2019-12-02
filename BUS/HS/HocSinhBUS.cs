@@ -25,5 +25,33 @@ namespace BUS.HS
                 throw Ex;
             }
         }
+
+        public string LastMaHocSinh()
+        {
+            HocSinhDAO hocSinh = new HocSinhDAO();
+
+            try
+            {
+                return hocSinh.LastMaHocSinh();
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+        }
+
+        public Boolean AddHocSinh(string maHS, string hoTen, DateTime ngaySinh, string diaChi, string password)
+        {
+            HocSinhDAO hocSinh = new HocSinhDAO();
+
+            try
+            {
+                return hocSinh.AddHocSinh(maHS, hoTen, ngaySinh, diaChi, password);
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+        }
     }
 }
