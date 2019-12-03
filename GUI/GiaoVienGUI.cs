@@ -27,7 +27,7 @@ namespace GUI
 
         private void btnUpdateGiaoVien_Click(object sender, EventArgs e)
         {
-            CapNhatGiaoVienGUI capNhatGiaoVien = new CapNhatGiaoVienGUI();
+            CapNhatGiaoVienGUI capNhatGiaoVien = new CapNhatGiaoVienGUI(newGiaoVien);
             capNhatGiaoVien.ShowDialog();
         }
     }

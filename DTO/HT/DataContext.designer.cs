@@ -66,7 +66,7 @@ namespace DTO.HT
     #endregion
 		
 		public DataContextDataContext() : 
-				base(global::DTO.Properties.Settings.Default.QuanLyTracNghiemHocSinh_LTQLUDConnectionString, mappingSource)
+				base(global::DTO.Properties.Settings.Default.QuanLyTracNghiemHocSinh_LTQLUDConnectionString1, mappingSource)
 		{
 			OnCreated();
 		}
@@ -180,6 +180,14 @@ namespace DTO.HT
 			get
 			{
 				return this.GetTable<HocSinh>();
+			}
+		}
+		
+		public System.Data.Linq.Table<_1> _1s
+		{
+			get
+			{
+				return this.GetTable<_1>();
 			}
 		}
 	}
@@ -2714,6 +2722,33 @@ namespace DTO.HT
 		{
 			this.SendPropertyChanging();
 			entity.HocSinh = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.[1]")]
+	public partial class _1
+	{
+		
+		private string _abc;
+		
+		public _1()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_abc", DbType="NChar(10)")]
+		public string abc
+		{
+			get
+			{
+				return this._abc;
+			}
+			set
+			{
+				if ((this._abc != value))
+				{
+					this._abc = value;
+				}
+			}
 		}
 	}
 }

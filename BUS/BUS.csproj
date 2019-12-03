@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="HS\HocSinhBUS.cs" />
     <Compile Include="HT\GiaoVienBUS_HT.cs" />
+    <Compile Include="HT\KhoiBUS_HT.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

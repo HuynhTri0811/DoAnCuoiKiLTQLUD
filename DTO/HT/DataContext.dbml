@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="QuanLyTracNghiemHocSinh-LTQLUD" Class="DataContextDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-AJ69G9K\SQLEXPRESS;Initial Catalog=QuanLyTracNghiemHocSinh-LTQLUD;Integrated Security=True;Encrypt=False;TrustServerCertificate=True" SettingsObjectName="DTO.Properties.Settings" SettingsPropertyName="QuanLyTracNghiemHocSinh_LTQLUDConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-VBJGI2B\SQLEXPRESS;Initial Catalog=QuanLyTracNghiemHocSinh-LTQLUD;Integrated Security=True" SettingsObjectName="DTO.Properties.Settings" SettingsPropertyName="QuanLyTracNghiemHocSinh_LTQLUDConnectionString1" Provider="System.Data.SqlClient" />
   <Table Name="dbo.MaDeVaKhoiTrongKiThi" Member="MaDeVaKhoiTrongKiThis">
     <Type Name="MaDeVaKhoiTrongKiThi">
       <Column Name="MaKiThi" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
@@ -118,6 +118,11 @@
       <Association Name="HocSinh_HocSinhTrongKiThi" Member="HocSinhTrongKiThis" ThisKey="MaHocSinh" OtherKey="MaHocSinh" Type="HocSinhTrongKiThi" />
       <Association Name="HocSinh_DeOnTap" Member="DeOnTaps" ThisKey="MaHocSinh" OtherKey="MaHocSinh" Type="DeOnTap" />
       <Association Name="Lop_HocSinh" Member="Lop" ThisKey="MaLop" OtherKey="MaLop" Type="Lop" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[1]" Member="_1s">
+    <Type Name="_1">
+      <Column Name="abc" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
     </Type>
   </Table>
 </Database>
