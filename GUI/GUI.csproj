@@ -52,6 +52,12 @@
     <Compile Include="CapNhatGiaoVienGUI.Designer.cs">
       <DependentUpon>CapNhatGiaoVienGUI.cs</DependentUpon>
     </Compile>
+    <Compile Include="CauHoiHocSinhForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CauHoiHocSinhForm.Designer.cs">
+      <DependentUpon>CauHoiHocSinhForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="GiaoVienGUI.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -90,8 +96,17 @@
     <Compile Include="RegisterForm.Designer.cs">
       <DependentUpon>RegisterForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="SuaThongTinHocSinhForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SuaThongTinHocSinhForm.Designer.cs">
+      <DependentUpon>SuaThongTinHocSinhForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="CapNhatGiaoVienGUI.resx">
       <DependentUpon>CapNhatGiaoVienGUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CauHoiHocSinhForm.resx">
+      <DependentUpon>CauHoiHocSinhForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GiaoVienGUI.resx">
       <DependentUpon>GiaoVienGUI.cs</DependentUpon>
@@ -116,6 +131,9 @@
     </Compile>
     <EmbeddedResource Include="RegisterForm.resx">
       <DependentUpon>RegisterForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SuaThongTinHocSinhForm.resx">
+      <DependentUpon>SuaThongTinHocSinhForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

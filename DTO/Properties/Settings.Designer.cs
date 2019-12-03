@@ -12,7 +12,7 @@ namespace DTO.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.3.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "14.0.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -64,6 +64,17 @@ namespace DTO.Properties {
         public string QuanLyTracNghiemHocSinh_LTQLUDConnectionString1 {
             get {
                 return ((string)(this["QuanLyTracNghiemHocSinh_LTQLUDConnectionString1"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-AJ69G9K\\SQLEXPRESS;Initial Catalog=QuanLyTracNghiemHocSinh-LT" +
+            "QLUD;Integrated Security=True")]
+        public string QuanLyTracNghiemHocSinh_LTQLUDConnectionString2 {
+            get {
+                return ((string)(this["QuanLyTracNghiemHocSinh_LTQLUDConnectionString2"]));
             }
         }
     }

@@ -33,6 +33,7 @@ namespace DAO.HS
                         hocSinh.NgaySinh = hs.NgaySinh;
                         hocSinh.MaLop = hs.MaLop;
                         hocSinh.SoilPass = hs.SoilPass;
+                        hocSinh.DiaChi = hs.DiaChi;
                     }
                 }
 
@@ -137,5 +138,21 @@ namespace DAO.HS
             }
         }
 
+        public void UpdateHocSinh(string maHS, string hoTen, DateTime ngaySinh, string diaChi)
+        {
+            try
+            {
+                HocSinh hocSinhUpdate = db.HocSinhs.Single(h => h.MaHocSinh == maHS);
+                hocSinhUpdate.HoTen = hoTen;
+                hocSinhUpdate.NgaySinh = ngaySinh;
+                hocSinhUpdate.DiaChi = diaChi;
+               
+                db.SubmitChanges();
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+        }
     }
 }

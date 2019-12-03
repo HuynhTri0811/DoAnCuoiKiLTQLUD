@@ -67,7 +67,7 @@ namespace GUI
 
                     if (hocSinh != null)
                     {
-                        HocSinhGUI hocSinhGUI = new HocSinhGUI();
+                        HocSinhGUI hocSinhGUI = new HocSinhGUI(hocSinh);
                         this.Hide();
                         hocSinhGUI.ShowDialog();
                         this.Close();

@@ -53,5 +53,19 @@ namespace BUS.HS
                 throw Ex;
             }
         }
+
+        public void UpdateHocSinh(string maHS, string hoTen, DateTime ngaySinh, string diaChi)
+        {
+            HocSinhDAO hocSinh = new HocSinhDAO();
+
+            try
+            {
+                hocSinh.UpdateHocSinh(maHS, hoTen, ngaySinh, diaChi);    
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+        }
     }
 }
