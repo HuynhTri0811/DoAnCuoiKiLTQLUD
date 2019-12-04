@@ -1,4 +1,5 @@
 ﻿using DAO.HS;
+using DTO;
 using DTO.HT;
 using System;
 using System.Collections.Generic;
@@ -61,6 +62,48 @@ namespace BUS.HS
             try
             {
                 hocSinh.UpdateHocSinh(maHS, hoTen, ngaySinh, diaChi);    
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+        }
+
+        public List<DeVaCauHoiDTO> GetAllDeThi()
+        {
+            HocSinhDAO hocSinh = new HocSinhDAO();
+
+            try
+            {
+                return hocSinh.GetAllDeThi();
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+        }
+
+        public List<De> LayDanhSachDe(string doKho)
+        {
+            HocSinhDAO hocSinh = new HocSinhDAO();
+
+            try
+            {
+                return hocSinh.LayDanhSachDe(doKho);
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+            
+        }
+
+        public List<DeVaCauHoiDTO> LayDeTheoMaDe(string maDe)
+        {
+            HocSinhDAO hocSinh = new HocSinhDAO();
+            try
+            {
+                return hocSinh.LayDeTheoMaDe(maDe);
             }
             catch (Exception Ex)
             {

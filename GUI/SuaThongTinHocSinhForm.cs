@@ -48,12 +48,7 @@ namespace GUI
 
         private void btnHuy_Click(object sender, EventArgs e)
         {
-            
-            HocSinhGUI hocSinhGUI = new HocSinhGUI(hocSinhLogin);
-            this.Hide();
-            hocSinhGUI.ShowDialog();
             this.Close();
-            Application.Exit();
         }
     }
 }

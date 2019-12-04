@@ -28,7 +28,7 @@ namespace GUI
 
         public void LoadFormHocSinhGUI()
         {
-            lbNameUser.Text = hocSinhLogin.HoTen;
+            lbTenHocSinh.Text = hocSinhLogin.HoTen;
             lbMaHocSinh.Text = hocSinhLogin.MaHocSinh;
             lbNgaySinh.Text = String.Format("{0:dd/MM/yyyy}", hocSinhLogin.NgaySinh).ToString();
             lbDiaChi.Text = hocSinhLogin.DiaChi;
@@ -53,8 +53,14 @@ namespace GUI
         private void btnSuaThongTin_Click(object sender, EventArgs e)
         {
             SuaThongTinHocSinhForm suaThongTinHS = new SuaThongTinHocSinhForm(hocSinhLogin);
+            suaThongTinHS.Show();
+        }
+
+        private void btnThiThu_Click(object sender, EventArgs e)
+        {
+            ChonDeThiThuForm chonDeThiThu = new ChonDeThiThuForm(hocSinhLogin);
             this.Hide();
-            suaThongTinHS.ShowDialog();
+            chonDeThiThu.ShowDialog();
             this.Close();
             Application.Exit();
         }

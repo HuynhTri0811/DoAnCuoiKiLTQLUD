@@ -28,43 +28,82 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.lbCauSo = new System.Windows.Forms.Label();
+            this.pnCauHoi = new System.Windows.Forms.Panel();
+            this.rdbtnCauD = new System.Windows.Forms.RadioButton();
+            this.rdbtnCauC = new System.Windows.Forms.RadioButton();
+            this.rdbtnCauB = new System.Windows.Forms.RadioButton();
+            this.rdbtnCauA = new System.Windows.Forms.RadioButton();
             this.lbNoiDung = new System.Windows.Forms.Label();
+            this.lbCauSo = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.lbTenHocSinh = new System.Windows.Forms.Label();
             this.btnBoBai = new System.Windows.Forms.Button();
             this.btnCauTruoc = new System.Windows.Forms.Button();
             this.btnCauSau = new System.Windows.Forms.Button();
             this.btnNopBai = new System.Windows.Forms.Button();
-            this.rdbtnCauA = new System.Windows.Forms.RadioButton();
-            this.rdbtnCauB = new System.Windows.Forms.RadioButton();
-            this.rdbtnCauD = new System.Windows.Forms.RadioButton();
-            this.rdbtnCauC = new System.Windows.Forms.RadioButton();
-            this.panel1.SuspendLayout();
+            this.pnCauHoi.SuspendLayout();
             this.SuspendLayout();
             // 
-            // panel1
+            // pnCauHoi
             // 
-            this.panel1.Controls.Add(this.rdbtnCauD);
-            this.panel1.Controls.Add(this.rdbtnCauC);
-            this.panel1.Controls.Add(this.rdbtnCauB);
-            this.panel1.Controls.Add(this.rdbtnCauA);
-            this.panel1.Controls.Add(this.lbNoiDung);
-            this.panel1.Controls.Add(this.lbCauSo);
-            this.panel1.Location = new System.Drawing.Point(12, 72);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(657, 299);
-            this.panel1.TabIndex = 0;
+            this.pnCauHoi.Controls.Add(this.rdbtnCauD);
+            this.pnCauHoi.Controls.Add(this.rdbtnCauC);
+            this.pnCauHoi.Controls.Add(this.rdbtnCauB);
+            this.pnCauHoi.Controls.Add(this.rdbtnCauA);
+            this.pnCauHoi.Controls.Add(this.lbNoiDung);
+            this.pnCauHoi.Controls.Add(this.lbCauSo);
+            this.pnCauHoi.Location = new System.Drawing.Point(12, 72);
+            this.pnCauHoi.Name = "pnCauHoi";
+            this.pnCauHoi.Size = new System.Drawing.Size(657, 299);
+            this.pnCauHoi.TabIndex = 0;
             // 
-            // lbCauSo
+            // rdbtnCauD
             // 
-            this.lbCauSo.AutoSize = true;
-            this.lbCauSo.Location = new System.Drawing.Point(22, 19);
-            this.lbCauSo.Name = "lbCauSo";
-            this.lbCauSo.Size = new System.Drawing.Size(39, 13);
-            this.lbCauSo.TabIndex = 0;
-            this.lbCauSo.Text = "CauSo";
+            this.rdbtnCauD.AutoSize = true;
+            this.rdbtnCauD.Location = new System.Drawing.Point(358, 166);
+            this.rdbtnCauD.Name = "rdbtnCauD";
+            this.rdbtnCauD.Size = new System.Drawing.Size(52, 17);
+            this.rdbtnCauD.TabIndex = 5;
+            this.rdbtnCauD.TabStop = true;
+            this.rdbtnCauD.Text = "CauD";
+            this.rdbtnCauD.UseVisualStyleBackColor = true;
+            this.rdbtnCauD.CheckedChanged += new System.EventHandler(this.rdbtnCauD_CheckedChanged);
+            // 
+            // rdbtnCauC
+            // 
+            this.rdbtnCauC.AutoSize = true;
+            this.rdbtnCauC.Location = new System.Drawing.Point(25, 166);
+            this.rdbtnCauC.Name = "rdbtnCauC";
+            this.rdbtnCauC.Size = new System.Drawing.Size(51, 17);
+            this.rdbtnCauC.TabIndex = 4;
+            this.rdbtnCauC.TabStop = true;
+            this.rdbtnCauC.Text = "CauC";
+            this.rdbtnCauC.UseVisualStyleBackColor = true;
+            this.rdbtnCauC.CheckedChanged += new System.EventHandler(this.rdbtnCauC_CheckedChanged);
+            // 
+            // rdbtnCauB
+            // 
+            this.rdbtnCauB.AutoSize = true;
+            this.rdbtnCauB.Location = new System.Drawing.Point(358, 75);
+            this.rdbtnCauB.Name = "rdbtnCauB";
+            this.rdbtnCauB.Size = new System.Drawing.Size(51, 17);
+            this.rdbtnCauB.TabIndex = 3;
+            this.rdbtnCauB.TabStop = true;
+            this.rdbtnCauB.Text = "CauB";
+            this.rdbtnCauB.UseVisualStyleBackColor = true;
+            this.rdbtnCauB.CheckedChanged += new System.EventHandler(this.rdbtnCauB_CheckedChanged);
+            // 
+            // rdbtnCauA
+            // 
+            this.rdbtnCauA.AutoSize = true;
+            this.rdbtnCauA.Location = new System.Drawing.Point(25, 75);
+            this.rdbtnCauA.Name = "rdbtnCauA";
+            this.rdbtnCauA.Size = new System.Drawing.Size(51, 17);
+            this.rdbtnCauA.TabIndex = 2;
+            this.rdbtnCauA.TabStop = true;
+            this.rdbtnCauA.Text = "CauA";
+            this.rdbtnCauA.UseVisualStyleBackColor = true;
+            this.rdbtnCauA.CheckedChanged += new System.EventHandler(this.rdbtnCauA_CheckedChanged);
             // 
             // lbNoiDung
             // 
@@ -74,6 +113,15 @@
             this.lbNoiDung.Size = new System.Drawing.Size(49, 13);
             this.lbNoiDung.TabIndex = 1;
             this.lbNoiDung.Text = "NoiDung";
+            // 
+            // lbCauSo
+            // 
+            this.lbCauSo.AutoSize = true;
+            this.lbCauSo.Location = new System.Drawing.Point(22, 19);
+            this.lbCauSo.Name = "lbCauSo";
+            this.lbCauSo.Size = new System.Drawing.Size(39, 13);
+            this.lbCauSo.TabIndex = 0;
+            this.lbCauSo.Text = "CauSo";
             // 
             // label3
             // 
@@ -110,6 +158,7 @@
             this.btnCauTruoc.TabIndex = 4;
             this.btnCauTruoc.Text = "Câu trước";
             this.btnCauTruoc.UseVisualStyleBackColor = true;
+            this.btnCauTruoc.Click += new System.EventHandler(this.btnCauTruoc_Click);
             // 
             // btnCauSau
             // 
@@ -119,6 +168,7 @@
             this.btnCauSau.TabIndex = 5;
             this.btnCauSau.Text = "Câu sau";
             this.btnCauSau.UseVisualStyleBackColor = true;
+            this.btnCauSau.Click += new System.EventHandler(this.btnCauSau_Click);
             // 
             // btnNopBai
             // 
@@ -128,50 +178,6 @@
             this.btnNopBai.TabIndex = 6;
             this.btnNopBai.Text = "Nộp bài";
             this.btnNopBai.UseVisualStyleBackColor = true;
-            // 
-            // rdbtnCauA
-            // 
-            this.rdbtnCauA.AutoSize = true;
-            this.rdbtnCauA.Location = new System.Drawing.Point(25, 75);
-            this.rdbtnCauA.Name = "rdbtnCauA";
-            this.rdbtnCauA.Size = new System.Drawing.Size(51, 17);
-            this.rdbtnCauA.TabIndex = 2;
-            this.rdbtnCauA.TabStop = true;
-            this.rdbtnCauA.Text = "CauA";
-            this.rdbtnCauA.UseVisualStyleBackColor = true;
-            // 
-            // rdbtnCauB
-            // 
-            this.rdbtnCauB.AutoSize = true;
-            this.rdbtnCauB.Location = new System.Drawing.Point(358, 75);
-            this.rdbtnCauB.Name = "rdbtnCauB";
-            this.rdbtnCauB.Size = new System.Drawing.Size(51, 17);
-            this.rdbtnCauB.TabIndex = 3;
-            this.rdbtnCauB.TabStop = true;
-            this.rdbtnCauB.Text = "CauB";
-            this.rdbtnCauB.UseVisualStyleBackColor = true;
-            // 
-            // rdbtnCauD
-            // 
-            this.rdbtnCauD.AutoSize = true;
-            this.rdbtnCauD.Location = new System.Drawing.Point(358, 166);
-            this.rdbtnCauD.Name = "rdbtnCauD";
-            this.rdbtnCauD.Size = new System.Drawing.Size(52, 17);
-            this.rdbtnCauD.TabIndex = 5;
-            this.rdbtnCauD.TabStop = true;
-            this.rdbtnCauD.Text = "CauD";
-            this.rdbtnCauD.UseVisualStyleBackColor = true;
-            // 
-            // rdbtnCauC
-            // 
-            this.rdbtnCauC.AutoSize = true;
-            this.rdbtnCauC.Location = new System.Drawing.Point(25, 166);
-            this.rdbtnCauC.Name = "rdbtnCauC";
-            this.rdbtnCauC.Size = new System.Drawing.Size(51, 17);
-            this.rdbtnCauC.TabIndex = 4;
-            this.rdbtnCauC.TabStop = true;
-            this.rdbtnCauC.Text = "CauC";
-            this.rdbtnCauC.UseVisualStyleBackColor = true;
             // 
             // CauHoiHocSinhForm
             // 
@@ -184,11 +190,13 @@
             this.Controls.Add(this.btnBoBai);
             this.Controls.Add(this.lbTenHocSinh);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.pnCauHoi);
             this.Name = "CauHoiHocSinhForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CauHoiHocSinhForm";
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.Load += new System.EventHandler(this.CauHoiHocSinhForm_Load);
+            this.pnCauHoi.ResumeLayout(false);
+            this.pnCauHoi.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -196,7 +204,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel pnCauHoi;
         private System.Windows.Forms.Label lbNoiDung;
         private System.Windows.Forms.Label lbCauSo;
         private System.Windows.Forms.Label label3;

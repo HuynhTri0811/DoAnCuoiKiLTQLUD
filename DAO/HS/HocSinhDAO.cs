@@ -1,4 +1,5 @@
-﻿using DTO.HT;
+﻿using DTO;
+using DTO.HT;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -150,6 +151,129 @@ namespace DAO.HS
                 db.SubmitChanges();
             }
             catch (Exception Ex)
+            {
+                throw Ex;
+            }
+        }
+
+        public List<DeVaCauHoiDTO> GetAllDeThi()
+        {
+            try
+            {
+                var tatCaDeThi = (from de in db.Des
+                                 join  chinde in db.CauHoiTrongDeNaos on de.MaDe equals chinde.MaDe
+                                 join ch in db.CauHois on chinde.MaCauHoi equals ch.MaCauHoi
+                                 orderby de.MaDe
+                                 select new {de.MaDe, de.TenDe, de.DoKho, de.MaKhoi, ch.MaCauHoi, ch.NoiDung, ch.CauA, ch.CauB, ch.CauC, ch.CauD, ch.CauDung});
+
+                if(tatCaDeThi.Count() == 0)
+                {
+                    return null;
+                }
+
+                List<DeVaCauHoiDTO> listDeCauHoi = new List<DeVaCauHoiDTO>();
+
+                foreach(var chTrongDe in tatCaDeThi)
+                {
+                    DeVaCauHoiDTO deVaCauHoi = new DeVaCauHoiDTO();
+                    deVaCauHoi.MaDe = chTrongDe.MaDe;
+                    deVaCauHoi.TenDe = chTrongDe.TenDe;
+                    deVaCauHoi.DoKho = chTrongDe.DoKho;
+                    deVaCauHoi.MaKhoi = chTrongDe.MaKhoi;
+                    deVaCauHoi.MaCauHoi = chTrongDe.MaCauHoi;
+                    deVaCauHoi.NoiDung = chTrongDe.NoiDung;
+                    deVaCauHoi.CauA = chTrongDe.CauA;
+                    deVaCauHoi.CauB = chTrongDe.CauB;
+                    deVaCauHoi.CauC = chTrongDe.CauC;
+                    deVaCauHoi.CauD = chTrongDe.CauD;
+                    deVaCauHoi.CauDung = chTrongDe.CauDung;
+                    deVaCauHoi.CauChon = "";
+
+                    listDeCauHoi.Add(deVaCauHoi);
+                }
+
+                return listDeCauHoi;          
+            }
+            catch(Exception Ex)
+            {
+                throw Ex;
+            }
+        }
+
+        public List<De> LayDanhSachDe(string doKho)
+        {
+            List<De> danhSachDe = new List<De>();
+
+            if (doKho == "" || doKho == null)
+            {
+                danhSachDe = null;
+            }
+            else
+            {
+                try
+                {
+                    var dsDe = (from d in db.Des
+                                where d.DoKho == doKho
+                                select d);
+
+                    if(dsDe.Count() == 0)
+                    {
+                        return null;
+                    }
+                    foreach(var d in dsDe)
+                    {
+                        danhSachDe.Add(d);
+                    }
+                }
+                catch(Exception Ex)
+                {
+                    throw Ex;
+                }
+            }
+
+            return danhSachDe;
+        }
+
+        public List<DeVaCauHoiDTO> LayDeTheoMaDe(string maDe)
+        {
+            try
+            {
+                var dThi = (from de in db.Des
+                            join chinde in db.CauHoiTrongDeNaos on de.MaDe equals chinde.MaDe
+                            join ch in db.CauHois on chinde.MaCauHoi equals ch.MaCauHoi
+                            where de.MaDe == maDe
+                            orderby ch.MaCauHoi
+                            select new { de.MaDe, de.TenDe, de.DoKho, de.MaKhoi, ch.MaCauHoi, ch.NoiDung, ch.CauA, ch.CauB, ch.CauC, ch.CauD, ch.CauDung });
+
+                if(dThi.Count() == 0)
+                {
+                    return null;
+                }
+
+                List<DeVaCauHoiDTO> dsCauHoi = new List<DeVaCauHoiDTO>();
+                foreach(var item in dThi)
+                {
+                    DeVaCauHoiDTO deThi = new DeVaCauHoiDTO();
+
+                    deThi.MaDe = item.MaDe;
+                    deThi.TenDe = item.TenDe;
+                    deThi.DoKho = item.DoKho;
+                    deThi.MaKhoi = item.MaKhoi;
+                    deThi.MaCauHoi = item.MaCauHoi;
+                    deThi.NoiDung = item.NoiDung;
+                    deThi.CauA = item.CauA;
+                    deThi.CauB = item.CauB;
+                    deThi.CauC = item.CauC;
+                    deThi.CauD = item.CauD;
+                    deThi.CauDung = item.CauDung;
+                    deThi.CauChon = "";
+
+                    dsCauHoi.Add(deThi);
+                }
+
+                return dsCauHoi;
+            }
+            catch(Exception Ex)
             {
                 throw Ex;
             }

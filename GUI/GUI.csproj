@@ -58,6 +58,12 @@
     <Compile Include="CauHoiHocSinhForm.Designer.cs">
       <DependentUpon>CauHoiHocSinhForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ChonDeThiThuForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChonDeThiThuForm.Designer.cs">
+      <DependentUpon>ChonDeThiThuForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="GiaoVienGUI.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -107,6 +113,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CauHoiHocSinhForm.resx">
       <DependentUpon>CauHoiHocSinhForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChonDeThiThuForm.resx">
+      <DependentUpon>ChonDeThiThuForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GiaoVienGUI.resx">
       <DependentUpon>GiaoVienGUI.cs</DependentUpon>
