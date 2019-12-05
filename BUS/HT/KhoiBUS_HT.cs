@@ -17,6 +17,8 @@ namespace BUS.HT
             return KhoiDAO.GetKhoiAll();
         }
 
+
+
         public string getNameKhoi(int MaKhoi)
         {
             return KhoiDAO.getNameKhoi(MaKhoi);

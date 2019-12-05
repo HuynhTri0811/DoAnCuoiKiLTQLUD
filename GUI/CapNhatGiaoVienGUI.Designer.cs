@@ -43,7 +43,12 @@
             this.txtPasswordGiaoVien = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.cbMaKhoi = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnCapNhatName = new System.Windows.Forms.Button();
+            this.btnCapNhatDiaChi = new System.Windows.Forms.Button();
+            this.btnCapNhatEmail = new System.Windows.Forms.Button();
+            this.btnCapNhatSDT = new System.Windows.Forms.Button();
+            this.btnCapNhatPassWord = new System.Windows.Forms.Button();
+            this.btnCapNhatMaKhoi = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -173,22 +178,72 @@
             this.cbMaKhoi.Size = new System.Drawing.Size(190, 21);
             this.cbMaKhoi.TabIndex = 14;
             // 
-            // button1
+            // btnCapNhatName
             // 
-            this.button1.Location = new System.Drawing.Point(86, 391);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(190, 23);
-            this.button1.TabIndex = 15;
-            this.button1.Text = "Cập nhật ";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnCapNhatName.Location = new System.Drawing.Point(292, 123);
+            this.btnCapNhatName.Name = "btnCapNhatName";
+            this.btnCapNhatName.Size = new System.Drawing.Size(122, 23);
+            this.btnCapNhatName.TabIndex = 17;
+            this.btnCapNhatName.Text = "Cập nhật ";
+            this.btnCapNhatName.UseVisualStyleBackColor = true;
+            this.btnCapNhatName.Click += new System.EventHandler(this.btnCapNhatName_Click);
+            // 
+            // btnCapNhatDiaChi
+            // 
+            this.btnCapNhatDiaChi.Location = new System.Drawing.Point(292, 164);
+            this.btnCapNhatDiaChi.Name = "btnCapNhatDiaChi";
+            this.btnCapNhatDiaChi.Size = new System.Drawing.Size(122, 23);
+            this.btnCapNhatDiaChi.TabIndex = 18;
+            this.btnCapNhatDiaChi.Text = "Cập nhật ";
+            this.btnCapNhatDiaChi.UseVisualStyleBackColor = true;
+            // 
+            // btnCapNhatEmail
+            // 
+            this.btnCapNhatEmail.Location = new System.Drawing.Point(292, 208);
+            this.btnCapNhatEmail.Name = "btnCapNhatEmail";
+            this.btnCapNhatEmail.Size = new System.Drawing.Size(122, 23);
+            this.btnCapNhatEmail.TabIndex = 19;
+            this.btnCapNhatEmail.Text = "Cập nhật ";
+            this.btnCapNhatEmail.UseVisualStyleBackColor = true;
+            // 
+            // btnCapNhatSDT
+            // 
+            this.btnCapNhatSDT.Location = new System.Drawing.Point(292, 250);
+            this.btnCapNhatSDT.Name = "btnCapNhatSDT";
+            this.btnCapNhatSDT.Size = new System.Drawing.Size(122, 23);
+            this.btnCapNhatSDT.TabIndex = 20;
+            this.btnCapNhatSDT.Text = "Cập nhật ";
+            this.btnCapNhatSDT.UseVisualStyleBackColor = true;
+            // 
+            // btnCapNhatPassWord
+            // 
+            this.btnCapNhatPassWord.Location = new System.Drawing.Point(292, 289);
+            this.btnCapNhatPassWord.Name = "btnCapNhatPassWord";
+            this.btnCapNhatPassWord.Size = new System.Drawing.Size(122, 23);
+            this.btnCapNhatPassWord.TabIndex = 21;
+            this.btnCapNhatPassWord.Text = "Cập nhật ";
+            this.btnCapNhatPassWord.UseVisualStyleBackColor = true;
+            // 
+            // btnCapNhatMaKhoi
+            // 
+            this.btnCapNhatMaKhoi.Location = new System.Drawing.Point(292, 337);
+            this.btnCapNhatMaKhoi.Name = "btnCapNhatMaKhoi";
+            this.btnCapNhatMaKhoi.Size = new System.Drawing.Size(122, 23);
+            this.btnCapNhatMaKhoi.TabIndex = 22;
+            this.btnCapNhatMaKhoi.Text = "Cập nhật ";
+            this.btnCapNhatMaKhoi.UseVisualStyleBackColor = true;
             // 
             // CapNhatGiaoVienGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(385, 510);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(466, 410);
+            this.Controls.Add(this.btnCapNhatMaKhoi);
+            this.Controls.Add(this.btnCapNhatPassWord);
+            this.Controls.Add(this.btnCapNhatSDT);
+            this.Controls.Add(this.btnCapNhatEmail);
+            this.Controls.Add(this.btnCapNhatDiaChi);
+            this.Controls.Add(this.btnCapNhatName);
             this.Controls.Add(this.cbMaKhoi);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.txtPasswordGiaoVien);
@@ -206,6 +261,7 @@
             this.Controls.Add(this.label1);
             this.Name = "CapNhatGiaoVienGUI";
             this.Text = "Cập nhật giáo viên";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CapNhatGiaoVienGUI_FormClosing);
             this.Load += new System.EventHandler(this.CapNhatGiaoVienGUI_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -229,6 +285,11 @@
         private System.Windows.Forms.TextBox txtPasswordGiaoVien;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox cbMaKhoi;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnCapNhatName;
+        private System.Windows.Forms.Button btnCapNhatDiaChi;
+        private System.Windows.Forms.Button btnCapNhatEmail;
+        private System.Windows.Forms.Button btnCapNhatSDT;
+        private System.Windows.Forms.Button btnCapNhatPassWord;
+        private System.Windows.Forms.Button btnCapNhatMaKhoi;
     }
 }

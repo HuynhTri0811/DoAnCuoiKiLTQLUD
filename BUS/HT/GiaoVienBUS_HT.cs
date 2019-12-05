@@ -17,5 +17,15 @@ namespace BUS.HT
         {
             return giaovien.FindGiaoVienOnEmailAndPassword(Email,Password);
         }
+
+        public bool UpdateTenGiaoVien(string MaGV,string HoTen)
+        {
+            return giaovien.UpdateGiaoVienOnHoTen(MaGV, HoTen);
+        }
+
+        public GiaoVien FindOneGiaoVienOnMAGV(string MaGV)
+        {
+            return giaovien.FindOneGiaoVienOnMAGV(MaGV);
+        }
     }
 }
