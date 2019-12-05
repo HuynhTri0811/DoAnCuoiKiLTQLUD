@@ -63,6 +63,9 @@ namespace DTO.HT
     partial void InsertCauHoi(CauHoi instance);
     partial void UpdateCauHoi(CauHoi instance);
     partial void DeleteCauHoi(CauHoi instance);
+    partial void InsertDoKho(DoKho instance);
+    partial void UpdateDoKho(DoKho instance);
+    partial void DeleteDoKho(DoKho instance);
     #endregion
 		
 		public DataContextDataContext() : 
@@ -180,6 +183,14 @@ namespace DTO.HT
 			get
 			{
 				return this.GetTable<CauHoi>();
+			}
+		}
+		
+		public System.Data.Linq.Table<DoKho> DoKhos
+		{
+			get
+			{
+				return this.GetTable<DoKho>();
 			}
 		}
 	}
@@ -2418,9 +2429,13 @@ namespace DTO.HT
 		
 		private System.Nullable<bool> _HocSinhDongGop;
 		
+		private System.Nullable<int> _DoKho;
+		
 		private EntitySet<CauHoiTrongDeNao> _CauHoiTrongDeNaos;
 		
 		private EntityRef<Khoi> _Khoi;
+		
+		private EntityRef<DoKho> _DoKho1;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -2444,16 +2459,19 @@ namespace DTO.HT
     partial void OnMaKhoiChanged();
     partial void OnHocSinhDongGopChanging(System.Nullable<bool> value);
     partial void OnHocSinhDongGopChanged();
+    partial void OnDoKhoChanging(System.Nullable<int> value);
+    partial void OnDoKhoChanged();
     #endregion
 		
 		public CauHoi()
 		{
 			this._CauHoiTrongDeNaos = new EntitySet<CauHoiTrongDeNao>(new Action<CauHoiTrongDeNao>(this.attach_CauHoiTrongDeNaos), new Action<CauHoiTrongDeNao>(this.detach_CauHoiTrongDeNaos));
 			this._Khoi = default(EntityRef<Khoi>);
+			this._DoKho1 = default(EntityRef<DoKho>);
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaCauHoi", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaCauHoi", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int MaCauHoi
 		{
 			get
@@ -2637,6 +2655,30 @@ namespace DTO.HT
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DoKho", DbType="Int")]
+		public System.Nullable<int> DoKho
+		{
+			get
+			{
+				return this._DoKho;
+			}
+			set
+			{
+				if ((this._DoKho != value))
+				{
+					if (this._DoKho1.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnDoKhoChanging(value);
+					this.SendPropertyChanging();
+					this._DoKho = value;
+					this.SendPropertyChanged("DoKho");
+					this.OnDoKhoChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CauHoi_CauHoiTrongDeNao", Storage="_CauHoiTrongDeNaos", ThisKey="MaCauHoi", OtherKey="MaCauHoi")]
 		public EntitySet<CauHoiTrongDeNao> CauHoiTrongDeNaos
 		{
@@ -2684,6 +2726,40 @@ namespace DTO.HT
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DoKho_CauHoi", Storage="_DoKho1", ThisKey="DoKho", OtherKey="maDoKho", IsForeignKey=true)]
+		public DoKho DoKho1
+		{
+			get
+			{
+				return this._DoKho1.Entity;
+			}
+			set
+			{
+				DoKho previousValue = this._DoKho1.Entity;
+				if (((previousValue != value) 
+							|| (this._DoKho1.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._DoKho1.Entity = null;
+						previousValue.CauHois.Remove(this);
+					}
+					this._DoKho1.Entity = value;
+					if ((value != null))
+					{
+						value.CauHois.Add(this);
+						this._DoKho = value.maDoKho;
+					}
+					else
+					{
+						this._DoKho = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("DoKho1");
+				}
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -2714,6 +2790,120 @@ namespace DTO.HT
 		{
 			this.SendPropertyChanging();
 			entity.CauHoi = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.DoKho")]
+	public partial class DoKho : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _maDoKho;
+		
+		private string _TenDoKho;
+		
+		private EntitySet<CauHoi> _CauHois;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnmaDoKhoChanging(int value);
+    partial void OnmaDoKhoChanged();
+    partial void OnTenDoKhoChanging(string value);
+    partial void OnTenDoKhoChanged();
+    #endregion
+		
+		public DoKho()
+		{
+			this._CauHois = new EntitySet<CauHoi>(new Action<CauHoi>(this.attach_CauHois), new Action<CauHoi>(this.detach_CauHois));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_maDoKho", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int maDoKho
+		{
+			get
+			{
+				return this._maDoKho;
+			}
+			set
+			{
+				if ((this._maDoKho != value))
+				{
+					this.OnmaDoKhoChanging(value);
+					this.SendPropertyChanging();
+					this._maDoKho = value;
+					this.SendPropertyChanged("maDoKho");
+					this.OnmaDoKhoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TenDoKho", DbType="NVarChar(50)")]
+		public string TenDoKho
+		{
+			get
+			{
+				return this._TenDoKho;
+			}
+			set
+			{
+				if ((this._TenDoKho != value))
+				{
+					this.OnTenDoKhoChanging(value);
+					this.SendPropertyChanging();
+					this._TenDoKho = value;
+					this.SendPropertyChanged("TenDoKho");
+					this.OnTenDoKhoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DoKho_CauHoi", Storage="_CauHois", ThisKey="maDoKho", OtherKey="DoKho")]
+		public EntitySet<CauHoi> CauHois
+		{
+			get
+			{
+				return this._CauHois;
+			}
+			set
+			{
+				this._CauHois.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_CauHois(CauHoi entity)
+		{
+			this.SendPropertyChanging();
+			entity.DoKho1 = this;
+		}
+		
+		private void detach_CauHois(CauHoi entity)
+		{
+			this.SendPropertyChanging();
+			entity.DoKho1 = null;
 		}
 	}
 }

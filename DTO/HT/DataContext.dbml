@@ -107,7 +107,7 @@
   </Table>
   <Table Name="dbo.CauHoi" Member="CauHois">
     <Type Name="CauHoi">
-      <Column Name="MaCauHoi" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MaCauHoi" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="NoiDung" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
       <Column Name="CauA" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="CauB" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
@@ -116,8 +116,17 @@
       <Column Name="CauDung" Type="System.String" DbType="NChar(5)" CanBeNull="true" />
       <Column Name="MaKhoi" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="HocSinhDongGop" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="DoKho" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="CauHoi_CauHoiTrongDeNao" Member="CauHoiTrongDeNaos" ThisKey="MaCauHoi" OtherKey="MaCauHoi" Type="CauHoiTrongDeNao" />
       <Association Name="Khoi_CauHoi" Member="Khoi" ThisKey="MaKhoi" OtherKey="MaKhoi" Type="Khoi" IsForeignKey="true" />
+      <Association Name="DoKho_CauHoi" Member="DoKho1" ThisKey="DoKho" OtherKey="maDoKho" Type="DoKho" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DoKho" Member="DoKhos">
+    <Type Name="DoKho">
+      <Column Name="maDoKho" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TenDoKho" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="DoKho_CauHoi" Member="CauHois" ThisKey="maDoKho" OtherKey="DoKho" Type="CauHoi" />
     </Type>
   </Table>
 </Database>
