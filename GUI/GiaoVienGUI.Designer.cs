@@ -34,17 +34,31 @@
             this.tabQuanLyKiThiAll = new System.Windows.Forms.TabControl();
             this.tabThongKeHocSinh = new System.Windows.Forms.TabPage();
             this.tabQuanLyKiThi = new System.Windows.Forms.TabPage();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnAddCauHoi = new System.Windows.Forms.Button();
             this.tabThongKeCauHoi = new System.Windows.Forms.TabPage();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.radioCauA = new System.Windows.Forms.RadioButton();
+            this.txtCauHoi = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnDuyetCauHoi = new System.Windows.Forms.Button();
+            this.dataGirdViewDanhSachCauHoi = new System.Windows.Forms.DataGridView();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnAddCauHoi = new System.Windows.Forms.Button();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.radioCauB = new System.Windows.Forms.RadioButton();
+            this.radioCauC = new System.Windows.Forms.RadioButton();
+            this.radioCauD = new System.Windows.Forms.RadioButton();
             this.tabQuanLyKiThiAll.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.tabThongKeCauHoi.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGirdViewDanhSachCauHoi)).BeginInit();
+            this.groupBox1.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -106,6 +120,88 @@
             this.tabQuanLyKiThi.Text = "Quản Lý kì THi";
             this.tabQuanLyKiThi.UseVisualStyleBackColor = true;
             // 
+            // tabThongKeCauHoi
+            // 
+            this.tabThongKeCauHoi.Controls.Add(this.groupBox3);
+            this.tabThongKeCauHoi.Controls.Add(this.groupBox2);
+            this.tabThongKeCauHoi.Location = new System.Drawing.Point(4, 22);
+            this.tabThongKeCauHoi.Name = "tabThongKeCauHoi";
+            this.tabThongKeCauHoi.Padding = new System.Windows.Forms.Padding(3);
+            this.tabThongKeCauHoi.Size = new System.Drawing.Size(975, 491);
+            this.tabThongKeCauHoi.TabIndex = 2;
+            this.tabThongKeCauHoi.Text = "Thống kê câu hỏi ";
+            this.tabThongKeCauHoi.UseVisualStyleBackColor = true;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.groupBox4);
+            this.groupBox3.Controls.Add(this.txtCauHoi);
+            this.groupBox3.Controls.Add(this.label2);
+            this.groupBox3.Location = new System.Drawing.Point(12, 6);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(957, 233);
+            this.groupBox3.TabIndex = 3;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Chi tiết câu hỏi";
+            this.groupBox3.Enter += new System.EventHandler(this.groupBox3_Enter);
+            // 
+            // radioCauA
+            // 
+            this.radioCauA.AutoSize = true;
+            this.radioCauA.Location = new System.Drawing.Point(32, 25);
+            this.radioCauA.Name = "radioCauA";
+            this.radioCauA.Size = new System.Drawing.Size(46, 17);
+            this.radioCauA.TabIndex = 2;
+            this.radioCauA.TabStop = true;
+            this.radioCauA.Text = "Text";
+            this.radioCauA.UseVisualStyleBackColor = true;
+            this.radioCauA.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            // 
+            // txtCauHoi
+            // 
+            this.txtCauHoi.Location = new System.Drawing.Point(77, 20);
+            this.txtCauHoi.Multiline = true;
+            this.txtCauHoi.Name = "txtCauHoi";
+            this.txtCauHoi.Size = new System.Drawing.Size(409, 73);
+            this.txtCauHoi.TabIndex = 1;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(22, 23);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(49, 13);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Câu hỏi :";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.btnDuyetCauHoi);
+            this.groupBox2.Controls.Add(this.dataGirdViewDanhSachCauHoi);
+            this.groupBox2.Location = new System.Drawing.Point(6, 245);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(963, 243);
+            this.groupBox2.TabIndex = 1;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Danh sách câu hỏi";
+            // 
+            // btnDuyetCauHoi
+            // 
+            this.btnDuyetCauHoi.Location = new System.Drawing.Point(824, 26);
+            this.btnDuyetCauHoi.Name = "btnDuyetCauHoi";
+            this.btnDuyetCauHoi.Size = new System.Drawing.Size(133, 29);
+            this.btnDuyetCauHoi.TabIndex = 1;
+            this.btnDuyetCauHoi.Text = "Duyệt câu hỏi thêm vào";
+            this.btnDuyetCauHoi.UseVisualStyleBackColor = true;
+            // 
+            // dataGirdViewDanhSachCauHoi
+            // 
+            this.dataGirdViewDanhSachCauHoi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGirdViewDanhSachCauHoi.Location = new System.Drawing.Point(6, 26);
+            this.dataGirdViewDanhSachCauHoi.Name = "dataGirdViewDanhSachCauHoi";
+            this.dataGirdViewDanhSachCauHoi.Size = new System.Drawing.Size(812, 214);
+            this.dataGirdViewDanhSachCauHoi.TabIndex = 0;
+            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.btnAddCauHoi);
@@ -126,44 +222,92 @@
             this.btnAddCauHoi.Text = "Thêm câu hỏi";
             this.btnAddCauHoi.UseVisualStyleBackColor = true;
             // 
-            // tabThongKeCauHoi
+            // groupBox4
             // 
-            this.tabThongKeCauHoi.Controls.Add(this.groupBox2);
-            this.tabThongKeCauHoi.Location = new System.Drawing.Point(4, 22);
-            this.tabThongKeCauHoi.Name = "tabThongKeCauHoi";
-            this.tabThongKeCauHoi.Padding = new System.Windows.Forms.Padding(3);
-            this.tabThongKeCauHoi.Size = new System.Drawing.Size(975, 491);
-            this.tabThongKeCauHoi.TabIndex = 2;
-            this.tabThongKeCauHoi.Text = "Thống kê câu hỏi ";
-            this.tabThongKeCauHoi.UseVisualStyleBackColor = true;
+            this.groupBox4.Controls.Add(this.radioCauD);
+            this.groupBox4.Controls.Add(this.radioCauC);
+            this.groupBox4.Controls.Add(this.radioCauB);
+            this.groupBox4.Controls.Add(this.label6);
+            this.groupBox4.Controls.Add(this.label5);
+            this.groupBox4.Controls.Add(this.label4);
+            this.groupBox4.Controls.Add(this.label3);
+            this.groupBox4.Controls.Add(this.radioCauA);
+            this.groupBox4.Location = new System.Drawing.Point(77, 99);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(409, 117);
+            this.groupBox4.TabIndex = 3;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Câu trả lời";
             // 
-            // dataGridView1
+            // label3
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(6, 26);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(812, 214);
-            this.dataGridView1.TabIndex = 0;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 27);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(20, 13);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "A .";
             // 
-            // groupBox2
+            // label4
             // 
-            this.groupBox2.Controls.Add(this.btnDuyetCauHoi);
-            this.groupBox2.Controls.Add(this.dataGridView1);
-            this.groupBox2.Location = new System.Drawing.Point(6, 245);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(963, 243);
-            this.groupBox2.TabIndex = 1;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Danh sách các câu hỏi của học sinh đóng góp";
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(6, 50);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(17, 13);
+            this.label4.TabIndex = 5;
+            this.label4.Text = "B.";
             // 
-            // btnDuyetCauHoi
+            // label5
             // 
-            this.btnDuyetCauHoi.Location = new System.Drawing.Point(824, 30);
-            this.btnDuyetCauHoi.Name = "btnDuyetCauHoi";
-            this.btnDuyetCauHoi.Size = new System.Drawing.Size(133, 29);
-            this.btnDuyetCauHoi.TabIndex = 1;
-            this.btnDuyetCauHoi.Text = "Duyệt câu hỏi thêm vào";
-            this.btnDuyetCauHoi.UseVisualStyleBackColor = true;
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(6, 74);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(17, 13);
+            this.label5.TabIndex = 6;
+            this.label5.Text = "C.";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(6, 96);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(18, 13);
+            this.label6.TabIndex = 7;
+            this.label6.Text = "D.";
+            // 
+            // radioCauB
+            // 
+            this.radioCauB.AutoSize = true;
+            this.radioCauB.Location = new System.Drawing.Point(32, 46);
+            this.radioCauB.Name = "radioCauB";
+            this.radioCauB.Size = new System.Drawing.Size(46, 17);
+            this.radioCauB.TabIndex = 8;
+            this.radioCauB.TabStop = true;
+            this.radioCauB.Text = "Text";
+            this.radioCauB.UseVisualStyleBackColor = true;
+            // 
+            // radioCauC
+            // 
+            this.radioCauC.AutoSize = true;
+            this.radioCauC.Location = new System.Drawing.Point(32, 71);
+            this.radioCauC.Name = "radioCauC";
+            this.radioCauC.Size = new System.Drawing.Size(46, 17);
+            this.radioCauC.TabIndex = 9;
+            this.radioCauC.TabStop = true;
+            this.radioCauC.Text = "Text";
+            this.radioCauC.UseVisualStyleBackColor = true;
+            this.radioCauC.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
+            // 
+            // radioCauD
+            // 
+            this.radioCauD.AutoSize = true;
+            this.radioCauD.Location = new System.Drawing.Point(32, 94);
+            this.radioCauD.Name = "radioCauD";
+            this.radioCauD.Size = new System.Drawing.Size(46, 17);
+            this.radioCauD.TabIndex = 10;
+            this.radioCauD.TabStop = true;
+            this.radioCauD.Text = "Text";
+            this.radioCauD.UseVisualStyleBackColor = true;
             // 
             // GiaoVienGUI
             // 
@@ -178,10 +322,14 @@
             this.Text = "GiaoVien";
             this.Load += new System.EventHandler(this.GiaoVienGUI_Load);
             this.tabQuanLyKiThiAll.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
             this.tabThongKeCauHoi.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGirdViewDanhSachCauHoi)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -197,8 +345,20 @@
         private System.Windows.Forms.TabPage tabThongKeCauHoi;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btnDuyetCauHoi;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGirdViewDanhSachCauHoi;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnAddCauHoi;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.RadioButton radioCauA;
+        private System.Windows.Forms.TextBox txtCauHoi;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.RadioButton radioCauD;
+        private System.Windows.Forms.RadioButton radioCauC;
+        private System.Windows.Forms.RadioButton radioCauB;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
     }
 }

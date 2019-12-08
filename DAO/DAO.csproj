@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="HS\HocSinhDAO.cs" />
+    <Compile Include="HT\CauHoiDAO.cs" />
     <Compile Include="HT\GiaoVienDAO.cs" />
     <Compile Include="HT\KhoiDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

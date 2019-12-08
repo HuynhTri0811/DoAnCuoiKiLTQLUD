@@ -17,16 +17,19 @@ namespace GUI
         GiaoVien newGiaoVien;
      
         GiaoVienBUS_HT giaoVienBUS_HT = new GiaoVienBUS_HT();
+        CauHoiBUS_HT cauHoiBUS_HT = new CauHoiBUS_HT();
         public GiaoVienGUI(GiaoVien GiaoViens)
         {
             InitializeComponent();
             this.Refresh();
             newGiaoVien = giaoVienBUS_HT.FindOneGiaoVienOnMAGV(GiaoViens.MaGiaVien);
+            
         }
 
         private void GiaoVienGUI_Load(object sender, EventArgs e)
         {
             lbNameGiaoVien.Text = newGiaoVien.HoTen;
+            dataGirdViewDanhSachCauHoi.DataSource = cauHoiBUS_HT.getAllCauHoi();
         }
 
         private void btnUpdateGiaoVien_Click(object sender, EventArgs e)
@@ -36,6 +39,21 @@ namespace GUI
             capNhatGiaoVien.ShowDialog();
             newGiaoVien = giaoVienBUS_HT.FindOneGiaoVienOnMAGV(this.newGiaoVien.MaGiaVien);
             lbNameGiaoVien.Text = newGiaoVien.HoTen;
+
+        }
+
+        private void groupBox3_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        {
 
         }
     }
