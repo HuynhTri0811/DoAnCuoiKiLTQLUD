@@ -36,29 +36,33 @@
             this.tabQuanLyKiThi = new System.Windows.Forms.TabPage();
             this.tabThongKeCauHoi = new System.Windows.Forms.TabPage();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.radioCauD = new System.Windows.Forms.RadioButton();
+            this.radioCauC = new System.Windows.Forms.RadioButton();
+            this.radioCauB = new System.Windows.Forms.RadioButton();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.radioCauA = new System.Windows.Forms.RadioButton();
             this.txtCauHoi = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnDuyetCauHoi = new System.Windows.Forms.Button();
-            this.dataGirdViewDanhSachCauHoi = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnAddCauHoi = new System.Windows.Forms.Button();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.radioCauB = new System.Windows.Forms.RadioButton();
-            this.radioCauC = new System.Windows.Forms.RadioButton();
-            this.radioCauD = new System.Windows.Forms.RadioButton();
+            this.listCauHoi = new System.Windows.Forms.ListView();
+            this.UpdateDapAn = new System.Windows.Forms.Button();
+            this.comboxDoKho = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.comboBoxKhoi = new System.Windows.Forms.ComboBox();
             this.tabQuanLyKiThiAll.SuspendLayout();
             this.tabThongKeCauHoi.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGirdViewDanhSachCauHoi)).BeginInit();
-            this.groupBox1.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -134,6 +138,10 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.comboBoxKhoi);
+            this.groupBox3.Controls.Add(this.label8);
+            this.groupBox3.Controls.Add(this.label7);
+            this.groupBox3.Controls.Add(this.comboxDoKho);
             this.groupBox3.Controls.Add(this.groupBox4);
             this.groupBox3.Controls.Add(this.txtCauHoi);
             this.groupBox3.Controls.Add(this.label2);
@@ -145,9 +153,101 @@
             this.groupBox3.Text = "Chi tiết câu hỏi";
             this.groupBox3.Enter += new System.EventHandler(this.groupBox3_Enter);
             // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.UpdateDapAn);
+            this.groupBox4.Controls.Add(this.radioCauD);
+            this.groupBox4.Controls.Add(this.radioCauC);
+            this.groupBox4.Controls.Add(this.radioCauB);
+            this.groupBox4.Controls.Add(this.label6);
+            this.groupBox4.Controls.Add(this.label5);
+            this.groupBox4.Controls.Add(this.label4);
+            this.groupBox4.Controls.Add(this.label3);
+            this.groupBox4.Controls.Add(this.radioCauA);
+            this.groupBox4.Location = new System.Drawing.Point(77, 99);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(409, 117);
+            this.groupBox4.TabIndex = 3;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Câu trả lời";
+            // 
+            // radioCauD
+            // 
+            this.radioCauD.AutoSize = true;
+            this.radioCauD.Enabled = false;
+            this.radioCauD.Location = new System.Drawing.Point(32, 94);
+            this.radioCauD.Name = "radioCauD";
+            this.radioCauD.Size = new System.Drawing.Size(46, 17);
+            this.radioCauD.TabIndex = 10;
+            this.radioCauD.TabStop = true;
+            this.radioCauD.Text = "Text";
+            this.radioCauD.UseVisualStyleBackColor = true;
+            // 
+            // radioCauC
+            // 
+            this.radioCauC.AutoSize = true;
+            this.radioCauC.Enabled = false;
+            this.radioCauC.Location = new System.Drawing.Point(32, 71);
+            this.radioCauC.Name = "radioCauC";
+            this.radioCauC.Size = new System.Drawing.Size(46, 17);
+            this.radioCauC.TabIndex = 9;
+            this.radioCauC.TabStop = true;
+            this.radioCauC.Text = "Text";
+            this.radioCauC.UseVisualStyleBackColor = true;
+            this.radioCauC.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
+            // 
+            // radioCauB
+            // 
+            this.radioCauB.AutoSize = true;
+            this.radioCauB.Enabled = false;
+            this.radioCauB.Location = new System.Drawing.Point(32, 46);
+            this.radioCauB.Name = "radioCauB";
+            this.radioCauB.Size = new System.Drawing.Size(46, 17);
+            this.radioCauB.TabIndex = 8;
+            this.radioCauB.TabStop = true;
+            this.radioCauB.Text = "Text";
+            this.radioCauB.UseVisualStyleBackColor = true;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(6, 96);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(18, 13);
+            this.label6.TabIndex = 7;
+            this.label6.Text = "D.";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(6, 74);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(17, 13);
+            this.label5.TabIndex = 6;
+            this.label5.Text = "C.";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(6, 50);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(17, 13);
+            this.label4.TabIndex = 5;
+            this.label4.Text = "B.";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 27);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(20, 13);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "A .";
+            // 
             // radioCauA
             // 
             this.radioCauA.AutoSize = true;
+            this.radioCauA.Enabled = false;
             this.radioCauA.Location = new System.Drawing.Point(32, 25);
             this.radioCauA.Name = "radioCauA";
             this.radioCauA.Size = new System.Drawing.Size(46, 17);
@@ -176,8 +276,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.listCauHoi);
             this.groupBox2.Controls.Add(this.btnDuyetCauHoi);
-            this.groupBox2.Controls.Add(this.dataGirdViewDanhSachCauHoi);
             this.groupBox2.Location = new System.Drawing.Point(6, 245);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(963, 243);
@@ -193,14 +293,6 @@
             this.btnDuyetCauHoi.TabIndex = 1;
             this.btnDuyetCauHoi.Text = "Duyệt câu hỏi thêm vào";
             this.btnDuyetCauHoi.UseVisualStyleBackColor = true;
-            // 
-            // dataGirdViewDanhSachCauHoi
-            // 
-            this.dataGirdViewDanhSachCauHoi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGirdViewDanhSachCauHoi.Location = new System.Drawing.Point(6, 26);
-            this.dataGirdViewDanhSachCauHoi.Name = "dataGirdViewDanhSachCauHoi";
-            this.dataGirdViewDanhSachCauHoi.Size = new System.Drawing.Size(812, 214);
-            this.dataGirdViewDanhSachCauHoi.TabIndex = 0;
             // 
             // groupBox1
             // 
@@ -222,92 +314,59 @@
             this.btnAddCauHoi.Text = "Thêm câu hỏi";
             this.btnAddCauHoi.UseVisualStyleBackColor = true;
             // 
-            // groupBox4
+            // listCauHoi
             // 
-            this.groupBox4.Controls.Add(this.radioCauD);
-            this.groupBox4.Controls.Add(this.radioCauC);
-            this.groupBox4.Controls.Add(this.radioCauB);
-            this.groupBox4.Controls.Add(this.label6);
-            this.groupBox4.Controls.Add(this.label5);
-            this.groupBox4.Controls.Add(this.label4);
-            this.groupBox4.Controls.Add(this.label3);
-            this.groupBox4.Controls.Add(this.radioCauA);
-            this.groupBox4.Location = new System.Drawing.Point(77, 99);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(409, 117);
-            this.groupBox4.TabIndex = 3;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Câu trả lời";
+            this.listCauHoi.HideSelection = false;
+            this.listCauHoi.Location = new System.Drawing.Point(6, 26);
+            this.listCauHoi.Name = "listCauHoi";
+            this.listCauHoi.Size = new System.Drawing.Size(716, 211);
+            this.listCauHoi.TabIndex = 2;
+            this.listCauHoi.UseCompatibleStateImageBehavior = false;
+            this.listCauHoi.SelectedIndexChanged += new System.EventHandler(this.listCauHoi_SelectedIndexChanged);
+            this.listCauHoi.Click += new System.EventHandler(this.listCauHoi_Click);
             // 
-            // label3
+            // UpdateDapAn
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 27);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(20, 13);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "A .";
+            this.UpdateDapAn.Location = new System.Drawing.Point(224, 50);
+            this.UpdateDapAn.Name = "UpdateDapAn";
+            this.UpdateDapAn.Size = new System.Drawing.Size(161, 23);
+            this.UpdateDapAn.TabIndex = 11;
+            this.UpdateDapAn.Text = "Chỉnh sửa đáp án";
+            this.UpdateDapAn.UseVisualStyleBackColor = true;
             // 
-            // label4
+            // comboxDoKho
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 50);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(17, 13);
-            this.label4.TabIndex = 5;
-            this.label4.Text = "B.";
+            this.comboxDoKho.FormattingEnabled = true;
+            this.comboxDoKho.Location = new System.Drawing.Point(616, 20);
+            this.comboxDoKho.Name = "comboxDoKho";
+            this.comboxDoKho.Size = new System.Drawing.Size(121, 21);
+            this.comboxDoKho.TabIndex = 4;
             // 
-            // label5
+            // label7
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 74);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(17, 13);
-            this.label5.TabIndex = 6;
-            this.label5.Text = "C.";
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(564, 23);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(48, 13);
+            this.label7.TabIndex = 4;
+            this.label7.Text = "Độ khó :";
             // 
-            // label6
+            // label8
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 96);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(18, 13);
-            this.label6.TabIndex = 7;
-            this.label6.Text = "D.";
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(578, 59);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(34, 13);
+            this.label8.TabIndex = 5;
+            this.label8.Text = "Khối :";
             // 
-            // radioCauB
+            // comboBoxKhoi
             // 
-            this.radioCauB.AutoSize = true;
-            this.radioCauB.Location = new System.Drawing.Point(32, 46);
-            this.radioCauB.Name = "radioCauB";
-            this.radioCauB.Size = new System.Drawing.Size(46, 17);
-            this.radioCauB.TabIndex = 8;
-            this.radioCauB.TabStop = true;
-            this.radioCauB.Text = "Text";
-            this.radioCauB.UseVisualStyleBackColor = true;
-            // 
-            // radioCauC
-            // 
-            this.radioCauC.AutoSize = true;
-            this.radioCauC.Location = new System.Drawing.Point(32, 71);
-            this.radioCauC.Name = "radioCauC";
-            this.radioCauC.Size = new System.Drawing.Size(46, 17);
-            this.radioCauC.TabIndex = 9;
-            this.radioCauC.TabStop = true;
-            this.radioCauC.Text = "Text";
-            this.radioCauC.UseVisualStyleBackColor = true;
-            this.radioCauC.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
-            // 
-            // radioCauD
-            // 
-            this.radioCauD.AutoSize = true;
-            this.radioCauD.Location = new System.Drawing.Point(32, 94);
-            this.radioCauD.Name = "radioCauD";
-            this.radioCauD.Size = new System.Drawing.Size(46, 17);
-            this.radioCauD.TabIndex = 10;
-            this.radioCauD.TabStop = true;
-            this.radioCauD.Text = "Text";
-            this.radioCauD.UseVisualStyleBackColor = true;
+            this.comboBoxKhoi.FormattingEnabled = true;
+            this.comboBoxKhoi.Location = new System.Drawing.Point(618, 56);
+            this.comboBoxKhoi.Name = "comboBoxKhoi";
+            this.comboBoxKhoi.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxKhoi.TabIndex = 6;
             // 
             // GiaoVienGUI
             // 
@@ -325,11 +384,10 @@
             this.tabThongKeCauHoi.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGirdViewDanhSachCauHoi)).EndInit();
-            this.groupBox1.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -345,7 +403,6 @@
         private System.Windows.Forms.TabPage tabThongKeCauHoi;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btnDuyetCauHoi;
-        private System.Windows.Forms.DataGridView dataGirdViewDanhSachCauHoi;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnAddCauHoi;
         private System.Windows.Forms.GroupBox groupBox3;
@@ -360,5 +417,11 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ListView listCauHoi;
+        private System.Windows.Forms.Button UpdateDapAn;
+        private System.Windows.Forms.ComboBox comboBoxKhoi;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.ComboBox comboxDoKho;
     }
 }

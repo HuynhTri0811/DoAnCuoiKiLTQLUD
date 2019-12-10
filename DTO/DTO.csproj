@@ -56,6 +56,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CauHoiGiaoVien.cs" />
     <Compile Include="DeVaCauHoiDTO.cs" />
     <Compile Include="HT\DataContext.designer.cs">
       <AutoGen>True</AutoGen>
