@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.pnCauHoi = new System.Windows.Forms.Panel();
             this.rdbtnCauD = new System.Windows.Forms.RadioButton();
             this.rdbtnCauC = new System.Windows.Forms.RadioButton();
@@ -41,11 +42,17 @@
             this.btnCauTruoc = new System.Windows.Forms.Button();
             this.btnCauSau = new System.Windows.Forms.Button();
             this.btnNopBai = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lbTimerPhut = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.lbTimerGiay = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.pnCauHoi.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnCauHoi
             // 
+            this.pnCauHoi.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.pnCauHoi.Controls.Add(this.rdbtnCauD);
             this.pnCauHoi.Controls.Add(this.rdbtnCauC);
             this.pnCauHoi.Controls.Add(this.rdbtnCauB);
@@ -67,7 +74,6 @@
             this.rdbtnCauD.TabStop = true;
             this.rdbtnCauD.Text = "CauD";
             this.rdbtnCauD.UseVisualStyleBackColor = true;
-            this.rdbtnCauD.CheckedChanged += new System.EventHandler(this.rdbtnCauD_CheckedChanged);
             // 
             // rdbtnCauC
             // 
@@ -79,7 +85,6 @@
             this.rdbtnCauC.TabStop = true;
             this.rdbtnCauC.Text = "CauC";
             this.rdbtnCauC.UseVisualStyleBackColor = true;
-            this.rdbtnCauC.CheckedChanged += new System.EventHandler(this.rdbtnCauC_CheckedChanged);
             // 
             // rdbtnCauB
             // 
@@ -91,7 +96,6 @@
             this.rdbtnCauB.TabStop = true;
             this.rdbtnCauB.Text = "CauB";
             this.rdbtnCauB.UseVisualStyleBackColor = true;
-            this.rdbtnCauB.CheckedChanged += new System.EventHandler(this.rdbtnCauB_CheckedChanged);
             // 
             // rdbtnCauA
             // 
@@ -103,7 +107,6 @@
             this.rdbtnCauA.TabStop = true;
             this.rdbtnCauA.Text = "CauA";
             this.rdbtnCauA.UseVisualStyleBackColor = true;
-            this.rdbtnCauA.CheckedChanged += new System.EventHandler(this.rdbtnCauA_CheckedChanged);
             // 
             // lbNoiDung
             // 
@@ -178,12 +181,58 @@
             this.btnNopBai.TabIndex = 6;
             this.btnNopBai.Text = "Nộp bài";
             this.btnNopBai.UseVisualStyleBackColor = true;
+            this.btnNopBai.Click += new System.EventHandler(this.btnNopBai_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(234, 12);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(90, 13);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "Thời gian làm bài:";
+            // 
+            // lbTimerPhut
+            // 
+            this.lbTimerPhut.AutoSize = true;
+            this.lbTimerPhut.Location = new System.Drawing.Point(331, 12);
+            this.lbTimerPhut.Name = "lbTimerPhut";
+            this.lbTimerPhut.Size = new System.Drawing.Size(19, 13);
+            this.lbTimerPhut.TabIndex = 8;
+            this.lbTimerPhut.Text = "10";
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // lbTimerGiay
+            // 
+            this.lbTimerGiay.AutoSize = true;
+            this.lbTimerGiay.Location = new System.Drawing.Point(372, 13);
+            this.lbTimerGiay.Name = "lbTimerGiay";
+            this.lbTimerGiay.Size = new System.Drawing.Size(19, 13);
+            this.lbTimerGiay.TabIndex = 9;
+            this.lbTimerGiay.Text = "00";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(356, 12);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(10, 13);
+            this.label2.TabIndex = 10;
+            this.label2.Text = ":";
             // 
             // CauHoiHocSinhForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(681, 435);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lbTimerGiay);
+            this.Controls.Add(this.lbTimerPhut);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnNopBai);
             this.Controls.Add(this.btnCauSau);
             this.Controls.Add(this.btnCauTruoc);
@@ -217,5 +266,10 @@
         private System.Windows.Forms.RadioButton rdbtnCauC;
         private System.Windows.Forms.RadioButton rdbtnCauB;
         private System.Windows.Forms.RadioButton rdbtnCauA;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lbTimerPhut;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Label lbTimerGiay;
+        private System.Windows.Forms.Label label2;
     }
 }

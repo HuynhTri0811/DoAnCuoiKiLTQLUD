@@ -84,12 +84,5 @@ namespace DTO
             get { return _cauDung; }
             set { _cauDung = value; }
         }
-
-        string _cauChon;
-        public string CauChon
-        {
-            get { return _cauChon; }
-            set { _cauChon = value; }
-        }
     }
 }

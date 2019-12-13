@@ -187,7 +187,6 @@ namespace DAO.HS
                     deVaCauHoi.CauC = chTrongDe.CauC;
                     deVaCauHoi.CauD = chTrongDe.CauD;
                     deVaCauHoi.CauDung = chTrongDe.CauDung;
-                    deVaCauHoi.CauChon = "";
 
                     listDeCauHoi.Add(deVaCauHoi);
                 }
@@ -266,12 +265,35 @@ namespace DAO.HS
                     deThi.CauC = item.CauC;
                     deThi.CauD = item.CauD;
                     deThi.CauDung = item.CauDung;
-                    deThi.CauChon = "";
 
                     dsCauHoi.Add(deThi);
                 }
 
                 return dsCauHoi;
+            }
+            catch(Exception Ex)
+            {
+                throw Ex;
+            }
+        }
+
+        public int LayMaKhoiTheoMaDe(string maDe)
+        {
+            int MaKhoi = -1;
+            try
+            {
+                var maKhoi = (from de in db.Des
+                              where de.MaDe == maDe
+                              select new { de.MaDe, de.MaKhoi });
+                if(maKhoi.Count() > 0)
+                {
+                    foreach(var item in maKhoi)
+                    {
+                        MaKhoi = item.MaKhoi;
+                    }
+                }
+
+                return MaKhoi;
             }
             catch(Exception Ex)
             {

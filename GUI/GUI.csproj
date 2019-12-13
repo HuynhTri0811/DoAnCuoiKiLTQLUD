@@ -70,6 +70,12 @@
     <Compile Include="GiaoVienGUI.Designer.cs">
       <DependentUpon>GiaoVienGUI.cs</DependentUpon>
     </Compile>
+    <Compile Include="HetGioForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HetGioForm.Designer.cs">
+      <DependentUpon>HetGioForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="HocSinhGUI.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,6 +125,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GiaoVienGUI.resx">
       <DependentUpon>GiaoVienGUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HetGioForm.resx">
+      <DependentUpon>HetGioForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="HocSinhGUI.resx">
       <DependentUpon>HocSinhGUI.cs</DependentUpon>

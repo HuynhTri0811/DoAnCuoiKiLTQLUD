@@ -131,7 +131,8 @@ namespace GUI
         private void btnThi_Click(object sender, EventArgs e)
         {
             string maDe = cbbChonDeThi.SelectedValue.ToString();
-            CauHoiHocSinhForm chHocSinh = new CauHoiHocSinhForm(hocSinhLogin, maDe);
+            int maKhoi = hocSinhBUS.LayMaKhoiTheoMaDe(maDe);
+            CauHoiHocSinhForm chHocSinh = new CauHoiHocSinhForm(hocSinhLogin, maDe, maKhoi);
             this.Hide();
             chHocSinh.ShowDialog();
             this.Close();

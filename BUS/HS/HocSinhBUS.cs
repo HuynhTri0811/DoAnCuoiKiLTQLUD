@@ -110,5 +110,18 @@ namespace BUS.HS
                 throw Ex;
             }
         }
+
+        public int LayMaKhoiTheoMaDe(string maDe)
+        {
+            HocSinhDAO hocSinh = new HocSinhDAO();
+            try
+            {
+                return hocSinh.LayMaKhoiTheoMaDe(maDe);
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+        }
     }
 }

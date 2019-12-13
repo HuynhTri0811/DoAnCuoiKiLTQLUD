@@ -17,20 +17,36 @@ namespace GUI
     {
         HocSinh hocSinhLogin;
         string maDeDuocChon;
+        int maKhoiHS;
         HocSinhBUS hocSinhBUS = new HocSinhBUS();
         List<DeVaCauHoiDTO> dsCauHoi = new List<DeVaCauHoiDTO>();
         int next = 0;
-        public CauHoiHocSinhForm(HocSinh hocSinh, string maDe)
+        string[] dapAn = new string[15];
+        int phut = 10;
+        int giay = 0;
+        public delegate void SendMassage();
+        public CauHoiHocSinhForm(HocSinh hocSinh, string maDe, int maKhoi)
         {
             InitializeComponent();
             hocSinhLogin = hocSinh;
             maDeDuocChon = maDe;
+            maKhoiHS = maKhoi;
         }
 
         private void CauHoiHocSinhForm_Load(object sender, EventArgs e)
         {
             lbTenHocSinh.Text = hocSinhLogin.HoTen;
+            setDA();
             LoadFormCauHoiHS();
+            timer1.Start();
+        }
+
+        public void setDA()
+        {
+            for(int i = 0; i < 15; i++)
+            {
+                dapAn[i] = "";
+            }
         }
 
         private void LoadFormCauHoiHS()
@@ -48,7 +64,7 @@ namespace GUI
                 btnCauTruoc.Enabled = true;
             }
 
-            if(next == 15)
+            if(next >= 14)
             {
                 btnCauSau.Enabled = false;
             }
@@ -57,17 +73,17 @@ namespace GUI
                 btnCauSau.Enabled = true;
             }
 
-            if(dsCauHoi[next].CauChon != "")
+            if(dapAn[next] != "")
             {
-                if(dsCauHoi[next].CauChon == "A")
+                if(dapAn[next] == "A")
                 {
                     rdbtnCauA.Checked = true;
                 }
-                else if (dsCauHoi[next].CauChon == "B")
+                else if (dapAn[next] == "B")
                     {
                         rdbtnCauB.Checked = true;
                     }
-                    else if (dsCauHoi[next].CauChon == "C")
+                    else if (dapAn[next] == "C")
                         {
                             rdbtnCauC.Checked = true;
                         }
@@ -90,36 +106,102 @@ namespace GUI
             rdbtnCauD.Text = dsCauHoi[next].CauD;
         }
 
+        public void ChonDapAn(Panel pnl)
+        {
+            RadioButton rdbtn = null;
+            foreach(RadioButton item in pnl.Controls)
+            {
+                if (item.Checked)
+                {
+                    rdbtn = item;
+                    break;
+                }
+            }
+            if(rdbtn != null)
+            {
+                if(rdbtn.Name.ToString().Substring(8) == "A")
+                {
+                    dapAn[next] = "A";
+                }
+                if (rdbtn.Name.ToString().Substring(8) == "B")
+                {
+                    dapAn[next] = "B";
+                }
+                if (rdbtn.Name.ToString().Substring(8) == "C")
+                {
+                    dapAn[next] = "C";
+                }
+                if (rdbtn.Name.ToString().Substring(8) == "D")
+                {
+                    dapAn[next] = "D";
+                }
+            }
+        }
+
         private void btnCauTruoc_Click(object sender, EventArgs e)
         {
+            ChonDapAn(pnCauHoi);
             next -= 1;
             LoadFormCauHoiHS();
         }
 
         private void btnCauSau_Click(object sender, EventArgs e)
         {
+            ChonDapAn(pnCauHoi);
             next += 1;
             LoadFormCauHoiHS();
         }
 
-        private void rdbtnCauA_CheckedChanged(object sender, EventArgs e)
+        public double TinhDiem()
         {
-            dsCauHoi[next].CauChon = "A";
+            double diem = 0;
+            for(int i = 0; i < 15; i++)
+            {
+                if(dapAn[i] == dsCauHoi[i].CauDung.Substring(0,1))
+                {
+                    diem += (1 / 1.5);
+                }
+            }
+            return diem;
         }
 
-        private void rdbtnCauB_CheckedChanged(object sender, EventArgs e)
+        public void stopTimer()
         {
-            dsCauHoi[next].CauChon = "B";
+            timer1.Stop();
+        }
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            giay -= 1;
+            if(giay < 0)
+            {
+                phut -= 1;
+                giay = 59;
+            }
+
+            lbTimerPhut.Text = phut.ToString();
+            lbTimerGiay.Text = giay.ToString();
+
+            if(phut < 0)
+            {
+                double soDiem = TinhDiem();
+                int soCauDung = (int)(soDiem * 15);
+                HetGioForm hetGio = new HetGioForm(hocSinhLogin, stopTimer, soDiem, soCauDung, phut);
+                this.Hide();
+                hetGio.ShowDialog();
+                this.Close();
+                Application.Exit();
+            }
         }
 
-        private void rdbtnCauC_CheckedChanged(object sender, EventArgs e)
+        private void btnNopBai_Click(object sender, EventArgs e)
         {
-            dsCauHoi[next].CauChon = "C";
-        }
-
-        private void rdbtnCauD_CheckedChanged(object sender, EventArgs e)
-        {
-            dsCauHoi[next].CauChon = "D";
+            double soDiem = TinhDiem();
+            double soCauDung = soDiem * 1.5;
+            HetGioForm hetGio = new HetGioForm(hocSinhLogin, stopTimer, soDiem, soCauDung, phut);
+            this.Hide();
+            hetGio.ShowDialog();
+            this.Close();
+            Application.Exit();
         }
     }
 }
