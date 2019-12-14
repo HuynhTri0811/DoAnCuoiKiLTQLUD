@@ -19,15 +19,25 @@ namespace GUI
      
         GiaoVienBUS_HT giaoVienBUS_HT = new GiaoVienBUS_HT();
         CauHoiBUS_HT cauHoiBUS_HT = new CauHoiBUS_HT();
+        DoKhoBUS_HT doKhoBUS_HT = new DoKhoBUS_HT();
         public GiaoVienGUI(GiaoVien GiaoViens)
         {
             InitializeComponent();
-            this.Refresh();
-            newGiaoVien = giaoVienBUS_HT.FindOneGiaoVienOnMAGV(GiaoViens.MaGiaVien);
+            newGiaoVien = GiaoViens;
             this.LoadListView();
-
+            this.loadDoKho();
 
         }
+
+        private void loadDoKho()
+        {
+            List<DoKho> doKhos=  doKhoBUS_HT.getAll();
+            foreach(var dokho in doKhos){
+                comboxDoKho.Items.Add(dokho.TenDoKho);
+            }
+        }
+
+
 
         private void LoadListView()
         {
@@ -62,10 +72,10 @@ namespace GUI
         private void btnUpdateGiaoVien_Click(object sender, EventArgs e)
         {
             CapNhatGiaoVienGUI capNhatGiaoVien = new CapNhatGiaoVienGUI(newGiaoVien);
-            capNhatGiaoVien.lblnamegv = lbNameGiaoVien;
             capNhatGiaoVien.ShowDialog();
-            newGiaoVien = giaoVienBUS_HT.FindOneGiaoVienOnMAGV(this.newGiaoVien.MaGiaVien);
+            newGiaoVien = giaoVienBUS_HT.FindOneGiaoVienOnMAGV(newGiaoVien.MaGiaVien);
             lbNameGiaoVien.Text = newGiaoVien.HoTen;
+            return;
 
         }
 
@@ -105,14 +115,18 @@ namespace GUI
                 tempMaCauHoi = Int16.Parse(item.Text);
                 CauHoiGiaoVien giaovien = new CauHoiGiaoVien();
                 giaovien = cauHoiBUS_HT.getOneCauHoiONMaCauHoi(tempMaCauHoi);
-
+                if(giaovien == null)
+                {
+                    MessageBox.Show("Lỗi không tìm thấy câu hỏi .", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
                 txtCauHoi.Text = giaovien.NoiDung;
                 radioCauA.Text = giaovien.CauA;
                 radioCauB.Text = giaovien.CauB;
                 radioCauC.Text = giaovien.CauC;
                 radioCauD.Text = giaovien.CauD;
                 comboBoxKhoi.Text = giaovien.TenKhoi;
-                comboxDoKho.Text = giaovien.DoKhoTen;
+                comboxDoKho.Text = giaovien.DoKhoTen;  
                 if(giaovien.CauDung == "A   ")
                 {
                     radioCauA.Checked = true;
@@ -130,6 +144,11 @@ namespace GUI
                     radioCauD.Checked = true;
                 }
             }
+        }
+
+        private void btnDuyetCauHoi_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

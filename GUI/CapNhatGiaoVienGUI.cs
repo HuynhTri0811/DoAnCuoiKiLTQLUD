@@ -14,14 +14,13 @@ namespace GUI
 {
     public partial class CapNhatGiaoVienGUI : Form
     {
-        public Label lblnamegv;
         GiaoVien giaovien;
         KhoiBUS_HT khoiBUS = new KhoiBUS_HT();
         GiaoVienBUS_HT giaoVienBUS_HT = new GiaoVienBUS_HT();
         public CapNhatGiaoVienGUI(GiaoVien giaoVien)
         {
             InitializeComponent();
-            giaovien = giaoVienBUS_HT.FindOneGiaoVienOnMAGV(giaoVien.MaGiaVien);
+            giaovien = giaoVien;
             
 
         }
@@ -70,8 +69,7 @@ namespace GUI
             }
             else
             {
-
-                lblnamegv.Text = txtHoTenGiaoVien.Text;
+                
                 MessageBox.Show("Update Thành Công", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }

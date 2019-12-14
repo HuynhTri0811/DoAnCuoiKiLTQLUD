@@ -21,5 +21,6 @@ namespace BUS.HT
         {
             return cauHoiDAO.getOneCauHoiONMaCauHoi(MaCauHoi);
         }
+
     }
 }
