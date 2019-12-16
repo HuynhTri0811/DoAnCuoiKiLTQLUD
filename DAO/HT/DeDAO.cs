@@ -130,5 +130,106 @@ namespace DAO.HT
 
             return 0;
         }
+
+        public int UpdateMaKhoiOnMaKhoiAndMaDe(string MaDe,int MaKhoiTruocUpdate,int MaKhoiSauUpdate)
+        {
+
+            /*
+             * Tìm và update mã khối sau khi update , 
+             * Nếu không tìm thấy mã đề và khối trong BangDe thì -> trả về 1
+             * Nếu mã khối không update không tìm thấy trong khối -> trả về 2
+             * Update thành công -> trả về 3
+             */
+
+            var findMaKhoiSaoKhiUpdate = from KH in DB.Khois
+                                         where KH.MaKhoi == MaKhoiSauUpdate
+                                         select KH;
+            if(findMaKhoiSaoKhiUpdate.Count() == 0)
+            {
+                return 2;
+            }
+            var findDeTruocKhiUpdate = from KH in DB.Des
+                                       where KH.MaDe == MaDe && KH.MaKhoi == MaKhoiTruocUpdate
+                                       select KH;
+            if(findDeTruocKhiUpdate.Count() == 0)
+            {
+                return 1;
+            }
+
+            foreach(var mem in findDeTruocKhiUpdate)
+            {
+                mem.MaKhoi = MaKhoiSauUpdate;
+            }
+            DB.SubmitChanges();
+            return 0;
+        }
+
+        public int InsertDe(string TenDe,int MaKhoi,string DoKho)
+        {
+            /*
+             * Insert đề vào bảng đề
+             * Nếu Mã khối không tồn tại trong database -> trả về 1
+             * DoKho khác với dễ hoặc trung bình khó -> trả về 2
+             * MaDe = MA+NAM+STT VD : MA20190001 MA190002 , Nếu tạo mã đề , mà mã đề đã tồn tại thì trả về 3
+             * Tạo thành công -> trả về 0
+             * 
+             */
+
+            string MaDe = "0";
+            string STTCuoi = " ";
+            int N;
+            var findOneMaDeCuoiCung = (from MD in DB.Des
+                                       select MD).FirstOrDefault();
+            if(DateTime.Now.Year != Int32.Parse(findOneMaDeCuoiCung.MaDe.Substring(2, 4)))
+            {
+                MaDe = "MA" + DateTime.Now.Year.ToString() + 0000.ToString();
+            }
+            else
+            {
+                STTCuoi = findOneMaDeCuoiCung.MaDe.Substring(5, 4);
+                if (!Int32.TryParse(STTCuoi, out N))
+                {
+                    return 3;
+                }
+                N = Int32.Parse(STTCuoi) + 1;
+                if(N.ToString().Length == 1)
+                {
+                    MaDe = "MA" + DateTime.Now.Year.ToString() + "000" + N.ToString();
+                }
+                if (N.ToString().Length == 2)
+                {
+                    MaDe = "MA" + DateTime.Now.Year.ToString() + "00" + N.ToString();
+                }
+                if (N.ToString().Length == 3)
+                {
+                    MaDe = "MA" + DateTime.Now.Year.ToString() + "0" + N.ToString();
+                }
+                if (N.ToString().Length == 4)
+                {
+                    MaDe = "MA" + DateTime.Now.Year.ToString() + "" + N.ToString();
+                }
+            }
+
+            var findOneMaDe = from MD in DB.Des
+                              where MD.MaDe == MaDe
+                              select MD;
+            if(findOneMaDe.Count() != 0)
+            {
+                return 3;
+            }
+
+            De de = new De();
+            de.MaDe = MaDe;
+            de.TenDe = TenDe;
+            de.MaKhoi = MaKhoi;
+            de.DoKho = DoKho;
+
+            DB.Des.InsertOnSubmit(de);
+            DB.SubmitChanges();
+
+            return 0;
+        }
+
+        
     }
 }
