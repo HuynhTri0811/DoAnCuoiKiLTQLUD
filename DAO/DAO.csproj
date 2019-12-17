@@ -45,11 +45,13 @@
   <ItemGroup>
     <Compile Include="HS\HocSinhDAO.cs" />
     <Compile Include="HT\CauHoiDAO.cs" />
+    <Compile Include="HT\CauHoiTrongDeNaoDAO.cs" />
     <Compile Include="HT\DeDAO.cs" />
     <Compile Include="HT\DoKhoDAO.cs" />
     <Compile Include="HT\GiaoVienDAO.cs" />
     <Compile Include="HT\KhoiDAO.cs" />
     <Compile Include="HT\KiThiDAO.cs" />
+    <Compile Include="HT\MaDeVaKhoiTrongKiThiDAO.cs" />
     <Compile Include="HT\OnTapDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

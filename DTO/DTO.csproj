@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="CauHoiGiaoVien.cs" />
     <Compile Include="DeVaCauHoiDTO.cs" />
+    <Compile Include="DeVaCauHoiOnMaDeDTO.cs" />
     <Compile Include="HT\DataContext.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

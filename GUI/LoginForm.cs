@@ -8,9 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Linq;
 using BUS;
 using DTO.HT;
 using BUS.HS;
+using System.Configuration;
 
 namespace GUI
 {
@@ -20,8 +22,13 @@ namespace GUI
         BUS.HT.GiaoVienBUS_HT giaoVienBUS_HT = new BUS.HT.GiaoVienBUS_HT();
         public LoginForm()
         {
+       
+
+
             InitializeComponent();
         }
+
+        
 
         private void cbHienMatKhau_CheckedChanged(object sender, EventArgs e)
         {
@@ -89,6 +96,11 @@ namespace GUI
         private void tbEmail_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void LoginForm_Load(object sender, EventArgs e)
+        {
+            
         }
     }
 }

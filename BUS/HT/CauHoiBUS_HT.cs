@@ -14,7 +14,9 @@ namespace BUS.HT
         CauHoiDAO cauHoiDAO = new CauHoiDAO();
         public List<CauHoiGiaoVien> getAllCauHoi()
         {
+            
             return cauHoiDAO.getAllCauHoi();
+            
         }
 
         public CauHoiGiaoVien getOneCauHoiONMaCauHoi(int MaCauHoi)

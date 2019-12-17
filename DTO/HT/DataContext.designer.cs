@@ -69,7 +69,7 @@ namespace DTO.HT
     #endregion
 		
 		public DataContextDataContext() : 
-				base(global::DTO.Properties.Settings.Default.QuanLyTracNghiemHocSinh_LTQLUDConnectionString2, mappingSource)
+				base(global::DTO.Properties.Settings.Default.QuanLyTracNghiemHocSinh_LTQLUDConnectionString1, mappingSource)
 		{
 			OnCreated();
 		}
