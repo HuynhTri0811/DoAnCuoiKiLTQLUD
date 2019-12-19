@@ -48,10 +48,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CapNhatGiaoVienGUI.cs">
+    <Compile Include="GiaoVienGUII\AddCauHoi.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CapNhatGiaoVienGUI.Designer.cs">
+    <Compile Include="GiaoVienGUII\AddCauHoi.Designer.cs">
+      <DependentUpon>AddCauHoi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GiaoVienGUII\CapNhatGiaoVienGUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GiaoVienGUII\CapNhatGiaoVienGUI.Designer.cs">
       <DependentUpon>CapNhatGiaoVienGUI.cs</DependentUpon>
     </Compile>
     <Compile Include="CauHoiHocSinhForm.cs">
@@ -66,11 +72,17 @@
     <Compile Include="ChonDeThiThuForm.Designer.cs">
       <DependentUpon>ChonDeThiThuForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="GiaoVienGUI.cs">
+    <Compile Include="GiaoVienGUII\GiaoVienGUI.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GiaoVienGUI.Designer.cs">
+    <Compile Include="GiaoVienGUII\GiaoVienGUI.Designer.cs">
       <DependentUpon>GiaoVienGUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GiaoVienGUII\UpdateCauHoi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GiaoVienGUII\UpdateCauHoi.Designer.cs">
+      <DependentUpon>UpdateCauHoi.cs</DependentUpon>
     </Compile>
     <Compile Include="HetGioForm.cs">
       <SubType>Form</SubType>
@@ -116,7 +128,10 @@
     <Compile Include="SuaThongTinHocSinhForm.Designer.cs">
       <DependentUpon>SuaThongTinHocSinhForm.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="CapNhatGiaoVienGUI.resx">
+    <EmbeddedResource Include="GiaoVienGUII\AddCauHoi.resx">
+      <DependentUpon>AddCauHoi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GiaoVienGUII\CapNhatGiaoVienGUI.resx">
       <DependentUpon>CapNhatGiaoVienGUI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CauHoiHocSinhForm.resx">
@@ -125,8 +140,11 @@
     <EmbeddedResource Include="ChonDeThiThuForm.resx">
       <DependentUpon>ChonDeThiThuForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GiaoVienGUI.resx">
+    <EmbeddedResource Include="GiaoVienGUII\GiaoVienGUI.resx">
       <DependentUpon>GiaoVienGUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GiaoVienGUII\UpdateCauHoi.resx">
+      <DependentUpon>UpdateCauHoi.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="HetGioForm.resx">
       <DependentUpon>HetGioForm.cs</DependentUpon>

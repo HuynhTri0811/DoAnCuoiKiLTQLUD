@@ -39,6 +39,6 @@ namespace GUI
             //}
             //DB.Connection.Close();
             Application.Run(new LoginForm());
-        }
+            }
     }
 }

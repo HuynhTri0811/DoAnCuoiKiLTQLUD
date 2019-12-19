@@ -34,13 +34,6 @@ namespace DAO.HT
             return maDeVaKhoiTrongKiThis;
         }
 
-        public List<MaDeVaKhoiTrongKiThi> GetAllMaDeOneTrongKiThi(string MaKiThi)
-        {
-            /*
-             * 
-             */
-
-            return null;
-        }
+        
     }
 }

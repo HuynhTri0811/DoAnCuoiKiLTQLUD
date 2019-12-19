@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
-using System.Linq;
 using BUS;
 using DTO.HT;
 using BUS.HS;
@@ -54,7 +53,7 @@ namespace GUI
         public delegate void send(); 
         private void btnDangNhap_Click(object sender, EventArgs e)
         {
-            GiaoVien temp = giaoVienBUS_HT.findGiaoVien(tbEmail.Text, tbMatKhau.Text);
+            DTO.HT. GiaoVien temp = giaoVienBUS_HT.findGiaoVien(tbEmail.Text, tbMatKhau.Text);
 
             if (temp != null)
             {                

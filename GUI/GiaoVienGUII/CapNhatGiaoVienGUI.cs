@@ -8,23 +8,26 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DTO.HT;
+using DTO;
 using BUS.HT;
 
 namespace GUI
 {
     public partial class CapNhatGiaoVienGUI : Form
     {
-        GiaoVien giaovien;
+        DTO.HT.GiaoVien giaovien;
         KhoiBUS_HT khoiBUS = new KhoiBUS_HT();
         GiaoVienBUS_HT giaoVienBUS_HT = new GiaoVienBUS_HT();
-        public CapNhatGiaoVienGUI(GiaoVien giaoVien)
-        {
-            InitializeComponent();
-            giaovien = giaoVien;
-            
+        public delegate void GETDATE(DTO.HT.GiaoVien giaoVien);
+        public GETDATE truyenquabenkialai;
 
+        public CapNhatGiaoVienGUI(DTO.HT.GiaoVien giaoVien)
+        {
+            giaovien = giaoVien;
+            InitializeComponent();
         }
 
+        
         
 
         private void CapNhatGiaoVienGUI_Load(object sender, EventArgs e)
@@ -69,7 +72,8 @@ namespace GUI
             }
             else
             {
-                
+                this.giaovien.HoTen = txtHoTenGiaoVien.Text;
+                truyenquabenkialai(this.giaovien);
                 MessageBox.Show("Update Thành Công", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
