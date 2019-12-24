@@ -11,7 +11,7 @@ namespace DAO.HT
 {
     public class MaDeVaKhoiTrongKiThiDAO
     {
-        DataContextDataContext DB = new DataContextDataContext();
+
         public List<MaDeVaKhoiTrongKiThi> GetAllMaDeVaKhoiTrongKiThi()
         {
             /*
@@ -19,19 +19,23 @@ namespace DAO.HT
              * 
              */
 
-            List<MaDeVaKhoiTrongKiThi> maDeVaKhoiTrongKiThis = new List<MaDeVaKhoiTrongKiThi>();
+            using (DataContextDataContext DB = new DataContextDataContext())
+            {
 
-            var findAllMaDeVaKhoITrongKiThis = from D in DB.MaDeVaKhoiTrongKiThis
-                                               select D;
-            if (findAllMaDeVaKhoITrongKiThis.Count() == 0)
-            {
-                return null;
+                List<MaDeVaKhoiTrongKiThi> maDeVaKhoiTrongKiThis = new List<MaDeVaKhoiTrongKiThi>();
+
+                var findAllMaDeVaKhoITrongKiThis = from D in DB.MaDeVaKhoiTrongKiThis
+                                                   select D;
+                if (findAllMaDeVaKhoITrongKiThis.Count() == 0)
+                {
+                    return null;
+                }
+                foreach (var mem in findAllMaDeVaKhoITrongKiThis)
+                {
+                    maDeVaKhoiTrongKiThis.Add(mem);
+                }
+                return maDeVaKhoiTrongKiThis;
             }
-            foreach(var mem in findAllMaDeVaKhoITrongKiThis)
-            {
-                maDeVaKhoiTrongKiThis.Add(mem);
-            }
-            return maDeVaKhoiTrongKiThis;
         }
 
 

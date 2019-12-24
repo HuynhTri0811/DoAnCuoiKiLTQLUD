@@ -9,7 +9,6 @@ namespace DAO.HT
 {
     public class KhoiDAO
     {
-        DataContextDataContext DB = new DataContextDataContext();
 
         public List<Khoi> GetKhoiAll()
         {
@@ -17,17 +16,21 @@ namespace DAO.HT
              * Lấy trả cả các khối có trong csdl 
              * trả về list<khoi>
              */
-            List<Khoi> khois = new List<Khoi>();
 
-            var getKhois = from khoi in DB.Khois
-                           select khoi;
-
-            foreach(var khoi in getKhois)
+            using (DataContextDataContext DB = new DataContextDataContext())
             {
-                khois.Add(khoi);
-            }
+                List<Khoi> khois = new List<Khoi>();
 
-            return khois;
+                var getKhois = from khoi in DB.Khois
+                               select khoi;
+
+                foreach (var khoi in getKhois)
+                {
+                    khois.Add(khoi);
+                }
+
+                return khois;
+            }
         }
 
         public string getNameKhoi(int MaKhoi)
@@ -38,22 +41,25 @@ namespace DAO.HT
              * Nếu tìm thấy trả về tên của khoi
              */
 
-            string nameKhoi = null;
-
-            var khoiName =  from khoi in DB.Khois
-                            where khoi.MaKhoi == MaKhoi
-                            select khoi;
-            if(khoiName.Count() == 0)
+            using (DataContextDataContext DB = new DataContextDataContext())
             {
-                return null;
-            }
+                string nameKhoi = null;
 
-            foreach(var khoi in khoiName)
-            {
-                nameKhoi = khoi.TenKhoi;
-            }
+                var khoiName = from khoi in DB.Khois
+                               where khoi.MaKhoi == MaKhoi
+                               select khoi;
+                if (khoiName.Count() == 0)
+                {
+                    return null;
+                }
 
-            return nameKhoi;
+                foreach (var khoi in khoiName)
+                {
+                    nameKhoi = khoi.TenKhoi;
+                }
+
+                return nameKhoi;
+            }
         }
 
         public Khoi FindKhoiOnMaKhoi(int MaKhoi)
@@ -64,20 +70,24 @@ namespace DAO.HT
              * nếu không tìm thấy -> trả về null
              * Nếu tìm thấy trả về khoi
              */
-            Khoi khoiOne = new Khoi();
 
-            var khois = from khoi in DB.Khois
-                        where khoi.MaKhoi == MaKhoi
-                        select khoi;
-            if(khois.Count() == 0)
+            using (DataContextDataContext DB = new DataContextDataContext())
             {
-                return null;
+                Khoi khoiOne = new Khoi();
+
+                var khois = from khoi in DB.Khois
+                            where khoi.MaKhoi == MaKhoi
+                            select khoi;
+                if (khois.Count() == 0)
+                {
+                    return null;
+                }
+                foreach (var khoi in khois)
+                {
+                    khoiOne = khoi;
+                }
+                return khoiOne;
             }
-            foreach(var khoi in khois)
-            {
-                khoiOne = khoi;
-            }
-            return khoiOne;
         }
     }
 }
