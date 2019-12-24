@@ -36,6 +36,7 @@ namespace GUI
         DeBUS_HT deBUS_HT = new DeBUS_HT();
         List<De> des;
         De de = new De();
+        List<DoKho> doKhos;
 
         CauHoiTrongDeNaoBUS_HT cauHoiTrongDeNaoBUS_HT = new CauHoiTrongDeNaoBUS_HT();
         DTO.DeVaCauHoiOnMaDeDTO cauHoiTrongDeNao;
@@ -46,10 +47,12 @@ namespace GUI
 
         public GiaoVienGUI(DTO.HT.GiaoVien GiaoViens)
         {
+            this.doKhos = doKhoBUS_HT.getAll();
             this.cauHois = cauHoiBUS_HT.getAllCauHoiCauHoi();
             this.cauHoiHienTai = null;
             this.newGiaoVien = GiaoViens;
             this.khois = khoiBUS_HT.GetKhoiAll();
+            
         
             InitializeComponent();
             this.LoadListView();
@@ -154,13 +157,26 @@ namespace GUI
             listViewCauHoiOnMaDeAndKhoi.Columns[2].Width = 80;
             listViewCauHoiOnMaDeAndKhoi.Columns[3].Width = 80;
             cauHoiTrongDeNao = cauHoiTrongDeNaoBUS_HT.getAllCauHoiTrongDe(MaDe, MaKhoi);
-            foreach (CauHoi cauhoi in cauHoiTrongDeNao.listCauHoiOnMaDe)
+            foreach (var cauhoi in cauHoiTrongDeNao.listCauHoiOnMaDe)
             {
                 ListViewItem item = new ListViewItem();
                 item.Text = cauhoi.MaCauHoi.ToString();
+                
                 item.SubItems.Add(new ListViewItem.ListViewSubItem() { Text = cauhoi.NoiDung });
-                item.SubItems.Add(new ListViewItem.ListViewSubItem() { Text = cauhoi.DoKho1.TenDoKho });
-                item.SubItems.Add(new ListViewItem.ListViewSubItem() { Text = cauhoi.Khoi.TenKhoi });
+                foreach (var mem2 in doKhos)
+                {
+                    if (mem2.maDoKho == cauhoi.DoKho)
+                    {
+                        item.SubItems.Add(new ListViewItem.ListViewSubItem() { Text = mem2.TenDoKho });
+                    }
+                }
+                foreach (var mem1 in khois)
+                {
+                    if (mem1.MaKhoi == cauhoi.MaKhoi)
+                    {
+                        item.SubItems.Add(new ListViewItem.ListViewSubItem() { Text = mem1.TenKhoi });
+                    }
+                }
                 listViewCauHoiOnMaDeAndKhoi.Items.Add(item);
             }
 

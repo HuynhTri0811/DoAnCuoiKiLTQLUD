@@ -10,21 +10,23 @@ namespace DAO.HT
 {
     public class DoKhoDAO
     {
-        DataContextDataContext DB = new DataContextDataContext();
         public List<DoKho> getAll()
         {
             /*
              * Lay het do kho trong db
              */
-            List<DoKho> DoKho = new List<DoKho>();
-
-            var doKho = from DK in DB.DoKhos
-                        select DK;
-            foreach(var d in doKho)
+            using (DataContextDataContext DB = new DataContextDataContext())
             {
-                DoKho.Add(d);
+                List<DoKho> DoKho = new List<DoKho>();
+
+                var doKho = from DK in DB.DoKhos
+                            select DK;
+                foreach (var d in doKho)
+                {
+                    DoKho.Add(d);
+                }
+                return DoKho;
             }
-            return DoKho;
         }
     }
 }
