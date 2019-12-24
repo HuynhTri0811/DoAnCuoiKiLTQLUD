@@ -58,17 +58,27 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.listCauHoi = new System.Windows.Forms.ListView();
             this.btnAddCauHoi = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.ThongKeKiThi = new System.Windows.Forms.TabPage();
-            this.button1 = new System.Windows.Forms.Button();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.btnUpdateDanhSachCauHoiONDeThi = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
+            this.btnLoadDanhSachCauHoiONDeThi = new System.Windows.Forms.Button();
+            this.comboDeThiONQuyenLyDeThi = new System.Windows.Forms.ComboBox();
+            this.comboKhoiONQuyenLyDeThi = new System.Windows.Forms.ComboBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.listViewCauHoiOnMaDeAndKhoi = new System.Windows.Forms.ListView();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tabQuanLyKiThiAll.SuspendLayout();
             this.tabThongKeCauHoi.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.ThongKeKiThi.SuspendLayout();
+            this.groupBox6.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -120,6 +130,7 @@
             this.tabThongKeHocSinh.TabIndex = 0;
             this.tabThongKeHocSinh.Text = "Thống kê của học sinh";
             this.tabThongKeHocSinh.UseVisualStyleBackColor = true;
+            this.tabThongKeHocSinh.Click += new System.EventHandler(this.tabThongKeHocSinh_Click);
             // 
             // tabQuanLyKiThi
             // 
@@ -377,6 +388,7 @@
             this.listCauHoi.Size = new System.Drawing.Size(951, 211);
             this.listCauHoi.TabIndex = 2;
             this.listCauHoi.UseCompatibleStateImageBehavior = false;
+            this.listCauHoi.SelectedIndexChanged += new System.EventHandler(this.listCauHoi_SelectedIndexChanged);
             this.listCauHoi.Click += new System.EventHandler(this.listCauHoi_Click);
             // 
             // btnAddCauHoi
@@ -389,6 +401,119 @@
             this.btnAddCauHoi.UseVisualStyleBackColor = true;
             this.btnAddCauHoi.Click += new System.EventHandler(this.btnAddCauHoi_Click);
             // 
+            // ThongKeKiThi
+            // 
+            this.ThongKeKiThi.Controls.Add(this.groupBox6);
+            this.ThongKeKiThi.Controls.Add(this.groupBox5);
+            this.ThongKeKiThi.Location = new System.Drawing.Point(4, 22);
+            this.ThongKeKiThi.Name = "ThongKeKiThi";
+            this.ThongKeKiThi.Padding = new System.Windows.Forms.Padding(3);
+            this.ThongKeKiThi.Size = new System.Drawing.Size(975, 491);
+            this.ThongKeKiThi.TabIndex = 3;
+            this.ThongKeKiThi.Text = "Quản lý đề thi";
+            this.ThongKeKiThi.UseVisualStyleBackColor = true;
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.btnUpdateDanhSachCauHoiONDeThi);
+            this.groupBox6.Controls.Add(this.label10);
+            this.groupBox6.Controls.Add(this.btnLoadDanhSachCauHoiONDeThi);
+            this.groupBox6.Controls.Add(this.comboDeThiONQuyenLyDeThi);
+            this.groupBox6.Controls.Add(this.comboKhoiONQuyenLyDeThi);
+            this.groupBox6.Controls.Add(this.label11);
+            this.groupBox6.Location = new System.Drawing.Point(702, 6);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(267, 220);
+            this.groupBox6.TabIndex = 6;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Thao tác trên đề thi";
+            // 
+            // btnUpdateDanhSachCauHoiONDeThi
+            // 
+            this.btnUpdateDanhSachCauHoiONDeThi.Location = new System.Drawing.Point(148, 110);
+            this.btnUpdateDanhSachCauHoiONDeThi.Name = "btnUpdateDanhSachCauHoiONDeThi";
+            this.btnUpdateDanhSachCauHoiONDeThi.Size = new System.Drawing.Size(98, 74);
+            this.btnUpdateDanhSachCauHoiONDeThi.TabIndex = 6;
+            this.btnUpdateDanhSachCauHoiONDeThi.Text = "chỉnh sửa câu hỏi trong đề";
+            this.btnUpdateDanhSachCauHoiONDeThi.UseVisualStyleBackColor = true;
+            this.btnUpdateDanhSachCauHoiONDeThi.Click += new System.EventHandler(this.btnUpdateDanhSachCauHoiONDeThi_Click);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(15, 23);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(41, 13);
+            this.label10.TabIndex = 1;
+            this.label10.Text = "Đề thi :";
+            // 
+            // btnLoadDanhSachCauHoiONDeThi
+            // 
+            this.btnLoadDanhSachCauHoiONDeThi.Location = new System.Drawing.Point(60, 110);
+            this.btnLoadDanhSachCauHoiONDeThi.Name = "btnLoadDanhSachCauHoiONDeThi";
+            this.btnLoadDanhSachCauHoiONDeThi.Size = new System.Drawing.Size(82, 74);
+            this.btnLoadDanhSachCauHoiONDeThi.TabIndex = 5;
+            this.btnLoadDanhSachCauHoiONDeThi.Text = "danh sách câu hỏi trong đề";
+            this.btnLoadDanhSachCauHoiONDeThi.UseVisualStyleBackColor = true;
+            this.btnLoadDanhSachCauHoiONDeThi.Click += new System.EventHandler(this.btnLoadDanhSachCauHoiONDeThi_Click);
+            // 
+            // comboDeThiONQuyenLyDeThi
+            // 
+            this.comboDeThiONQuyenLyDeThi.FormattingEnabled = true;
+            this.comboDeThiONQuyenLyDeThi.Location = new System.Drawing.Point(62, 23);
+            this.comboDeThiONQuyenLyDeThi.Name = "comboDeThiONQuyenLyDeThi";
+            this.comboDeThiONQuyenLyDeThi.Size = new System.Drawing.Size(184, 21);
+            this.comboDeThiONQuyenLyDeThi.TabIndex = 0;
+            // 
+            // comboKhoiONQuyenLyDeThi
+            // 
+            this.comboKhoiONQuyenLyDeThi.FormattingEnabled = true;
+            this.comboKhoiONQuyenLyDeThi.Location = new System.Drawing.Point(62, 56);
+            this.comboKhoiONQuyenLyDeThi.Name = "comboKhoiONQuyenLyDeThi";
+            this.comboKhoiONQuyenLyDeThi.Size = new System.Drawing.Size(184, 21);
+            this.comboKhoiONQuyenLyDeThi.TabIndex = 3;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(22, 59);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(34, 13);
+            this.label11.TabIndex = 2;
+            this.label11.Text = "Khối :";
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.label12);
+            this.groupBox5.Controls.Add(this.listViewCauHoiOnMaDeAndKhoi);
+            this.groupBox5.Location = new System.Drawing.Point(6, 6);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(690, 479);
+            this.groupBox5.TabIndex = 0;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Chi tiết đề thi";
+            // 
+            // label12
+            // 
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(152, 16);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(300, 35);
+            this.label12.TabIndex = 3;
+            this.label12.Text = "Danh sách câu hỏi trong đề thi";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // listViewCauHoiOnMaDeAndKhoi
+            // 
+            this.listViewCauHoiOnMaDeAndKhoi.HideSelection = false;
+            this.listViewCauHoiOnMaDeAndKhoi.Location = new System.Drawing.Point(6, 54);
+            this.listViewCauHoiOnMaDeAndKhoi.Name = "listViewCauHoiOnMaDeAndKhoi";
+            this.listViewCauHoiOnMaDeAndKhoi.Size = new System.Drawing.Size(678, 405);
+            this.listViewCauHoiOnMaDeAndKhoi.TabIndex = 4;
+            this.listViewCauHoiOnMaDeAndKhoi.UseCompatibleStateImageBehavior = false;
+            this.listViewCauHoiOnMaDeAndKhoi.SelectedIndexChanged += new System.EventHandler(this.listViewCauHoiOnMaDeAndKhoi_SelectedIndexChanged);
+            this.listViewCauHoiOnMaDeAndKhoi.Click += new System.EventHandler(this.listViewCauHoiOnMaDeAndKhoi_Click);
+            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.btnUpdateGiaoVien);
@@ -399,35 +524,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thao tác của giáo viên";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
-            // 
-            // ThongKeKiThi
-            // 
-            this.ThongKeKiThi.Controls.Add(this.listBox1);
-            this.ThongKeKiThi.Controls.Add(this.button1);
-            this.ThongKeKiThi.Location = new System.Drawing.Point(4, 22);
-            this.ThongKeKiThi.Name = "ThongKeKiThi";
-            this.ThongKeKiThi.Padding = new System.Windows.Forms.Padding(3);
-            this.ThongKeKiThi.Size = new System.Drawing.Size(975, 491);
-            this.ThongKeKiThi.TabIndex = 3;
-            this.ThongKeKiThi.Text = "Quản lý đề thi";
-            this.ThongKeKiThi.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(816, 29);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(117, 54);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // listBox1
-            // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(6, 390);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(120, 95);
-            this.listBox1.TabIndex = 1;
             // 
             // GiaoVienGUI
             // 
@@ -448,8 +544,11 @@
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.groupBox2.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
             this.ThongKeKiThi.ResumeLayout(false);
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -488,7 +587,15 @@
         private System.Windows.Forms.TextBox txtMaCauHoi;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TabPage ThongKeKiThi;
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.Button btnUpdateDanhSachCauHoiONDeThi;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button btnLoadDanhSachCauHoiONDeThi;
+        private System.Windows.Forms.ComboBox comboDeThiONQuyenLyDeThi;
+        private System.Windows.Forms.ComboBox comboKhoiONQuyenLyDeThi;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.ListView listViewCauHoiOnMaDeAndKhoi;
     }
 }

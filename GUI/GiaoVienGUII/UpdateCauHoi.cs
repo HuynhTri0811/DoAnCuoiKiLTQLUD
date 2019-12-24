@@ -20,7 +20,7 @@ namespace GUI.GiaoVien
         KhoiBUS_HT khoiBUS_HT = new KhoiBUS_HT();
         CauHoiBUS_HT cauHoiBUS_HT = new CauHoiBUS_HT();
         public List<CauHoi> cauHois;
-        public CauHoi cauHoi;
+        public CauHoi cauHoi123;
         private List<DoKho> dokhobus = new List<DoKho>();
         private List<Khoi> khois = new List<Khoi>();
         public delegate void GETDATE(List<CauHoi> cauHoi,CauHoi MaCauHoi);
@@ -30,22 +30,22 @@ namespace GUI.GiaoVien
         {
             dokhobus = doKhoBUS_HT.getAll();
             khois = khoiBUS_HT.GetKhoiAll();
-            cauHois = cauhoi;
-            this.cauHoi = cauHoi;
+            this.cauHois = cauhoi;
+            this.cauHoi123 = cauHoi;
             InitializeComponent();
             this.LoadCauHoi();
         }
 
         private void LoadCauHoi()
         {
-            txtNoiDung.Text = cauHoi.NoiDung;
-            txtCauA.Text = cauHoi.CauA;
-            txtCauB.Text = cauHoi.CauB;
-            txtCauC.Text = cauHoi.CauC;
-            txtCauD.Text = cauHoi.CauD;
-            cbCauDung.Text = cauHoi.CauDung;
-            cbDoKho.Text = cauHoi.DoKho1.TenDoKho;
-            cbKhoi.Text = cauHoi.Khoi.TenKhoi;
+            txtNoiDung.Text = cauHoi123.NoiDung;
+            txtCauA.Text = cauHoi123.CauA;
+            txtCauB.Text = cauHoi123.CauB;
+            txtCauC.Text = cauHoi123.CauC;
+            txtCauD.Text = cauHoi123.CauD;
+            cbCauDung.Text = cauHoi123.CauDung;
+            cbDoKho.Text = cauHoi123.DoKho1.TenDoKho;
+            cbKhoi.Text = cauHoi123.Khoi.TenKhoi;
 
             foreach(var mem in dokhobus)
             {
@@ -124,13 +124,21 @@ namespace GUI.GiaoVien
                     break;
                 }
             }
-            int ThanhCong = cauHoiBUS_HT.UpdateCauHoi(cauHoi.MaCauHoi,txtNoiDung.Text, txtCauA.Text, txtCauB.Text, txtCauC.Text, txtCauD.Text, cbCauDung.Text, MaKhoi.MaKhoi, doKho.maDoKho);  
+            int ThanhCong = cauHoiBUS_HT.UpdateCauHoi(cauHoi123.MaCauHoi,txtNoiDung.Text, txtCauA.Text, txtCauB.Text, txtCauC.Text, txtCauD.Text, cbCauDung.Text, MaKhoi.MaKhoi, doKho.maDoKho);  
             if (ThanhCong == 0)
             {
-                
-                foreach(var mem in cauHois)
+                cauHoi123.NoiDung = txtNoiDung.Text;
+                cauHoi123.CauA = txtCauA.Text;
+                cauHoi123.CauB = txtCauB.Text;
+                cauHoi123.CauC = txtCauC.Text;
+                cauHoi123.CauD = txtCauD.Text;
+                cauHoi123.CauDung = cbCauDung.Text;
+                cauHoi123.DoKho1 = doKho;
+                cauHoi123.Khoi = MaKhoi;
+
+                foreach (var mem in cauHois)
                 {
-                    if(this.cauHoi.MaCauHoi == mem.MaCauHoi)
+                    if(this.cauHoi123.MaCauHoi == mem.MaCauHoi)
                     {
                         mem.NoiDung = txtNoiDung.Text;
                         mem.CauA = txtCauA.Text;
@@ -142,7 +150,7 @@ namespace GUI.GiaoVien
                         mem.Khoi = MaKhoi;
                     }
                 }
-                truyenquabenkialai(this.cauHois,cauHoi);
+                truyenquabenkialai(this.cauHois,cauHoi123);
                 MessageBox.Show("Thành Công", "Thông báo ", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }

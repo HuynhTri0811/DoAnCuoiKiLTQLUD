@@ -9,7 +9,7 @@ namespace DTO
     public class DeVaCauHoiOnMaDeDTO
     {
         public string MaDe;
-        public List<CauHoi> listCauHoiOnMaDe;
+        public List<CauHoi> listCauHoiOnMaDe = new List<CauHoi>();
         public int MaKhoi;
     }
 }
