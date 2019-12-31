@@ -34,6 +34,31 @@ namespace DAO.HT
             }
         }
 
+
+        public KiThi GetOneKiThiCuoiCung(string KT)
+        {
+            using (DataContextDataContext db = new DataContextDataContext())
+            {
+                KiThi kithiLast = new KiThi();
+                var kiThi = (from kt in db.KiThis
+                             where kt.MaKiThi.Contains("KT" + DateTime.Now.Year.ToString() + KT)
+                             orderby kt.MaKiThi descending
+                             select kt);
+                if(kiThi.Count() == 0)
+                {
+                    return null;
+                }
+                foreach(var mem in kiThi)
+                {
+                    kithiLast = mem;
+                    break;
+                }
+                
+                return kithiLast;
+            }
+            
+        }
+
         public KiThi GetOneKiThiONMaKhiThi(string  MaKiThi)
         {
             /*
@@ -172,14 +197,27 @@ namespace DAO.HT
                 {
                     return 1;
                 }
-                if (DateTime.Now.Month <= 5)
+                //KT2019KT01
+                KiThi kiThi1 = GetOneKiThiCuoiCung(MaKT);
+                if(kiThi1 != null)
                 {
-                    MaKiThi = "KT" + DateTime.Now.Year.ToString() + "02" + MaKT;
+                    int SoCuoiCungTemp = Int32.Parse(kiThi1.MaKiThi.Substring(8, 2));
+                    SoCuoiCungTemp++;
+                    if (SoCuoiCungTemp.ToString().Length == 1)
+                    {
+                        MaKiThi = "KT" + DateTime.Now.Year.ToString() + MaKT + "0" + SoCuoiCungTemp.ToString();
+                    }
+                    if (SoCuoiCungTemp.ToString().Length == 2)
+                    {
+                        MaKiThi = "KT" + DateTime.Now.Year.ToString() + MaKT + SoCuoiCungTemp.ToString();
+                    }
                 }
-                if (DateTime.Now.Month >= 5 && DateTime.Now.Month <= 12)
+                else
                 {
-                    MaKiThi = "KT" + DateTime.Now.Year.ToString() + "01" + MaKT;
+                    MaKiThi = "KT" + DateTime.Now.Year.ToString() + MaKT + "00";
+
                 }
+                
 
                 var findOneKiThi = from KT in DB.KiThis
                                    where KT.MaKiThi == MaKiThi

@@ -27,6 +27,11 @@ namespace BUS.HT
             return cauHoiDAO.getOneCauHoiONMaCauHoi(MaCauHoi);
         }
 
+        public List<CauHoi> getAllCauHoiCauHoiOnMaKhoi(int MaKhoi)
+        {
+            return cauHoiDAO.getAllCauHoiCauHoiOnMaKhoi(MaKhoi);
+        }
+
         public int UpdateCauHoi(int MaCauHoi, string NoiDung, string CauA, string CauB, string CauC, string CauD, string cauDung, int MaKhoi, int DoKho)
         {
             return cauHoiDAO.UpdateCauHoi(MaCauHoi, NoiDung, CauA, CauB, CauC, CauD, cauDung, MaKhoi, DoKho);

@@ -72,6 +72,38 @@ namespace DAO.HT
             }
         }
 
+        public List<CauHoi> getAllCauHoiCauHoiOnMaKhoi(int MaKhoi)
+        {
+            /*
+             * Lấy ra danh sách câu hỏi trả về list
+             */
+            using (DataContextDataContext DB = new DataContextDataContext())
+            {
+                List<CauHoi> cauHois = new List<CauHoi>();
+
+                var cauhois = from cauHoi in DB.CauHois
+                              where cauHoi.HocSinhDongGop == false && cauHoi.MaKhoi == MaKhoi
+                              select cauHoi;
+                foreach (var cauhoi in cauhois)
+                {
+                    CauHoi temp = new CauHoi();
+                    temp.MaCauHoi = cauhoi.MaCauHoi;
+                    temp.NoiDung = cauhoi.NoiDung;
+                    temp.CauA = cauhoi.CauA;
+                    temp.CauB = cauhoi.CauB;
+                    temp.CauC = cauhoi.CauC;
+                    temp.CauD = cauhoi.CauD;
+                    temp.CauDung = cauhoi.CauDung;
+                    temp.DoKho1 = cauhoi.DoKho1;
+                    temp.Khoi = cauhoi.Khoi;
+
+                    cauHois.Add(temp);
+                }
+                return cauHois;
+            }
+        }
+
+
         public CauHoiGiaoVien getOneCauHoiONMaCauHoi(int MaCauHoi)
         {
             /*

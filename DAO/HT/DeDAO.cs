@@ -59,6 +59,24 @@ namespace DAO.HT
             }
         }
 
+        public De getONeDeOnMaDEMoiTao(int MaKhoi)
+        {
+            /*
+             * Tìm đề thông qua mã đề
+             * Nếu không tìm thấy -> trả về null
+             * Nếu tìm thấy -> trả về đề
+             */
+            using (DataContextDataContext DB = new DataContextDataContext())
+            {
+                De de = new De();
+                de = (from D in DB.Des
+                      where D.MaKhoi == MaKhoi
+                      orderby D.MaDe descending
+                      select D).First();
+                return de;
+            }
+        }
+
         public bool DeleteDeOnMaDeAndMaKhoi(string MaDe,int MaKhoi)
         {
 
@@ -196,14 +214,15 @@ namespace DAO.HT
                 string STTCuoi = " ";
                 int N;
                 var findOneMaDeCuoiCung = (from MD in DB.Des
+                                           orderby MD.MaDe descending
                                            select MD).FirstOrDefault();
                 if (DateTime.Now.Year != Int32.Parse(findOneMaDeCuoiCung.MaDe.Substring(2, 4)))
                 {
-                    MaDe = "MA" + DateTime.Now.Year.ToString() + 0000.ToString();
+                    MaDe = "MA" + DateTime.Now.Year.ToString() + "0000";
                 }
                 else
                 {
-                    STTCuoi = findOneMaDeCuoiCung.MaDe.Substring(5, 4);
+                    STTCuoi = findOneMaDeCuoiCung.MaDe.Substring(6, 4);
                     if (!Int32.TryParse(STTCuoi, out N))
                     {
                         return 3;

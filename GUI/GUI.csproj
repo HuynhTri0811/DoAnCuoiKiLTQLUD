@@ -54,6 +54,18 @@
     <Compile Include="GiaoVienGUII\AddCauHoi.Designer.cs">
       <DependentUpon>AddCauHoi.cs</DependentUpon>
     </Compile>
+    <Compile Include="GiaoVienGUII\AdDeThi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GiaoVienGUII\AdDeThi.Designer.cs">
+      <DependentUpon>AdDeThi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GiaoVienGUII\AddThemDeThiGUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GiaoVienGUII\AddThemDeThiGUI.Designer.cs">
+      <DependentUpon>AddThemDeThiGUI.cs</DependentUpon>
+    </Compile>
     <Compile Include="GiaoVienGUII\CapNhatGiaoVienGUI.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -78,11 +90,23 @@
     <Compile Include="GiaoVienGUII\ChinhSuaDeThiGUI.Designer.cs">
       <DependentUpon>ChinhSuaDeThiGUI.cs</DependentUpon>
     </Compile>
+    <Compile Include="GiaoVienGUII\DanhSachDeTrongKiThi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GiaoVienGUII\DanhSachDeTrongKiThi.Designer.cs">
+      <DependentUpon>DanhSachDeTrongKiThi.cs</DependentUpon>
+    </Compile>
     <Compile Include="GiaoVienGUII\GiaoVienGUI.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="GiaoVienGUII\GiaoVienGUI.Designer.cs">
       <DependentUpon>GiaoVienGUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GiaoVienGUII\ThemKiThi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GiaoVienGUII\ThemKiThi.Designer.cs">
+      <DependentUpon>ThemKiThi.cs</DependentUpon>
     </Compile>
     <Compile Include="GiaoVienGUII\UpdateCauHoi.cs">
       <SubType>Form</SubType>
@@ -137,6 +161,12 @@
     <EmbeddedResource Include="GiaoVienGUII\AddCauHoi.resx">
       <DependentUpon>AddCauHoi.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GiaoVienGUII\AdDeThi.resx">
+      <DependentUpon>AdDeThi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GiaoVienGUII\AddThemDeThiGUI.resx">
+      <DependentUpon>AddThemDeThiGUI.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GiaoVienGUII\CapNhatGiaoVienGUI.resx">
       <DependentUpon>CapNhatGiaoVienGUI.cs</DependentUpon>
     </EmbeddedResource>
@@ -149,8 +179,14 @@
     <EmbeddedResource Include="GiaoVienGUII\ChinhSuaDeThiGUI.resx">
       <DependentUpon>ChinhSuaDeThiGUI.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GiaoVienGUII\DanhSachDeTrongKiThi.resx">
+      <DependentUpon>DanhSachDeTrongKiThi.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GiaoVienGUII\GiaoVienGUI.resx">
       <DependentUpon>GiaoVienGUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GiaoVienGUII\ThemKiThi.resx">
+      <DependentUpon>ThemKiThi.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GiaoVienGUII\UpdateCauHoi.resx">
       <DependentUpon>UpdateCauHoi.cs</DependentUpon>

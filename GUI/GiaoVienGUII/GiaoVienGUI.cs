@@ -17,6 +17,7 @@ using GUI.GiaoVienGUII;
  * -- Thong ke cau hoi
  * -- Quan ly de thi
  * -- Giáo viên
+ * -- Quản lý kì thi
  */
 namespace GUI
 {
@@ -83,6 +84,8 @@ namespace GUI
         }
         private void loadDeThiVaKhoi() // Load lý đề thi
         {
+            this.comboDeThiONQuyenLyDeThi.Items.Clear();
+            this.comboKhoiONQuyenLyDeThi.Items.Clear();
             this.khois = khoiBUS_HT.GetKhoiAll();
             this.khoiInDeThi = khois[0];
             foreach (var khoi in khois)
@@ -157,6 +160,10 @@ namespace GUI
             listViewCauHoiOnMaDeAndKhoi.Columns[2].Width = 80;
             listViewCauHoiOnMaDeAndKhoi.Columns[3].Width = 80;
             cauHoiTrongDeNao = cauHoiTrongDeNaoBUS_HT.getAllCauHoiTrongDe(MaDe, MaKhoi);
+            if(cauHoiTrongDeNao == null) 
+            {
+                return;
+            }
             foreach (var cauhoi in cauHoiTrongDeNao.listCauHoiOnMaDe)
             {
                 ListViewItem item = new ListViewItem();
@@ -342,7 +349,7 @@ namespace GUI
                 {
                     tempMaKhoi = mem.MaKhoi;
                     break;
-                }
+                } 
             }
             string tempMaDe = "";
             foreach (var mem in des)
@@ -426,6 +433,12 @@ namespace GUI
             chinhSuaDeThiGUI.ShowDialog();
 
         }
+        private void btnAddTDeThi_Click(object sender, EventArgs e)
+        {
+            AddThemDeThiGUI addThemDeThiGUI = new AddThemDeThiGUI();
+            addThemDeThiGUI.ShowDialog();
+            this.loadDeThiVaKhoi();
+        }
         //
 
         // Quản lý giáo viên
@@ -438,7 +451,13 @@ namespace GUI
         }
         //
 
-        
+        // Quản lý kì thi
+        private void btnThemKiThi_Click(object sender, EventArgs e)
+        {
+            ThemKiThi themKiThi = new ThemKiThi();
+            themKiThi.ShowDialog();
+        }
+
         // Load Tam xam
         private void groupBox3_Enter(object sender, EventArgs e)
         {
@@ -464,6 +483,15 @@ namespace GUI
         {
 
         }
+
+        private void comboDeThiONQuyenLyDeThi_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+
+
+
         //
     }
 }

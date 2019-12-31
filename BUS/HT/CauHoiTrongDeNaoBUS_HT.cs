@@ -17,5 +17,11 @@ namespace BUS.HT
             return cauHoiTrongDeNaoDAO.getAllCauHoiTrongDe(MaDe, MaKhoi);
         }
 
+        public int InsertDeVaCauHoi(string MaDe, int MaCauHoi, int MaKhoi)
+        {
+            return cauHoiTrongDeNaoDAO.InsertDeVaCauHoi(MaDe, MaCauHoi, MaKhoi);
+        }
+        
+
     }
 }

@@ -17,5 +17,18 @@ namespace BUS.HT
         {
             return deDAO.getAllDe();
         }
+        public int InsertDe(string TenDe, int MaKhoi, string DoKho)
+        {
+            return deDAO.InsertDe(TenDe, MaKhoi, DoKho);
+        }
+        public De getONeDeOnMaDEMoiTao(int MaKhoi)
+        {
+            /*
+             * Tìm đề thông qua mã đề
+             * Nếu không tìm thấy -> trả về null
+             * Nếu tìm thấy -> trả về đề
+             */
+            return deDAO.getONeDeOnMaDEMoiTao(MaKhoi);
+        }
     }
 }

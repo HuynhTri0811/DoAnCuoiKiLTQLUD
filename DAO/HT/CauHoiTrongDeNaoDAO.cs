@@ -97,7 +97,7 @@ namespace DAO.HT
                 var findOneMaCauHoiOnMaDeOnMaKhoi = from MCH in DB.CauHoiTrongDeNaos
                                                     where MCH.MaDe == MaDe && MCH.MaKhoi == MaKhoi && MCH.MaCauHoi == MaCauHoi
                                                     select MCH;
-                if (findOneMaCauHoiOnMaDeOnMaKhoi.Count() == 0)
+                if (findOneMaCauHoiOnMaDeOnMaKhoi.Count() != 0)
                 {
                     return 4;
                 }
