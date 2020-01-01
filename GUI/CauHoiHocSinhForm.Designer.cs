@@ -109,18 +109,20 @@
             // lbNoiDung
             // 
             this.lbNoiDung.AutoSize = true;
-            this.lbNoiDung.Location = new System.Drawing.Point(89, 74);
+            this.lbNoiDung.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbNoiDung.Location = new System.Drawing.Point(89, 81);
             this.lbNoiDung.Name = "lbNoiDung";
-            this.lbNoiDung.Size = new System.Drawing.Size(49, 13);
+            this.lbNoiDung.Size = new System.Drawing.Size(56, 15);
             this.lbNoiDung.TabIndex = 1;
             this.lbNoiDung.Text = "NoiDung";
             // 
             // lbCauSo
             // 
             this.lbCauSo.AutoSize = true;
-            this.lbCauSo.Location = new System.Drawing.Point(34, 74);
+            this.lbCauSo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbCauSo.Location = new System.Drawing.Point(34, 81);
             this.lbCauSo.Name = "lbCauSo";
-            this.lbCauSo.Size = new System.Drawing.Size(39, 13);
+            this.lbCauSo.Size = new System.Drawing.Size(49, 15);
             this.lbCauSo.TabIndex = 0;
             this.lbCauSo.Text = "CauSo";
             // 
