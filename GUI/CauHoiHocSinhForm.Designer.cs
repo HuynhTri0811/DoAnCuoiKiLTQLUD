@@ -57,17 +57,15 @@
             this.pnCauHoi.Controls.Add(this.rdbtnCauC);
             this.pnCauHoi.Controls.Add(this.rdbtnCauB);
             this.pnCauHoi.Controls.Add(this.rdbtnCauA);
-            this.pnCauHoi.Controls.Add(this.lbNoiDung);
-            this.pnCauHoi.Controls.Add(this.lbCauSo);
-            this.pnCauHoi.Location = new System.Drawing.Point(12, 72);
+            this.pnCauHoi.Location = new System.Drawing.Point(12, 124);
             this.pnCauHoi.Name = "pnCauHoi";
-            this.pnCauHoi.Size = new System.Drawing.Size(657, 299);
+            this.pnCauHoi.Size = new System.Drawing.Size(657, 236);
             this.pnCauHoi.TabIndex = 0;
             // 
             // rdbtnCauD
             // 
             this.rdbtnCauD.AutoSize = true;
-            this.rdbtnCauD.Location = new System.Drawing.Point(358, 166);
+            this.rdbtnCauD.Location = new System.Drawing.Point(358, 131);
             this.rdbtnCauD.Name = "rdbtnCauD";
             this.rdbtnCauD.Size = new System.Drawing.Size(52, 17);
             this.rdbtnCauD.TabIndex = 5;
@@ -78,7 +76,7 @@
             // rdbtnCauC
             // 
             this.rdbtnCauC.AutoSize = true;
-            this.rdbtnCauC.Location = new System.Drawing.Point(25, 166);
+            this.rdbtnCauC.Location = new System.Drawing.Point(25, 131);
             this.rdbtnCauC.Name = "rdbtnCauC";
             this.rdbtnCauC.Size = new System.Drawing.Size(51, 17);
             this.rdbtnCauC.TabIndex = 4;
@@ -89,7 +87,7 @@
             // rdbtnCauB
             // 
             this.rdbtnCauB.AutoSize = true;
-            this.rdbtnCauB.Location = new System.Drawing.Point(358, 75);
+            this.rdbtnCauB.Location = new System.Drawing.Point(358, 40);
             this.rdbtnCauB.Name = "rdbtnCauB";
             this.rdbtnCauB.Size = new System.Drawing.Size(51, 17);
             this.rdbtnCauB.TabIndex = 3;
@@ -100,7 +98,7 @@
             // rdbtnCauA
             // 
             this.rdbtnCauA.AutoSize = true;
-            this.rdbtnCauA.Location = new System.Drawing.Point(25, 75);
+            this.rdbtnCauA.Location = new System.Drawing.Point(25, 40);
             this.rdbtnCauA.Name = "rdbtnCauA";
             this.rdbtnCauA.Size = new System.Drawing.Size(51, 17);
             this.rdbtnCauA.TabIndex = 2;
@@ -111,7 +109,7 @@
             // lbNoiDung
             // 
             this.lbNoiDung.AutoSize = true;
-            this.lbNoiDung.Location = new System.Drawing.Point(77, 19);
+            this.lbNoiDung.Location = new System.Drawing.Point(89, 74);
             this.lbNoiDung.Name = "lbNoiDung";
             this.lbNoiDung.Size = new System.Drawing.Size(49, 13);
             this.lbNoiDung.TabIndex = 1;
@@ -120,7 +118,7 @@
             // lbCauSo
             // 
             this.lbCauSo.AutoSize = true;
-            this.lbCauSo.Location = new System.Drawing.Point(22, 19);
+            this.lbCauSo.Location = new System.Drawing.Point(34, 74);
             this.lbCauSo.Name = "lbCauSo";
             this.lbCauSo.Size = new System.Drawing.Size(39, 13);
             this.lbCauSo.TabIndex = 0;
@@ -186,7 +184,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(234, 12);
+            this.label1.Location = new System.Drawing.Point(234, 13);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(90, 13);
             this.label1.TabIndex = 7;
@@ -195,11 +193,12 @@
             // lbTimerPhut
             // 
             this.lbTimerPhut.AutoSize = true;
-            this.lbTimerPhut.Location = new System.Drawing.Point(331, 12);
+            this.lbTimerPhut.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTimerPhut.Location = new System.Drawing.Point(340, 8);
             this.lbTimerPhut.Name = "lbTimerPhut";
-            this.lbTimerPhut.Size = new System.Drawing.Size(19, 13);
+            this.lbTimerPhut.Size = new System.Drawing.Size(19, 20);
             this.lbTimerPhut.TabIndex = 8;
-            this.lbTimerPhut.Text = "10";
+            this.lbTimerPhut.Text = "7";
             // 
             // timer1
             // 
@@ -209,18 +208,20 @@
             // lbTimerGiay
             // 
             this.lbTimerGiay.AutoSize = true;
-            this.lbTimerGiay.Location = new System.Drawing.Point(372, 13);
+            this.lbTimerGiay.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTimerGiay.Location = new System.Drawing.Point(365, 8);
             this.lbTimerGiay.Name = "lbTimerGiay";
-            this.lbTimerGiay.Size = new System.Drawing.Size(19, 13);
+            this.lbTimerGiay.Size = new System.Drawing.Size(29, 20);
             this.lbTimerGiay.TabIndex = 9;
-            this.lbTimerGiay.Text = "00";
+            this.lbTimerGiay.Text = "30";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(356, 12);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(355, 7);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(10, 13);
+            this.label2.Size = new System.Drawing.Size(14, 20);
             this.label2.TabIndex = 10;
             this.label2.Text = ":";
             // 
@@ -233,7 +234,9 @@
             this.Controls.Add(this.lbTimerGiay);
             this.Controls.Add(this.lbTimerPhut);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.lbNoiDung);
             this.Controls.Add(this.btnNopBai);
+            this.Controls.Add(this.lbCauSo);
             this.Controls.Add(this.btnCauSau);
             this.Controls.Add(this.btnCauTruoc);
             this.Controls.Add(this.btnBoBai);

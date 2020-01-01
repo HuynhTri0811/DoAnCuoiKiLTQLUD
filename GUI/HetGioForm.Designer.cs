@@ -34,6 +34,8 @@
             this.lbSoCauDung = new System.Windows.Forms.Label();
             this.lbSoDiem = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.lbThoiGian = new System.Windows.Forms.Label();
+            this.lbThoiGianLamBai = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lbNoiDungThongBao
@@ -48,7 +50,7 @@
             // 
             // btnQuayLai
             // 
-            this.btnQuayLai.Location = new System.Drawing.Point(98, 119);
+            this.btnQuayLai.Location = new System.Drawing.Point(98, 134);
             this.btnQuayLai.Name = "btnQuayLai";
             this.btnQuayLai.Size = new System.Drawing.Size(75, 23);
             this.btnQuayLai.TabIndex = 1;
@@ -59,7 +61,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(17, 60);
+            this.label2.Location = new System.Drawing.Point(35, 60);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(72, 13);
             this.label2.TabIndex = 2;
@@ -68,7 +70,7 @@
             // lbSoCauDung
             // 
             this.lbSoCauDung.AutoSize = true;
-            this.lbSoCauDung.Location = new System.Drawing.Point(95, 60);
+            this.lbSoCauDung.Location = new System.Drawing.Point(113, 60);
             this.lbSoCauDung.Name = "lbSoCauDung";
             this.lbSoCauDung.Size = new System.Drawing.Size(65, 13);
             this.lbSoCauDung.TabIndex = 3;
@@ -77,7 +79,7 @@
             // lbSoDiem
             // 
             this.lbSoDiem.AutoSize = true;
-            this.lbSoDiem.Location = new System.Drawing.Point(95, 82);
+            this.lbSoDiem.Location = new System.Drawing.Point(113, 82);
             this.lbSoDiem.Name = "lbSoDiem";
             this.lbSoDiem.Size = new System.Drawing.Size(44, 13);
             this.lbSoDiem.TabIndex = 5;
@@ -86,17 +88,37 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(40, 82);
+            this.label5.Location = new System.Drawing.Point(58, 82);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(49, 13);
             this.label5.TabIndex = 4;
             this.label5.Text = "Số điểm:";
             // 
+            // lbThoiGian
+            // 
+            this.lbThoiGian.AutoSize = true;
+            this.lbThoiGian.Location = new System.Drawing.Point(113, 103);
+            this.lbThoiGian.Name = "lbThoiGian";
+            this.lbThoiGian.Size = new System.Drawing.Size(50, 13);
+            this.lbThoiGian.TabIndex = 7;
+            this.lbThoiGian.Text = "ThoiGian";
+            // 
+            // lbThoiGianLamBai
+            // 
+            this.lbThoiGianLamBai.AutoSize = true;
+            this.lbThoiGianLamBai.Location = new System.Drawing.Point(17, 103);
+            this.lbThoiGianLamBai.Name = "lbThoiGianLamBai";
+            this.lbThoiGianLamBai.Size = new System.Drawing.Size(90, 13);
+            this.lbThoiGianLamBai.TabIndex = 6;
+            this.lbThoiGianLamBai.Text = "Thời gian làm bài:";
+            // 
             // HetGioForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(296, 154);
+            this.ClientSize = new System.Drawing.Size(296, 169);
+            this.Controls.Add(this.lbThoiGian);
+            this.Controls.Add(this.lbThoiGianLamBai);
             this.Controls.Add(this.lbSoDiem);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.lbSoCauDung);
@@ -104,6 +126,7 @@
             this.Controls.Add(this.btnQuayLai);
             this.Controls.Add(this.lbNoiDungThongBao);
             this.Name = "HetGioForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "HetGioForm";
             this.Load += new System.EventHandler(this.HetGioForm_Load);
             this.ResumeLayout(false);
@@ -119,5 +142,7 @@
         private System.Windows.Forms.Label lbSoCauDung;
         private System.Windows.Forms.Label lbSoDiem;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lbThoiGian;
+        private System.Windows.Forms.Label lbThoiGianLamBai;
     }
 }

@@ -300,5 +300,43 @@ namespace DAO.HS
                 throw Ex;
             }
         }
+
+        public Boolean AddKetQuaThiThu(string maHS, string maDe, int maKhoi, double diem)
+        {
+            DeOnTap DeOT = new DeOnTap();
+
+            DeOT.MaHocSinh = maHS;
+            DeOT.MaDe = maDe;
+            DeOT.MaKhoi = maKhoi;
+            DeOT.Diem = diem;
+            DateTime now = DateTime.Now;
+            DeOT.NgayGioiHan = now;
+            
+
+            try
+            {
+                var truocInsert = from deot in db.DeOnTaps
+                                  select deot;
+                int soBanGhiTruocInsert = truocInsert.Count();
+
+                db.DeOnTaps.InsertOnSubmit(DeOT);
+                db.SubmitChanges();
+
+                var sauInsert = from deot in db.DeOnTaps
+                                select deot;
+                int soBanGhiSauInsert = sauInsert.Count();
+
+                if (soBanGhiSauInsert == soBanGhiTruocInsert)
+                {
+                    return false;
+                }
+
+                return true;
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+        }
     }
 }
