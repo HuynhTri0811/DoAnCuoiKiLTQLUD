@@ -123,5 +123,18 @@ namespace BUS.HS
                 throw Ex;
             }
         }
+
+        public Boolean AddKetQuaThiThu(string maHS, string maDe, int maKhoi, double diem)
+        {
+            HocSinhDAO hocSinh = new HocSinhDAO();
+            try
+            {
+                return hocSinh.AddKetQuaThiThu(maHS, maDe, maKhoi, diem);
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+        }
     }
 }

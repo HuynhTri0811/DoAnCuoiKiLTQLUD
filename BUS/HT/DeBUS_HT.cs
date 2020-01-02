@@ -13,6 +13,10 @@ namespace BUS.HT
     {
         public DeDAO deDAO = new DeDAO();
 
+        public List<De> getAllMaKhoi(int MaKhoi)
+        {
+            return deDAO.getAllMaKhoi(MaKhoi);
+        }
         public List<De> getAllDe()
         {
             return deDAO.getAllDe();

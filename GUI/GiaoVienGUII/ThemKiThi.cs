@@ -56,7 +56,9 @@ namespace GUI.GiaoVienGUII
                 return;
             }
             MessageBox.Show("Thành công", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            
+            KiThi kiThi = kiThiBUS.GetOneKiThiCuoiCung(comboBoxThemKiThiKT.Text);
+            DanhSachDeTrongKiThi danhSachDeTrongKiThi = new DanhSachDeTrongKiThi(kiThi);
+            danhSachDeTrongKiThi.ShowDialog();
         }
     }
 }

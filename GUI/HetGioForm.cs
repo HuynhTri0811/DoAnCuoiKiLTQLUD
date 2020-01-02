@@ -18,7 +18,8 @@ namespace GUI
         double soDiemHS;
         double soCauDungHS;
         int phutHS;
-        public HetGioForm(HocSinh hocSinh, CauHoiHocSinhForm.SendMassage send, double soDiem, double soCauDung, int phut)
+        int giayHS;
+        public HetGioForm(HocSinh hocSinh, CauHoiHocSinhForm.SendMassage send, double soDiem, double soCauDung, int phut, int giay)
         {
             InitializeComponent();
             hocSinhLogin = hocSinh;
@@ -26,6 +27,7 @@ namespace GUI
             soDiemHS = soDiem;
             soCauDungHS = soCauDung;
             phutHS = phut;
+            giayHS = giay;
         }
 
         private void btnQuayLai_Click(object sender, EventArgs e)
@@ -43,13 +45,17 @@ namespace GUI
             if(phutHS < 0)
             {
                 lbNoiDungThongBao.Text = "Đã hết thời gian!";
+                lbThoiGianLamBai.Text = "";
+                lbThoiGian.Text = "";
             }
             else
             {
                 lbNoiDungThongBao.Text = "Kết quả bài thi";
+                lbThoiGian.Text = (10 - phutHS).ToString() + " phút, " + (60 - giayHS).ToString() + " giây";
             }
-            lbSoCauDung.Text = soCauDungHS.ToString() + "/15";
-            lbSoDiem.Text = soDiemHS.ToString("0.00") + " đ";
+            lbSoCauDung.Text = soCauDungHS.ToString("00") + "/15";
+            lbSoDiem.Text = soDiemHS.ToString("0.00") + " điểm";
+            
         }
     }
 }

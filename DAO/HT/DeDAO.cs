@@ -59,6 +59,28 @@ namespace DAO.HT
             }
         }
 
+        public List<De> getAllMaKhoi(int MaKhoi)
+        {
+            using(DataContextDataContext db = new DataContextDataContext())
+            {
+                db.DeferredLoadingEnabled = false;
+                List<De> des = new List<De>();
+                var getAllMaKhoi = from de in db.Des
+                                   where de.MaKhoi == MaKhoi
+                                   select de;
+                if(getAllMaKhoi.Count() == 0)
+                {
+                    return null;
+                }
+
+                foreach(var mem in getAllMaKhoi)
+                {
+                    des.Add(mem);
+                }
+                return des;
+            }            
+        }
+
         public De getONeDeOnMaDEMoiTao(int MaKhoi)
         {
             /*

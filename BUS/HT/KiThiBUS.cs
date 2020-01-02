@@ -16,5 +16,9 @@ namespace BUS.HT
         {
             return kiThiDAO.InsertKiThi(MaKT, TenKiThi, ThoiGianThi);
         }
+        public KiThi GetOneKiThiCuoiCung(string KT)
+        {
+            return kiThiDAO.GetOneKiThiCuoiCung(KT);
+        }
     }
 }

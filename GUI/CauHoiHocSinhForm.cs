@@ -22,8 +22,8 @@ namespace GUI
         List<DeVaCauHoiDTO> dsCauHoi = new List<DeVaCauHoiDTO>();
         int next = 0;
         string[] dapAn = new string[15];
-        int phut = 10;
-        int giay = 0;
+        int phut = 7;
+        int giay = 30;
         public delegate void SendMassage();
         public CauHoiHocSinhForm(HocSinh hocSinh, string maDe, int maKhoi)
         {
@@ -106,10 +106,10 @@ namespace GUI
             rdbtnCauD.Text = dsCauHoi[next].CauD;
         }
 
-        public void ChonDapAn(Panel pnl)
+        public void ChonDapAn()
         {
             RadioButton rdbtn = null;
-            foreach(RadioButton item in pnl.Controls)
+            foreach(RadioButton item in pnCauHoi.Controls)
             {
                 if (item.Checked)
                 {
@@ -140,14 +140,14 @@ namespace GUI
 
         private void btnCauTruoc_Click(object sender, EventArgs e)
         {
-            ChonDapAn(pnCauHoi);
+            ChonDapAn();
             next -= 1;
             LoadFormCauHoiHS();
         }
 
         private void btnCauSau_Click(object sender, EventArgs e)
         {
-            ChonDapAn(pnCauHoi);
+            ChonDapAn();
             next += 1;
             LoadFormCauHoiHS();
         }
@@ -163,6 +163,19 @@ namespace GUI
                 }
             }
             return diem;
+        }
+
+        public int SoCauDung()
+        {
+            int caudung = 0;
+            for (int i = 0; i < 15; i++)
+            {
+                if (dapAn[i] == dsCauHoi[i].CauDung.Substring(0, 1))
+                {
+                    caudung ++;
+                }
+            }
+            return caudung;
         }
 
         public void stopTimer()
@@ -183,9 +196,11 @@ namespace GUI
 
             if(phut < 0)
             {
+                ChonDapAn();
                 double soDiem = TinhDiem();
-                int soCauDung = (int)(soDiem * 15);
-                HetGioForm hetGio = new HetGioForm(hocSinhLogin, stopTimer, soDiem, soCauDung, phut);
+                int soCauDung = SoCauDung();
+                hocSinhBUS.AddKetQuaThiThu(hocSinhLogin.MaHocSinh, maDeDuocChon, maKhoiHS, soDiem);
+                HetGioForm hetGio = new HetGioForm(hocSinhLogin, stopTimer, soDiem, soCauDung, phut, giay);
                 this.Hide();
                 hetGio.ShowDialog();
                 this.Close();
@@ -195,9 +210,11 @@ namespace GUI
 
         private void btnNopBai_Click(object sender, EventArgs e)
         {
+            ChonDapAn();
             double soDiem = TinhDiem();
-            double soCauDung = soDiem * 1.5;
-            HetGioForm hetGio = new HetGioForm(hocSinhLogin, stopTimer, soDiem, soCauDung, phut);
+            double soCauDung = SoCauDung();
+            hocSinhBUS.AddKetQuaThiThu(hocSinhLogin.MaHocSinh, maDeDuocChon, maKhoiHS, soDiem);
+            HetGioForm hetGio = new HetGioForm(hocSinhLogin, stopTimer, soDiem, soCauDung, phut, giay);
             this.Hide();
             hetGio.ShowDialog();
             this.Close();
