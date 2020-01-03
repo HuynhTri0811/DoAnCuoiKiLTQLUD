@@ -221,6 +221,7 @@
             this.btnThi.TabIndex = 1;
             this.btnThi.Text = "Thi";
             this.btnThi.UseVisualStyleBackColor = true;
+            this.btnThi.Click += new System.EventHandler(this.btnThi_Click);
             // 
             // btnThiThu
             // 

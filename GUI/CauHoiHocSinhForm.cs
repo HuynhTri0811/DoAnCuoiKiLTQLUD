@@ -220,5 +220,10 @@ namespace GUI
             this.Close();
             Application.Exit();
         }
+
+        private void btnBoBai_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

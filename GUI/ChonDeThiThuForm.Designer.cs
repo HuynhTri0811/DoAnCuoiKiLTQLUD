@@ -126,7 +126,7 @@
             this.Controls.Add(this.btnQuayLai);
             this.Name = "ChonDeThiThuForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "ChonDeThiThuForm";
+            this.Text = "Chọn đề thi";
             this.Load += new System.EventHandler(this.ChonDeThiThuForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -152,6 +152,7 @@
             this.btnBoBai.TabIndex = 3;
             this.btnBoBai.Text = "Bỏ bài";
             this.btnBoBai.UseVisualStyleBackColor = true;
+            this.btnBoBai.Click += new System.EventHandler(this.btnBoBai_Click);
             // 
             // btnCauTruoc
             // 

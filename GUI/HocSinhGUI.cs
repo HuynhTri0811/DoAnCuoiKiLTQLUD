@@ -64,5 +64,10 @@ namespace GUI
             this.Close();
             Application.Exit();
         }
+
+        private void btnThi_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
