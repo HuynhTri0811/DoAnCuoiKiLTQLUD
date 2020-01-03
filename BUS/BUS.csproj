@@ -46,6 +46,7 @@
     <Compile Include="HT\DeBUS_HT.cs" />
     <Compile Include="HT\DoKhoBUS_HT.cs" />
     <Compile Include="HT\GiaoVienBUS_HT.cs" />
+    <Compile Include="HT\HocSinhBUS.cs" />
     <Compile Include="HT\KhoiBUS_HT.cs" />
     <Compile Include="HT\KiThiBUS.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

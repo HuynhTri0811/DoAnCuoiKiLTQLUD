@@ -9,57 +9,57 @@ using DTO;
 
 namespace DAO.HT
 {
-    public class KiThiDAO
+    public class KyThiDAO
     {
 
-        public List<KiThi> GetAllKiThi()
+        public List<KyThi> GetAllKyThi()
         {
             /*
              * Lấy hết danh sách kì thi
              */
             using (DataContextDataContext DB = new DataContextDataContext())
             {
-                List<KiThi> allKiThis = new List<KiThi>();
-                var findAllKiThis = from KT in DB.KiThis
+                List<KyThi> allKyThis = new List<KyThi>();
+                var findAllKyThis = from KT in DB.KyThis
                                     select KT;
-                if (findAllKiThis.Count() == 0)
+                if (findAllKyThis.Count() == 0)
                 {
                     return null;
                 }
-                foreach (var mem in findAllKiThis)
+                foreach (var mem in findAllKyThis)
                 {
-                    allKiThis.Add(mem);
+                    allKyThis.Add(mem);
                 }
-                return allKiThis;
+                return allKyThis;
             }
         }
 
 
-        public KiThi GetOneKiThiCuoiCung(string KT)
+        public KyThi GetOneKyThiCuoiCung(string KT)
         {
             using (DataContextDataContext db = new DataContextDataContext())
             {
-                KiThi kithiLast = new KiThi();
-                var kiThi = (from kt in db.KiThis
-                             where kt.MaKiThi.Contains("KT" + DateTime.Now.Year.ToString() + KT)
-                             orderby kt.MaKiThi descending
+                KyThi KyThiLast = new KyThi();
+                var KyThi = (from kt in db.KyThis
+                             where kt.MaKyThi.Contains("KT" + DateTime.Now.Year.ToString() + KT)
+                             orderby kt.MaKyThi descending
                              select kt);
-                if(kiThi.Count() == 0)
+                if(KyThi.Count() == 0)
                 {
                     return null;
                 }
-                foreach(var mem in kiThi)
+                foreach(var mem in KyThi)
                 {
-                    kithiLast = mem;
+                    KyThiLast = mem;
                     break;
                 }
                 
-                return kithiLast;
+                return KyThiLast;
             }
             
         }
 
-        public KiThi GetOneKiThiONMaKhiThi(string  MaKiThi)
+        public KyThi GetOneKyThiONMaKhiThi(string  MaKyThi)
         {
             /*
              * Tìm kì thi thông qua mã kì thi
@@ -69,27 +69,27 @@ namespace DAO.HT
 
             using (DataContextDataContext DB = new DataContextDataContext())
             {
-                KiThi getOneKiThi = new KiThi();
-                var kithi = from KH in DB.KiThis
-                            where KH.MaKiThi == MaKiThi
+                KyThi getOneKyThi = new KyThi();
+                var KyThi = from KH in DB.KyThis
+                            where KH.MaKyThi == MaKyThi
                             select KH;
-                if (kithi.Count() == 0)
+                if (KyThi.Count() == 0)
                 {
                     return null;
                 }
-                foreach (var kh in kithi)
+                foreach (var kh in KyThi)
                 {
-                    getOneKiThi.MaKiThi = kh.MaKiThi;
-                    getOneKiThi.TenKiThi = kh.TenKiThi;
-                    getOneKiThi.NgayThi = kh.NgayThi;
+                    getOneKyThi.MaKyThi = kh.MaKyThi;
+                    getOneKyThi.TenKyThi = kh.TenKyThi;
+                    getOneKyThi.NgayThi = kh.NgayThi;
                 }
 
-                return getOneKiThi;
+                return getOneKyThi;
             }
 
         }
 
-        public bool DeleteKiThiOnMaKiThi(string MaKiThi)
+        public bool DeleteKyThiOnMaKyThi(string MaKyThi)
         {
             /*
              * Xóa kì thi dựa trên mã kì thi được nhấp vào
@@ -98,23 +98,23 @@ namespace DAO.HT
              */
             using (DataContextDataContext DB = new DataContextDataContext())
             {
-                var findOneKiThiONMaKiThi = from KH in DB.KiThis
-                                            where KH.MaKiThi == MaKiThi
+                var findOneKyThiONMaKyThi = from KH in DB.KyThis
+                                            where KH.MaKyThi == MaKyThi
                                             select KH;
-                if (findOneKiThiONMaKiThi.Count() == 0)
+                if (findOneKyThiONMaKyThi.Count() == 0)
                 {
                     return false;
                 }
-                foreach (var KH in findOneKiThiONMaKiThi)
+                foreach (var KH in findOneKyThiONMaKyThi)
                 {
-                    DB.KiThis.DeleteOnSubmit(KH);
+                    DB.KyThis.DeleteOnSubmit(KH);
                 }
                 DB.SubmitChanges();
                 return true;
             }
         }
 
-        public int UpdateNameKiThiONMaKiThi(string MaKiThi,string TenKiThi)
+        public int UpdateNameKyThiONMaKyThi(string MaKyThi,string TenKyThi)
         {
 
             /*
@@ -126,24 +126,24 @@ namespace DAO.HT
 
             using (DataContextDataContext DB = new DataContextDataContext())
             {
-                var findOneMaKiThi = from KT in DB.KiThis
-                                     where KT.MaKiThi == MaKiThi
+                var findOneMaKyThi = from KT in DB.KyThis
+                                     where KT.MaKyThi == MaKyThi
                                      select KT;
-                if (findOneMaKiThi.Count() == 0)
+                if (findOneMaKyThi.Count() == 0)
                 {
                     return 1;
                 }
-                var findOneMaKiThiANDTenKiThi = from KT in DB.KiThis
-                                                where KT.MaKiThi == MaKiThi && KT.TenKiThi == TenKiThi
+                var findOneMaKyThiANDTenKyThi = from KT in DB.KyThis
+                                                where KT.MaKyThi == MaKyThi && KT.TenKyThi == TenKyThi
                                                 select KT;
-                if (findOneMaKiThiANDTenKiThi.Count() == 0)
+                if (findOneMaKyThiANDTenKyThi.Count() == 0)
                 {
                     return 2;
                 }
 
-                foreach (var KT in findOneMaKiThi)
+                foreach (var KT in findOneMaKyThi)
                 {
-                    KT.TenKiThi = TenKiThi;
+                    KT.TenKyThi = TenKyThi;
                 }
                 DB.SubmitChanges();
 
@@ -151,7 +151,7 @@ namespace DAO.HT
             }
         }
 
-        public int UpdateThoiGianThiCuaKiThi(string MaKiThi,DateTime ThoiGianThi)
+        public int UpdateThoiGianThiCuaKyThi(string MaKyThi,DateTime ThoiGianThi)
         {
             using (DataContextDataContext DB = new DataContextDataContext())
             {
@@ -161,14 +161,14 @@ namespace DAO.HT
                  * Update thành công -> trả về 0
                  */
 
-                var findOneKiThi = from KT in DB.KiThis
-                                   where KT.MaKiThi == MaKiThi
+                var findOneKyThi = from KT in DB.KyThis
+                                   where KT.MaKyThi == MaKyThi
                                    select KT;
-                if (findOneKiThi.Count() == 0)
+                if (findOneKyThi.Count() == 0)
                 {
                     return 1;
                 }
-                foreach (var mem in findOneKiThi)
+                foreach (var mem in findOneKyThi)
                 {
                     mem.NgayThi = ThoiGianThi;
                 }
@@ -177,61 +177,61 @@ namespace DAO.HT
             }
         }
 
-        public int InsertKiThi(string MaKT, string TenKiThi, DateTime ThoiGianThi)
+        public int InsertKyThi(string MaKT, string TenKyThi, DateTime ThoiGianThi)
         {
 
             /*
-             * Mã kì thi =  KITHI+Nam+(01,02) 01 -> học kì 1 , 02 -> học kì 2 VD:KITHI201901
+             * Mã kì thi =  KyThi+Nam+(01,02) 01 -> học kì 1 , 02 -> học kì 2 VD:KyThi201901
              * Tên Kì Thi 
              * Thời gian thi
              * Nếu Mã KT không phải 15 hoặc 1T hoặc không phải CK thì -> trả về 1
-             * Nếu MaKiThi đẫ tồn tại thì thì trả về 2
+             * Nếu MaKyThi đẫ tồn tại thì thì trả về 2
              * 
              * 
              */
 
             using (DataContextDataContext DB = new DataContextDataContext())
             {
-                string MaKiThi = "0";
+                string MaKyThi = "0";
                 if (MaKT != "15" && MaKT != "1T" && MaKT != "CK")
                 {
                     return 1;
                 }
                 //KT2019KT01
-                KiThi kiThi1 = GetOneKiThiCuoiCung(MaKT);
-                if(kiThi1 != null)
+                KyThi KyThi1 = GetOneKyThiCuoiCung(MaKT);
+                if(KyThi1 != null)
                 {
-                    int SoCuoiCungTemp = Int32.Parse(kiThi1.MaKiThi.Substring(8, 2));
+                    int SoCuoiCungTemp = Int32.Parse(KyThi1.MaKyThi.Substring(8, 2));
                     SoCuoiCungTemp++;
                     if (SoCuoiCungTemp.ToString().Length == 1)
                     {
-                        MaKiThi = "KT" + DateTime.Now.Year.ToString() + MaKT + "0" + SoCuoiCungTemp.ToString();
+                        MaKyThi = "KT" + DateTime.Now.Year.ToString() + MaKT + "0" + SoCuoiCungTemp.ToString();
                     }
                     if (SoCuoiCungTemp.ToString().Length == 2)
                     {
-                        MaKiThi = "KT" + DateTime.Now.Year.ToString() + MaKT + SoCuoiCungTemp.ToString();
+                        MaKyThi = "KT" + DateTime.Now.Year.ToString() + MaKT + SoCuoiCungTemp.ToString();
                     }
                 }
                 else
                 {
-                    MaKiThi = "KT" + DateTime.Now.Year.ToString() + MaKT + "00";
+                    MaKyThi = "KT" + DateTime.Now.Year.ToString() + MaKT + "00";
 
                 }
                 
 
-                var findOneKiThi = from KT in DB.KiThis
-                                   where KT.MaKiThi == MaKiThi
+                var findOneKyThi = from KT in DB.KyThis
+                                   where KT.MaKyThi == MaKyThi
                                    select KT;
-                if (findOneKiThi.Count() != 0)
+                if (findOneKyThi.Count() != 0)
                 {
                     return 2;
                 }
 
-                KiThi kiThi = new KiThi();
-                kiThi.MaKiThi = MaKiThi;
-                kiThi.TenKiThi = TenKiThi;
-                kiThi.NgayThi = ThoiGianThi;
-                DB.KiThis.InsertOnSubmit(kiThi);
+                KyThi KyThi = new KyThi();
+                KyThi.MaKyThi = MaKyThi;
+                KyThi.TenKyThi = TenKyThi;
+                KyThi.NgayThi = ThoiGianThi;
+                DB.KyThis.InsertOnSubmit(KyThi);
                 DB.SubmitChanges();
                 return 0;
             }

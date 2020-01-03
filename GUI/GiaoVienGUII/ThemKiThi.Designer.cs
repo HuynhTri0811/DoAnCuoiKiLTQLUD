@@ -91,6 +91,7 @@
             this.Controls.Add(this.comboBoxThemKiThiKT);
             this.Name = "ThemKiThi";
             this.Text = "Thêm kì thi";
+            this.Load += new System.EventHandler(this.ThemKiThi_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

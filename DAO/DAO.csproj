@@ -49,6 +49,7 @@
     <Compile Include="HT\DeDAO.cs" />
     <Compile Include="HT\DoKhoDAO.cs" />
     <Compile Include="HT\GiaoVienDAO.cs" />
+    <Compile Include="HT\HocSinhDAO.cs" />
     <Compile Include="HT\KhoiDAO.cs" />
     <Compile Include="HT\KiThiDAO.cs" />
     <Compile Include="HT\MaDeVaKhoiTrongKiThiDAO.cs" />

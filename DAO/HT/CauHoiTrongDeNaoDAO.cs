@@ -11,7 +11,7 @@ namespace DAO.HT
     
     public class CauHoiTrongDeNaoDAO
     {
-
+        DataContextDataContext DB = new DataContextDataContext();
         public List<CauHoiTrongDeNao> getAllCauHoiTrongDeNao()
         {
             /*
@@ -26,7 +26,7 @@ namespace DAO.HT
                 {
                     cauHoiTrongDeNaos.Add(mem);
                 }
-                return cauHoiTrongDeNaos;
+                return cauHoiTrongDeNaos.ToList();
             }
         }
 
@@ -60,6 +60,30 @@ namespace DAO.HT
                 }
                 return getAllCauHoiOnMaDe;
             }
+        }
+
+        public List<CauHoi> getAllCauHoiTrongDes(string MaDe, int MaKhoi)
+        {
+            /*
+             * Tìm Câu hỏi trong đề nào
+             * Nếu không tìm tấy Mã đề và mã khối  trong CSDL -> trả về null
+             * Nếu tìm thấy -> trả về Mã đề + List cau hỏi
+             */
+            
+                List<CauHoi> getAllCauHoiOnMaDe = new List<CauHoi>();
+                var findMaDe = from D in DB.CauHoiTrongDeNaos
+                               where D.MaDe == MaDe && D.MaKhoi == MaKhoi
+                               select D.CauHoi;
+                if (findMaDe.Count() == 0)
+                {
+                     return null;
+                }
+                foreach (var mem in findMaDe)
+                {
+                    
+                    getAllCauHoiOnMaDe.Add(mem);
+                }
+                 return getAllCauHoiOnMaDe.ToList();
         }
 
         public int InsertDeVaCauHoi(string MaDe,int MaCauHoi,int MaKhoi)

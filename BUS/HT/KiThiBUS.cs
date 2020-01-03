@@ -10,15 +10,15 @@ namespace BUS.HT
 {
     public class KiThiBUS
     {
-        KiThiDAO kiThiDAO = new KiThiDAO();
+        KyThiDAO kiThiDAO = new KyThiDAO();
 
         public int InsertKiThi(string MaKT, string TenKiThi, DateTime ThoiGianThi)
         {
-            return kiThiDAO.InsertKiThi(MaKT, TenKiThi, ThoiGianThi);
+            return kiThiDAO.InsertKyThi(MaKT, TenKiThi, ThoiGianThi);
         }
-        public KiThi GetOneKiThiCuoiCung(string KT)
+        public KyThi GetOneKiThiCuoiCung(string KT)
         {
-            return kiThiDAO.GetOneKiThiCuoiCung(KT);
+            return kiThiDAO.GetOneKyThiCuoiCung(KT);
         }
     }
 }

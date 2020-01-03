@@ -40,7 +40,7 @@ namespace GUI.GiaoVienGUII
         private void button1_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Bạn có muốn thêm kì thi", "Thông tin", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-            if(result == DialogResult.No)
+            if(result == DialogResult.Cancel)
             {
                 return;
             }
@@ -56,9 +56,14 @@ namespace GUI.GiaoVienGUII
                 return;
             }
             MessageBox.Show("Thành công", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            KiThi kiThi = kiThiBUS.GetOneKiThiCuoiCung(comboBoxThemKiThiKT.Text);
+            KyThi kiThi = kiThiBUS.GetOneKiThiCuoiCung(comboBoxThemKiThiKT.Text);
             DanhSachDeTrongKiThi danhSachDeTrongKiThi = new DanhSachDeTrongKiThi(kiThi);
             danhSachDeTrongKiThi.ShowDialog();
+        }
+
+        private void ThemKiThi_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -34,7 +34,7 @@
       <Column Name="DoKho" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
       <Association Name="De_CauHoiTrongDeNao" Member="CauHoiTrongDeNaos" ThisKey="MaDe,MaKhoi" OtherKey="MaDe,MaKhoi" Type="CauHoiTrongDeNao" />
       <Association Name="De_DeOnTap" Member="DeOnTaps" ThisKey="MaDe,MaKhoi" OtherKey="MaDe,MaKhoi" Type="DeOnTap" />
-      <Association Name="De_MaDeVaKhoiTrongKiThi" Member="MaDeVaKhoiTrongKiThis" ThisKey="MaDe,MaKhoi" OtherKey="MaDe,MaKhoi" Type="MaDeVaKhoiTrongKiThi" />
+      <Association Name="De_DeVaKhoiTrongKyThi" Member="DeVaKhoiTrongKyThis" ThisKey="MaDe,MaKhoi" OtherKey="MaDe,MaKhoi" Type="DeVaKhoiTrongKyThi" />
       <Association Name="Khoi_De" Member="Khoi" ThisKey="MaKhoi" OtherKey="MaKhoi" Type="Khoi" IsForeignKey="true" />
     </Type>
   </Table>
@@ -88,7 +88,7 @@
       <Column Name="MaDeVaKhoiTrongKiThi" Type="System.String" DbType="NChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="Diem" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Association Name="HocSinh_HocSinhTrongKiThi" Member="HocSinh" ThisKey="MaHocSinh" OtherKey="MaHocSinh" Type="HocSinh" IsForeignKey="true" />
-      <Association Name="MaDeVaKhoiTrongKiThi_HocSinhTrongKiThi" Member="MaDeVaKhoiTrongKiThi1" ThisKey="MaDeVaKhoiTrongKiThi" OtherKey="MaDeVaKhoiTrongKiThi1" Type="MaDeVaKhoiTrongKiThi" IsForeignKey="true" />
+      <Association Name="DeVaKhoiTrongKyThi_HocSinhTrongKiThi" Member="DeVaKhoiTrongKyThi" ThisKey="MaDeVaKhoiTrongKiThi" OtherKey="MaDeVaKhoiTrongKyThi" Type="DeVaKhoiTrongKyThi" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Khoi" Member="Khois">
@@ -101,14 +101,6 @@
       <Association Name="Khoi_Lop" Member="Lops" ThisKey="MaKhoi" OtherKey="MaKhoi" Type="Lop" />
     </Type>
   </Table>
-  <Table Name="dbo.KiThi" Member="KiThis">
-    <Type Name="KiThi">
-      <Column Name="MaKiThi" Type="System.String" DbType="NChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="TenKiThi" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
-      <Column Name="NgayThi" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Association Name="KiThi_MaDeVaKhoiTrongKiThi" Member="MaDeVaKhoiTrongKiThis" ThisKey="MaKiThi" OtherKey="MaKiThi" Type="MaDeVaKhoiTrongKiThi" />
-    </Type>
-  </Table>
   <Table Name="dbo.Lop" Member="Lops">
     <Type Name="Lop">
       <Column Name="MaLop" Type="System.String" DbType="NChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -118,15 +110,23 @@
       <Association Name="Khoi_Lop" Member="Khoi" ThisKey="MaKhoi" OtherKey="MaKhoi" Type="Khoi" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.MaDeVaKhoiTrongKiThi" Member="MaDeVaKhoiTrongKiThis">
-    <Type Name="MaDeVaKhoiTrongKiThi">
-      <Column Name="MaKiThi" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+  <Table Name="dbo.KyThi" Member="KyThis">
+    <Type Name="KyThi">
+      <Column Name="MaKyThi" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TenKyThi" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="NgayThi" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Association Name="KyThi_DeVaKhoiTrongKyThi" Member="DeVaKhoiTrongKyThis" ThisKey="MaKyThi" OtherKey="MaKyThi" Type="DeVaKhoiTrongKyThi" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DeVaKhoiTrongKyThi" Member="DeVaKhoiTrongKyThis">
+    <Type Name="DeVaKhoiTrongKyThi">
+      <Column Name="MaDeVaKhoiTrongKyThi" Type="System.String" DbType="NChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="MaDe" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
       <Column Name="MaKhoi" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="MaDeVaKhoiTrongKiThi" Member="MaDeVaKhoiTrongKiThi1" Type="System.String" DbType="NChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Association Name="MaDeVaKhoiTrongKiThi_HocSinhTrongKiThi" Member="HocSinhTrongKiThis" ThisKey="MaDeVaKhoiTrongKiThi1" OtherKey="MaDeVaKhoiTrongKiThi" Type="HocSinhTrongKiThi" />
-      <Association Name="De_MaDeVaKhoiTrongKiThi" Member="De" ThisKey="MaDe,MaKhoi" OtherKey="MaDe,MaKhoi" Type="De" IsForeignKey="true" />
-      <Association Name="KiThi_MaDeVaKhoiTrongKiThi" Member="KiThi" ThisKey="MaKiThi" OtherKey="MaKiThi" Type="KiThi" IsForeignKey="true" />
+      <Column Name="MaKyThi" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Association Name="DeVaKhoiTrongKyThi_HocSinhTrongKiThi" Member="HocSinhTrongKiThis" ThisKey="MaDeVaKhoiTrongKyThi" OtherKey="MaDeVaKhoiTrongKiThi" Type="HocSinhTrongKiThi" />
+      <Association Name="De_DeVaKhoiTrongKyThi" Member="De" ThisKey="MaDe,MaKhoi" OtherKey="MaDe,MaKhoi" Type="De" IsForeignKey="true" />
+      <Association Name="KyThi_DeVaKhoiTrongKyThi" Member="KyThi" ThisKey="MaKyThi" OtherKey="MaKyThi" Type="KyThi" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

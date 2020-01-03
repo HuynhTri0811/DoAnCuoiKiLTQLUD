@@ -33,8 +33,11 @@
             this.listViewDanhSachDeTheoMaKhoi = new System.Windows.Forms.ListView();
             this.label2 = new System.Windows.Forms.Label();
             this.txtMaKiThi = new System.Windows.Forms.TextBox();
-            this.danhsachCauHoi = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.danhsachCauHoi)).BeginInit();
+            this.btnLoadDanhSachCauHoi = new System.Windows.Forms.Button();
+            this.listViewDanhSachHocSinh = new System.Windows.Forms.ListView();
+            this.btnAddHocSInh = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // cbKhoi
@@ -58,9 +61,9 @@
             // listViewDanhSachDeTheoMaKhoi
             // 
             this.listViewDanhSachDeTheoMaKhoi.HideSelection = false;
-            this.listViewDanhSachDeTheoMaKhoi.Location = new System.Drawing.Point(12, 93);
+            this.listViewDanhSachDeTheoMaKhoi.Location = new System.Drawing.Point(12, 133);
             this.listViewDanhSachDeTheoMaKhoi.Name = "listViewDanhSachDeTheoMaKhoi";
-            this.listViewDanhSachDeTheoMaKhoi.Size = new System.Drawing.Size(340, 237);
+            this.listViewDanhSachDeTheoMaKhoi.Size = new System.Drawing.Size(340, 228);
             this.listViewDanhSachDeTheoMaKhoi.TabIndex = 2;
             this.listViewDanhSachDeTheoMaKhoi.UseCompatibleStateImageBehavior = false;
             this.listViewDanhSachDeTheoMaKhoi.SelectedIndexChanged += new System.EventHandler(this.listViewDanhSachDeTheoMaKhoi_SelectedIndexChanged);
@@ -83,21 +86,63 @@
             this.txtMaKiThi.Size = new System.Drawing.Size(177, 20);
             this.txtMaKiThi.TabIndex = 4;
             // 
-            // danhsachCauHoi
+            // btnLoadDanhSachCauHoi
             // 
-            this.danhsachCauHoi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.danhsachCauHoi.Enabled = false;
-            this.danhsachCauHoi.Location = new System.Drawing.Point(406, 93);
-            this.danhsachCauHoi.Name = "danhsachCauHoi";
-            this.danhsachCauHoi.Size = new System.Drawing.Size(772, 237);
-            this.danhsachCauHoi.TabIndex = 5;
+            this.btnLoadDanhSachCauHoi.Enabled = false;
+            this.btnLoadDanhSachCauHoi.Location = new System.Drawing.Point(367, 182);
+            this.btnLoadDanhSachCauHoi.Name = "btnLoadDanhSachCauHoi";
+            this.btnLoadDanhSachCauHoi.Size = new System.Drawing.Size(84, 23);
+            this.btnLoadDanhSachCauHoi.TabIndex = 6;
+            this.btnLoadDanhSachCauHoi.Text = "Chọn";
+            this.btnLoadDanhSachCauHoi.UseVisualStyleBackColor = true;
+            // 
+            // listViewDanhSachHocSinh
+            // 
+            this.listViewDanhSachHocSinh.CheckBoxes = true;
+            this.listViewDanhSachHocSinh.HideSelection = false;
+            this.listViewDanhSachHocSinh.Location = new System.Drawing.Point(457, 133);
+            this.listViewDanhSachHocSinh.Name = "listViewDanhSachHocSinh";
+            this.listViewDanhSachHocSinh.Size = new System.Drawing.Size(333, 344);
+            this.listViewDanhSachHocSinh.TabIndex = 7;
+            this.listViewDanhSachHocSinh.UseCompatibleStateImageBehavior = false;
+            // 
+            // btnAddHocSInh
+            // 
+            this.btnAddHocSInh.Location = new System.Drawing.Point(353, 494);
+            this.btnAddHocSInh.Name = "btnAddHocSInh";
+            this.btnAddHocSInh.Size = new System.Drawing.Size(98, 23);
+            this.btnAddHocSInh.TabIndex = 8;
+            this.btnAddHocSInh.Text = "Thêm vào kì thi";
+            this.btnAddHocSInh.UseVisualStyleBackColor = true;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(12, 117);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(92, 13);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "Danh sách mã đề";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(454, 117);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(102, 13);
+            this.label4.TabIndex = 10;
+            this.label4.Text = "Danh sách học sinh";
             // 
             // DanhSachDeTrongKiThi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1190, 415);
-            this.Controls.Add(this.danhsachCauHoi);
+            this.ClientSize = new System.Drawing.Size(854, 539);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.btnAddHocSInh);
+            this.Controls.Add(this.listViewDanhSachHocSinh);
+            this.Controls.Add(this.btnLoadDanhSachCauHoi);
             this.Controls.Add(this.txtMaKiThi);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.listViewDanhSachDeTheoMaKhoi);
@@ -106,7 +151,6 @@
             this.Name = "DanhSachDeTrongKiThi";
             this.Text = "Danh Sach Đề Thi Trong Kì Thi";
             this.Load += new System.EventHandler(this.DanhSachDeTrongKiThi_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.danhsachCauHoi)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -119,6 +163,10 @@
         private System.Windows.Forms.ListView listViewDanhSachDeTheoMaKhoi;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtMaKiThi;
-        private System.Windows.Forms.DataGridView danhsachCauHoi;
+        private System.Windows.Forms.Button btnLoadDanhSachCauHoi;
+        private System.Windows.Forms.ListView listViewDanhSachHocSinh;
+        private System.Windows.Forms.Button btnAddHocSInh;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
     }
 }
