@@ -127,7 +127,7 @@
             this.Controls.Add(this.lbNoiDungThongBao);
             this.Name = "HetGioForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "HetGioForm";
+            this.Text = "Kết quả";
             this.Load += new System.EventHandler(this.HetGioForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

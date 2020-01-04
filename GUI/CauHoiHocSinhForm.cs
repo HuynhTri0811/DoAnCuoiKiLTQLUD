@@ -210,20 +210,40 @@ namespace GUI
 
         private void btnNopBai_Click(object sender, EventArgs e)
         {
-            ChonDapAn();
-            double soDiem = TinhDiem();
-            double soCauDung = SoCauDung();
-            hocSinhBUS.AddKetQuaThiThu(hocSinhLogin.MaHocSinh, maDeDuocChon, maKhoiHS, soDiem);
-            HetGioForm hetGio = new HetGioForm(hocSinhLogin, stopTimer, soDiem, soCauDung, phut, giay);
-            this.Hide();
-            hetGio.ShowDialog();
-            this.Close();
-            Application.Exit();
+            DialogResult kq = MessageBox.Show("Bạn có chắc muốn nộp bài thi?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+            if (kq == DialogResult.Yes)
+            {
+                ChonDapAn();
+                double soDiem = TinhDiem();
+                double soCauDung = SoCauDung();
+                hocSinhBUS.AddKetQuaThiThu(hocSinhLogin.MaHocSinh, maDeDuocChon, maKhoiHS, soDiem);
+                HetGioForm hetGio = new HetGioForm(hocSinhLogin, stopTimer, soDiem, soCauDung, phut, giay);
+                this.Hide();
+                hetGio.ShowDialog();
+                this.Close();
+                Application.Exit();
+            }
+            else
+            {
+                return;
+            }           
         }
 
         private void btnBoBai_Click(object sender, EventArgs e)
         {
-
+            DialogResult kq = MessageBox.Show("Bạn có chắc muốn bỏ bài thi?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if(kq == DialogResult.Yes)
+            {
+                HocSinhGUI hocSinh = new HocSinhGUI(hocSinhLogin);
+                this.Hide();
+                hocSinh.ShowDialog();
+                this.Close();
+                Application.Exit();
+            }
+            else
+            {
+                return;
+            }
         }
     }
 }

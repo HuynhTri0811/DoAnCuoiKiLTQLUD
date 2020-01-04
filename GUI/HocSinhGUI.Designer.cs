@@ -244,7 +244,7 @@
             this.Controls.Add(this.lbXinChao);
             this.Name = "HocSinhGUI";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "HocSinhGUI";
+            this.Text = "Quản lý thông tin";
             this.Load += new System.EventHandler(this.HocSinhGUI_Load);
             this.tctrHocSinh.ResumeLayout(false);
             this.tpThongTinCaNhan.ResumeLayout(false);
