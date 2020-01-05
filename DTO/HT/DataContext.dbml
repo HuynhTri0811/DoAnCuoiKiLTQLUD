@@ -76,6 +76,7 @@
       <Column Name="Email" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="SDT" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
       <Column Name="MaKhoi" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Khoi_GiaoVien" Member="Khoi" ThisKey="MaKhoi" OtherKey="MaKhoi" Type="Khoi" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.HocSinh" Member="HocSinhs">
@@ -107,6 +108,8 @@
       <Column Name="TenKhoi" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Association Name="Khoi_CauHoi" Member="CauHois" ThisKey="MaKhoi" OtherKey="MaKhoi" Type="CauHoi" />
       <Association Name="Khoi_De" Member="Des" ThisKey="MaKhoi" OtherKey="MaKhoi" Type="De" />
+      <Association Name="Khoi_GiaoVien" Member="GiaoViens" ThisKey="MaKhoi" OtherKey="MaKhoi" Type="GiaoVien" />
+      <Association Name="Khoi_Lop" Member="Lops" ThisKey="MaKhoi" OtherKey="MaKhoi" Type="Lop" />
     </Type>
   </Table>
   <Table Name="dbo.KyThi" Member="KyThis">
@@ -123,6 +126,7 @@
       <Column Name="TenLop" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="MaKhoi" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="Lop_HocSinh" Member="HocSinhs" ThisKey="MaLop" OtherKey="MaLop" Type="HocSinh" />
+      <Association Name="Khoi_Lop" Member="Khoi" ThisKey="MaKhoi" OtherKey="MaKhoi" Type="Khoi" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

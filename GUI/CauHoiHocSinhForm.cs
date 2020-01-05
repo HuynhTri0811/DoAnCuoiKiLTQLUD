@@ -20,17 +20,22 @@ namespace GUI
         int maKhoiHS;
         HocSinhBUS hocSinhBUS = new HocSinhBUS();
         List<DeVaCauHoiDTO> dsCauHoi = new List<DeVaCauHoiDTO>();
+        List<DeVaCauHoiThiDTO> dsCauHoiThi = new List<DeVaCauHoiThiDTO>();
         int next = 0;
         string[] dapAn = new string[15];
         int phut = 7;
         int giay = 30;
+        string loai;
+
+        //để dừng timer bên form kết quả
         public delegate void SendMassage();
-        public CauHoiHocSinhForm(HocSinh hocSinh, string maDe, int maKhoi)
+        public CauHoiHocSinhForm(HocSinh hocSinh, string maDe, int maKhoi, string loaiThi)
         {
             InitializeComponent();
             hocSinhLogin = hocSinh;
             maDeDuocChon = maDe;
             maKhoiHS = maKhoi;
+            loai = loaiThi;
         }
 
         private void CauHoiHocSinhForm_Load(object sender, EventArgs e)
@@ -50,60 +55,121 @@ namespace GUI
         }
 
         private void LoadFormCauHoiHS()
-        {            
-            dsCauHoi = hocSinhBUS.LayDeTheoMaDe(maDeDuocChon);
-            string cauSo = "Câu số " + dsCauHoi[next].MaCauHoi.ToString() + ":";
-            lbCauSo.Text = cauSo;
-            lbNoiDung.Text = dsCauHoi[next].NoiDung;
-            if(next == 0)
+        {
+            if(loai == "ThiThu")
             {
-                btnCauTruoc.Enabled = false;
-            }
-            else
-            {
-                btnCauTruoc.Enabled = true;
-            }
-
-            if(next >= 14)
-            {
-                btnCauSau.Enabled = false;
-            }
-            else
-            {
-                btnCauSau.Enabled = true;
-            }
-
-            if(dapAn[next] != "")
-            {
-                if(dapAn[next] == "A")
+                dsCauHoi = hocSinhBUS.LayDeTheoMaDe(maDeDuocChon);
+                string cauSo = "Câu số " + dsCauHoi[next].MaCauHoi.ToString() + ":";
+                lbCauSo.Text = cauSo;
+                lbNoiDung.Text = dsCauHoi[next].NoiDung;
+                if (next == 0)
                 {
-                    rdbtnCauA.Checked = true;
+                    btnCauTruoc.Enabled = false;
                 }
-                else if (dapAn[next] == "B")
+                else
+                {
+                    btnCauTruoc.Enabled = true;
+                }
+
+                if (next >= 14)
+                {
+                    btnCauSau.Enabled = false;
+                }
+                else
+                {
+                    btnCauSau.Enabled = true;
+                }
+
+                if (dapAn[next] != "")
+                {
+                    if (dapAn[next] == "A")
+                    {
+                        rdbtnCauA.Checked = true;
+                    }
+                    else if (dapAn[next] == "B")
                     {
                         rdbtnCauB.Checked = true;
                     }
                     else if (dapAn[next] == "C")
-                        {
-                            rdbtnCauC.Checked = true;
-                        }
-                        else
-                        {
-                            rdbtnCauD.Checked = true;
-                        }
-            }
-            else
-            {
-                rdbtnCauA.Checked = false;
-                rdbtnCauB.Checked = false;
-                rdbtnCauC.Checked = false;
-                rdbtnCauD.Checked = false;
-            }
+                    {
+                        rdbtnCauC.Checked = true;
+                    }
+                    else
+                    {
+                        rdbtnCauD.Checked = true;
+                    }
+                }
+                else
+                {
+                    rdbtnCauA.Checked = false;
+                    rdbtnCauB.Checked = false;
+                    rdbtnCauC.Checked = false;
+                    rdbtnCauD.Checked = false;
+                }
 
-            rdbtnCauA.Text = dsCauHoi[next].CauA;
-            rdbtnCauB.Text = dsCauHoi[next].CauB;
-            rdbtnCauC.Text = dsCauHoi[next].CauC;
-            rdbtnCauD.Text = dsCauHoi[next].CauD;
+                rdbtnCauA.Text = dsCauHoi[next].CauA;
+                rdbtnCauB.Text = dsCauHoi[next].CauB;
+                rdbtnCauC.Text = dsCauHoi[next].CauC;
+                rdbtnCauD.Text = dsCauHoi[next].CauD;
+            }
+            
+            if(loai == "Thi")
+            {
+                dsCauHoiThi = hocSinhBUS.FindDeVaCauHoiTrongKyThi(hocSinhLogin.MaHocSinh);
+                string cauSo = "Câu số " + dsCauHoiThi[next].MaCauHoi.ToString() + ":";
+                lbCauSo.Text = cauSo;
+                lbNoiDung.Text = dsCauHoiThi[next].NoiDung;
+                if (next == 0)
+                {
+                    btnCauTruoc.Enabled = false;
+                }
+                else
+                {
+                    btnCauTruoc.Enabled = true;
+                }
+
+                if (next >= 14)
+                {
+                    btnCauSau.Enabled = false;
+                }
+                else
+                {
+                    btnCauSau.Enabled = true;
+                }
+
+                if (dapAn[next] != "")
+                {
+                    if (dapAn[next] == "A")
+                    {
+                        rdbtnCauA.Checked = true;
+                    }
+                    else if (dapAn[next] == "B")
+                    {
+                        rdbtnCauB.Checked = true;
+                    }
+                    else if (dapAn[next] == "C")
+                    {
+                        rdbtnCauC.Checked = true;
+                    }
+                    else
+                    {
+                        rdbtnCauD.Checked = true;
+                    }
+                }
+                else
+                {
+                    rdbtnCauA.Checked = false;
+                    rdbtnCauB.Checked = false;
+                    rdbtnCauC.Checked = false;
+                    rdbtnCauD.Checked = false;
+                }
+
+                rdbtnCauA.Text = "A. " + dsCauHoiThi[next].CauA;
+                rdbtnCauB.Text = "B. " + dsCauHoiThi[next].CauB;
+                rdbtnCauC.Text = "C. " + dsCauHoiThi[next].CauC;
+                rdbtnCauD.Text = "D. " + dsCauHoiThi[next].CauD;
+            }            
+            
         }
 
         public void ChonDapAn()
@@ -155,26 +221,56 @@ namespace GUI
         public double TinhDiem()
         {
             double diem = 0;
-            for(int i = 0; i < 15; i++)
+            if(loai == "ThiThu")
             {
-                if(dapAn[i] == dsCauHoi[i].CauDung.Substring(0,1))
+                for (int i = 0; i < 15; i++)
                 {
-                    diem += (1 / 1.5);
+                    if (dapAn[i] == dsCauHoi[i].CauDung.Substring(0, 1))
+                    {
+                        diem += (1 / 1.5);
+                    }
                 }
             }
+
+            if(loai == "Thi")
+            {
+                for (int i = 0; i < 15; i++)
+                {
+                    if (dapAn[i] == dsCauHoiThi[i].CauDung.Substring(0, 1))
+                    {
+                        diem += (1 / 1.5);
+                    }
+                }
+            }
+            
             return diem;
         }
 
         public int SoCauDung()
         {
             int caudung = 0;
-            for (int i = 0; i < 15; i++)
+            if(loai == "ThiThu")
             {
-                if (dapAn[i] == dsCauHoi[i].CauDung.Substring(0, 1))
+                for (int i = 0; i < 15; i++)
                 {
-                    caudung ++;
+                    if (dapAn[i] == dsCauHoi[i].CauDung.Substring(0, 1))
+                    {
+                        caudung++;
+                    }
                 }
             }
+
+            if(loai == "Thi")
+            {
+                for (int i = 0; i < 15; i++)
+                {
+                    if (dapAn[i] == dsCauHoiThi[i].CauDung.Substring(0, 1))
+                    {
+                        caudung++;
+                    }
+                }
+            }
+           
             return caudung;
         }
 
@@ -196,15 +292,32 @@ namespace GUI
 
             if(phut < 0)
             {
-                ChonDapAn();
-                double soDiem = TinhDiem();
-                int soCauDung = SoCauDung();
-                hocSinhBUS.AddKetQuaThiThu(hocSinhLogin.MaHocSinh, maDeDuocChon, maKhoiHS, soDiem);
-                HetGioForm hetGio = new HetGioForm(hocSinhLogin, stopTimer, soDiem, soCauDung, phut, giay);
-                this.Hide();
-                hetGio.ShowDialog();
-                this.Close();
-                Application.Exit();
+                if(loai == "ThiThu")
+                {
+                    ChonDapAn();
+                    double soDiem = TinhDiem();
+                    int soCauDung = SoCauDung();
+                    hocSinhBUS.AddKetQuaThiThu(hocSinhLogin.MaHocSinh, maDeDuocChon, maKhoiHS, soDiem);
+                    HetGioForm hetGio = new HetGioForm(hocSinhLogin, stopTimer, soDiem, soCauDung, phut, giay, loai);
+                    this.Hide();
+                    hetGio.ShowDialog();
+                    this.Close();
+                    Application.Exit();
+                }
+                
+                if(loai == "Thi")
+                {
+                    ChonDapAn();
+                    double soDiem = TinhDiem();
+                    int soCauDung = SoCauDung();
+                    string maDeVaKhoiTrongKyThi = dsCauHoiThi[0].MaDeVaKhoiTrongKyThi;
+                    hocSinhBUS.AddKetQuaThi(hocSinhLogin.MaHocSinh, maDeVaKhoiTrongKyThi, soDiem);
+                    HetGioForm hetGio = new HetGioForm(hocSinhLogin, stopTimer, soDiem, soCauDung, phut, giay, loai);
+                    this.Hide();
+                    hetGio.ShowDialog();
+                    this.Close();
+                    Application.Exit();
+                }
             }
         }
 
@@ -216,8 +329,16 @@ namespace GUI
                 ChonDapAn();
                 double soDiem = TinhDiem();
                 double soCauDung = SoCauDung();
-                hocSinhBUS.AddKetQuaThiThu(hocSinhLogin.MaHocSinh, maDeDuocChon, maKhoiHS, soDiem);
-                HetGioForm hetGio = new HetGioForm(hocSinhLogin, stopTimer, soDiem, soCauDung, phut, giay);
+                if(loai == "ThiThu")
+                {
+                    hocSinhBUS.AddKetQuaThiThu(hocSinhLogin.MaHocSinh, maDeDuocChon, maKhoiHS, soDiem);
+                }
+                if(loai == "Thi")
+                {
+                    string maDeVaKhoiTrongKyThi = dsCauHoiThi[0].MaDeVaKhoiTrongKyThi;
+                    hocSinhBUS.AddKetQuaThi(hocSinhLogin.MaHocSinh, maDeVaKhoiTrongKyThi, soDiem);
+                }                
+                HetGioForm hetGio = new HetGioForm(hocSinhLogin, stopTimer, soDiem, soCauDung, phut, giay, loai);
                 this.Hide();
                 hetGio.ShowDialog();
                 this.Close();
@@ -231,7 +352,7 @@ namespace GUI
 
         private void btnBoBai_Click(object sender, EventArgs e)
         {
-            DialogResult kq = MessageBox.Show("Bạn có chắc muốn bỏ bài thi?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            DialogResult kq = MessageBox.Show("Bạn có chắc muốn bỏ bài thi? Bài thi này sẽ không được ghi vào trong lịch sử thi!", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if(kq == DialogResult.Yes)
             {
                 HocSinhGUI hocSinh = new HocSinhGUI(hocSinhLogin);

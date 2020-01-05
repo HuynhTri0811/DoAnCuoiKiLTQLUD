@@ -19,7 +19,8 @@ namespace GUI
         double soCauDungHS;
         int phutHS;
         int giayHS;
-        public HetGioForm(HocSinh hocSinh, CauHoiHocSinhForm.SendMassage send, double soDiem, double soCauDung, int phut, int giay)
+        string loai;
+        public HetGioForm(HocSinh hocSinh, CauHoiHocSinhForm.SendMassage send, double soDiem, double soCauDung, int phut, int giay, string loaiThi)
         {
             InitializeComponent();
             hocSinhLogin = hocSinh;
@@ -28,6 +29,7 @@ namespace GUI
             soCauDungHS = soCauDung;
             phutHS = phut;
             giayHS = giay;
+            loai = loaiThi;
         }
 
         private void btnQuayLai_Click(object sender, EventArgs e)
@@ -42,20 +44,39 @@ namespace GUI
         private void HetGioForm_Load(object sender, EventArgs e)
         {
             this.functionSend();
-            if(phutHS < 0)
+            if(loai == "ThiThu")
             {
-                lbNoiDungThongBao.Text = "Đã hết thời gian!";
-                lbThoiGianLamBai.Text = "";
-                lbThoiGian.Text = "";
+                if (phutHS < 0)
+                {
+                    lbNoiDungThongBao.Text = "Đã hết thời gian!";
+                    lbThoiGianLamBai.Text = "";
+                    lbThoiGian.Text = "";
+                }
+                else
+                {
+                    lbNoiDungThongBao.Text = "Kết quả bài thi";
+                    lbThoiGian.Text = (10 - phutHS).ToString() + " phút, " + (60 - giayHS).ToString() + " giây";
+                }
+                lbSoCauDung.Text = soCauDungHS.ToString("00") + "/15";
+                lbSoDiem.Text = soDiemHS.ToString("0.00") + " điểm";
             }
-            else
-            {
-                lbNoiDungThongBao.Text = "Kết quả bài thi";
-                lbThoiGian.Text = (10 - phutHS).ToString() + " phút, " + (60 - giayHS).ToString() + " giây";
-            }
-            lbSoCauDung.Text = soCauDungHS.ToString("00") + "/15";
-            lbSoDiem.Text = soDiemHS.ToString("0.00") + " điểm";
             
+            if(loai == "Thi")
+            {
+                if (phutHS < 0)
+                {
+                    lbNoiDungThongBao.Text = "Đã hết thời gian thi!";
+                    lbThoiGianLamBai.Text = "";
+                    lbThoiGian.Text = "";
+                }
+                else
+                {
+                    lbNoiDungThongBao.Text = "Kết quả bài thi";
+                    lbThoiGian.Text = (10 - phutHS).ToString() + " phút, " + (60 - giayHS).ToString() + " giây";
+                }
+                lbSoCauDung.Text = soCauDungHS.ToString("00") + "/15";
+                lbSoDiem.Text = soDiemHS.ToString("0.00") + " điểm";
+            }
         }
     }
 }

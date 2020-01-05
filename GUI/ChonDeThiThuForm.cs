@@ -132,7 +132,7 @@ namespace GUI
         {
             string maDe = cbbChonDeThi.SelectedValue.ToString();
             int maKhoi = hocSinhBUS.LayMaKhoiTheoMaDe(maDe);
-            CauHoiHocSinhForm chHocSinh = new CauHoiHocSinhForm(hocSinhLogin, maDe, maKhoi);
+            CauHoiHocSinhForm chHocSinh = new CauHoiHocSinhForm(hocSinhLogin, maDe, maKhoi, "ThiThu");
             this.Hide();
             chHocSinh.ShowDialog();
             this.Close();

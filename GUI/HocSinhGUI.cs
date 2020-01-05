@@ -67,7 +67,11 @@ namespace GUI
 
         private void btnThi_Click(object sender, EventArgs e)
         {
-
+            CauHoiHocSinhForm chHocSinh = new CauHoiHocSinhForm(hocSinhLogin, "", 0, "Thi");
+            this.Hide();
+            chHocSinh.ShowDialog();
+            this.Close();
+            Application.Exit();
         }
     }
 }

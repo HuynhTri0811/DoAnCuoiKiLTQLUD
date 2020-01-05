@@ -124,12 +124,43 @@ namespace BUS.HS
             }
         }
 
+        //thêm kết quả thi thử vào database
         public Boolean AddKetQuaThiThu(string maHS, string maDe, int maKhoi, double diem)
         {
             HocSinhDAO hocSinh = new HocSinhDAO();
             try
             {
                 return hocSinh.AddKetQuaThiThu(maHS, maDe, maKhoi, diem);
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+        }
+
+        //tìm kỳ thi cho học sinh theo mã
+        public List<DeVaCauHoiThiDTO> FindDeVaCauHoiTrongKyThi(string maHS)
+        {
+            HocSinhDAO hocSinh = new HocSinhDAO();
+
+            try
+            {
+                return hocSinh.FindDeVaCauHoiTrongKyThi(maHS);
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+        }
+
+        //thêm kết quả thi vào database
+        public void AddKetQuaThi(string maHS, string maDeVaKhoiTrongKyThi, double diem)
+        {
+            HocSinhDAO hocSinh = new HocSinhDAO();
+
+            try
+            {
+                hocSinh.AddKetQuaThi(maHS, maDeVaKhoiTrongKyThi, diem);
             }
             catch (Exception Ex)
             {

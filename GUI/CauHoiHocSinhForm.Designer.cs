@@ -110,7 +110,7 @@
             // 
             this.lbNoiDung.AutoSize = true;
             this.lbNoiDung.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbNoiDung.Location = new System.Drawing.Point(89, 81);
+            this.lbNoiDung.Location = new System.Drawing.Point(103, 81);
             this.lbNoiDung.Name = "lbNoiDung";
             this.lbNoiDung.Size = new System.Drawing.Size(56, 15);
             this.lbNoiDung.TabIndex = 1;

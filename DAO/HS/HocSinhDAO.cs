@@ -301,6 +301,7 @@ namespace DAO.HS
             }
         }
 
+        //thêm kết quả thi thử vào database
         public Boolean AddKetQuaThiThu(string maHS, string maDe, int maKhoi, double diem)
         {
             DeOnTap DeOT = new DeOnTap();
@@ -332,6 +333,76 @@ namespace DAO.HS
                 }
 
                 return true;
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+        }
+
+        //tìm kỳ thi cho học sinh theo mã
+        public List<DeVaCauHoiThiDTO> FindDeVaCauHoiTrongKyThi(string maHS)
+        {
+            List<DeVaCauHoiThiDTO> dsCauHoiThi = new List<DeVaCauHoiThiDTO>();
+
+            try
+            {
+                var query = (from hs in db.HocSinhs
+                             join hstkt in db.HocSinhTrongKiThis on hs.MaHocSinh equals hstkt.MaHocSinh
+                             join dvktkt in db.DeVaKhoiTrongKyThis on hstkt.MaDeVaKhoiTrongKiThi equals dvktkt.MaDeVaKhoiTrongKyThi                             
+                             join d in db.Des on new { dvktkt.MaDe, dvktkt.MaKhoi }  equals new { d.MaDe, d.MaKhoi }
+                             join chtdn in db.CauHoiTrongDeNaos on new { d.MaDe, d.MaKhoi } equals new { chtdn.MaDe, chtdn.MaKhoi }
+                             join ch in db.CauHois on chtdn.MaCauHoi equals ch.MaCauHoi
+                             join dk in db.DoKhos on ch.DoKho equals dk.maDoKho
+                             join kt in db.KyThis on dvktkt.MaKyThi equals kt.MaKyThi
+                             where hs.MaHocSinh == maHS
+                             select new { kt.MaKyThi, kt.TenKyThi, kt.NgayThi, hstkt.MaDeVaKhoiTrongKiThi, d.MaDe, d.TenDe, dk.TenDoKho, d.MaKhoi, ch.MaCauHoi, ch.NoiDung, ch.CauA, ch.CauB, ch.CauC, ch.CauD, ch.CauDung }).Distinct();
+                if(query.Count() == 0)
+                {
+                    dsCauHoiThi = null;
+                }
+
+                foreach(var q in query)
+                {
+                    DeVaCauHoiThiDTO deThi = new DeVaCauHoiThiDTO();
+
+                    deThi.MaKyThi = q.MaKyThi;
+                    deThi.TenKyThi = q.TenKyThi;
+                    deThi.NgayThi = q.NgayThi;
+                    deThi.MaDeVaKhoiTrongKyThi = q.MaDeVaKhoiTrongKiThi;
+                    deThi.MaDe = q.MaDe;
+                    deThi.TenDe = q.TenDe;
+                    deThi.DoKho = q.TenDoKho;
+                    deThi.MaKhoi = q.MaKhoi;
+                    deThi.MaCauHoi = q.MaCauHoi;
+                    deThi.NoiDung = q.NoiDung;
+                    deThi.CauA = q.CauA;
+                    deThi.CauB = q.CauB;
+                    deThi.CauC = q.CauC;
+                    deThi.CauD = q.CauD;
+                    deThi.CauDung = q.CauDung;
+
+                    dsCauHoiThi.Add(deThi);
+                }
+
+                return dsCauHoiThi;
+                
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+        }
+
+        //thêm kết quả thi vào database
+        public void AddKetQuaThi(string maHS, string maDeVaKhoiTrongKyThi, double diem)
+        {
+            try
+            {
+                HocSinhTrongKiThi hsTrongKyThi = db.HocSinhTrongKiThis.Single(h => (h.MaHocSinh == maHS) && (h.MaDeVaKhoiTrongKiThi == maDeVaKhoiTrongKyThi));
+                hsTrongKyThi.Diem = diem;
+
+                db.SubmitChanges();
             }
             catch (Exception Ex)
             {
