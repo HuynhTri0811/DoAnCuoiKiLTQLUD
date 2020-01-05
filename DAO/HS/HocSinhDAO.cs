@@ -368,7 +368,7 @@ namespace DAO.HS
 
                     deThi.MaKyThi = q.MaKyThi;
                     deThi.TenKyThi = q.TenKyThi;
-                    deThi.NgayThi = q.NgayThi;
+                    deThi.NgayThi = q.NgayThi.GetValueOrDefault();
                     deThi.MaDeVaKhoiTrongKyThi = q.MaDeVaKhoiTrongKiThi;
                     deThi.MaDe = q.MaDe;
                     deThi.TenDe = q.TenDe;

@@ -31,6 +31,7 @@
             this.txtNoiDungCauHoi = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnCauHoi = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.cbCauDung = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -46,7 +47,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnCauHoi = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -63,7 +63,7 @@
             this.label1.BackColor = System.Drawing.Color.RoyalBlue;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Lime;
-            this.label1.Location = new System.Drawing.Point(254, 20);
+            this.label1.Location = new System.Drawing.Point(254, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(283, 51);
             this.label1.TabIndex = 1;
@@ -89,13 +89,25 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.txtNoiDungCauHoi);
-            this.groupBox1.Location = new System.Drawing.Point(12, 74);
+            this.groupBox1.Location = new System.Drawing.Point(12, 63);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(743, 392);
+            this.groupBox1.Size = new System.Drawing.Size(743, 341);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Chi tiết thêm câu hỏi";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // btnCauHoi
+            // 
+            this.btnCauHoi.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCauHoi.ForeColor = System.Drawing.Color.Red;
+            this.btnCauHoi.Location = new System.Drawing.Point(248, 275);
+            this.btnCauHoi.Name = "btnCauHoi";
+            this.btnCauHoi.Size = new System.Drawing.Size(277, 54);
+            this.btnCauHoi.TabIndex = 18;
+            this.btnCauHoi.Text = "Thêm câu hỏi";
+            this.btnCauHoi.UseVisualStyleBackColor = true;
+            this.btnCauHoi.Click += new System.EventHandler(this.btnCauHoi_Click);
             // 
             // label9
             // 
@@ -221,24 +233,12 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Nội dung câu hỏi :";
             // 
-            // btnCauHoi
-            // 
-            this.btnCauHoi.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCauHoi.ForeColor = System.Drawing.Color.Red;
-            this.btnCauHoi.Location = new System.Drawing.Point(248, 299);
-            this.btnCauHoi.Name = "btnCauHoi";
-            this.btnCauHoi.Size = new System.Drawing.Size(277, 54);
-            this.btnCauHoi.TabIndex = 18;
-            this.btnCauHoi.Text = "Thêm câu hỏi";
-            this.btnCauHoi.UseVisualStyleBackColor = true;
-            this.btnCauHoi.Click += new System.EventHandler(this.btnCauHoi_Click);
-            // 
             // AddCauHoi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(781, 478);
+            this.ClientSize = new System.Drawing.Size(785, 540);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label1);
             this.Name = "AddCauHoi";

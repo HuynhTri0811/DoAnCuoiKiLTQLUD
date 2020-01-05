@@ -69,7 +69,7 @@ namespace DTO.HT
     #endregion
 		
 		public DataContextDataContext() : 
-				base(global::DTO.Properties.Settings.Default.QuanLyTracNghiemHocSinh_LTQLUDConnectionString2, mappingSource)
+				base(global::DTO.Properties.Settings.Default.QuanLyTracNghiemHocSinh_LTQLUDConnectionString1, mappingSource)
 		{
 			OnCreated();
 		}
@@ -2600,7 +2600,7 @@ namespace DTO.HT
 		
 		private string _TenKyThi;
 		
-		private DateTime _NgayThi;
+		private System.Nullable<System.DateTime> _NgayThi;
 		
 		private EntitySet<DeVaKhoiTrongKyThi> _DeVaKhoiTrongKyThis;
 		
@@ -2663,7 +2663,7 @@ namespace DTO.HT
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgayThi", DbType="Date")]
-		public DateTime NgayThi
+		public System.Nullable<System.DateTime> NgayThi
 		{
 			get
 			{
