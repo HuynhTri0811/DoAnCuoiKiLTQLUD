@@ -157,13 +157,33 @@ namespace DAO.HS
             }
         }
 
-        public List<DeVaCauHoiDTO> GetAllDeThi()
+        public int LayMaKhoi(string maHS)
         {
+            try
+            {
+                int maKhoi = -1;
+                var query = from hs in db.HocSinhs
+                            join l in db.Lops on hs.MaLop equals l.MaLop
+                            join k in db.Khois on l.MaKhoi equals k.MaKhoi
+                            where hs.MaHocSinh == maHS
+                            select k.MaKhoi;
+                maKhoi = query.Single();
+                return maKhoi;               
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+        }
+        public List<DeVaCauHoiDTO> GetAllDeThi(string maHS)
+        {
+            int maKhoi = this.LayMaKhoi(maHS);
             try
             {
                 var tatCaDeThi = (from de in db.Des
                                  join  chinde in db.CauHoiTrongDeNaos on de.MaDe equals chinde.MaDe
                                  join ch in db.CauHois on chinde.MaCauHoi equals ch.MaCauHoi
+                                 where de.MaKhoi == maKhoi
                                  orderby de.MaDe
                                  select new {de.MaDe, de.TenDe, de.DoKho, de.MaKhoi, ch.MaCauHoi, ch.NoiDung, ch.CauA, ch.CauB, ch.CauC, ch.CauD, ch.CauDung});
 
@@ -200,7 +220,7 @@ namespace DAO.HS
             }
         }
 
-        public List<De> LayDanhSachDe(string doKho)
+        public List<De> LayDanhSachDe(string doKho, string maHS)
         {
             List<De> danhSachDe = new List<De>();
 
@@ -210,10 +230,11 @@ namespace DAO.HS
             }
             else
             {
+                int maKhoi = this.LayMaKhoi(maHS);
                 try
                 {
                     var dsDe = (from d in db.Des
-                                where d.DoKho == doKho
+                                where d.DoKho == doKho && d.MaKhoi == maKhoi
                                 select d);
 
                     if(dsDe.Count() == 0)
@@ -475,6 +496,29 @@ namespace DAO.HS
                              join kt in db.KyThis on dvktkt.MaKyThi equals kt.MaKyThi
                              where hs.MaHocSinh == maHS
                              select new { kt.MaKyThi, kt.TenKyThi, kt.NgayThi, hstkt.Diem }).Distinct();
+                if (query.Count() == 0)
+                {
+                    return null;
+                }
+                return query;
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+        }
+
+        //lấy lịch thi
+        public IQueryable GetLichThi(string maHS)
+        {
+            try
+            {
+                var query = (from hs in db.HocSinhs
+                             join hstkt in db.HocSinhTrongKiThis on hs.MaHocSinh equals hstkt.MaHocSinh
+                             join dvktkt in db.DeVaKhoiTrongKyThis on hstkt.MaDeVaKhoiTrongKiThi equals dvktkt.MaDeVaKhoiTrongKyThi
+                             join kt in db.KyThis on dvktkt.MaKyThi equals kt.MaKyThi
+                             where hs.MaHocSinh == maHS && kt.NgayThi >= DateTime.Now.Date
+                             select new { kt.TenKyThi, kt.NgayThi }).Distinct();
                 if (query.Count() == 0)
                 {
                     return null;

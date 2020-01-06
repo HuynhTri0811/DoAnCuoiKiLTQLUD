@@ -47,6 +47,7 @@ namespace GUI
             dgvThiThu.Columns[3].DefaultCellStyle.Format = "N2";
             dgvKetQuaThi.DataSource = hocSinhBUS.GetAllLichSuKetQuaThi(hocSinhLogin.MaHocSinh);
             dgvKetQuaThi.Columns[3].DefaultCellStyle.Format = "N2";
+            dgvXemLichThi.DataSource = hocSinhBUS.GetLichThi(hocSinhLogin.MaHocSinh);
         }
         private void btnDangXuat_Click(object sender, EventArgs e)
         {

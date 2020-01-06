@@ -63,11 +63,11 @@ namespace BUS.HS
             }
         }
 
-        public List<DeVaCauHoiDTO> GetAllDeThi()
+        public List<DeVaCauHoiDTO> GetAllDeThi(string maHS)
         {
             try
             {
-                return hocSinh.GetAllDeThi();
+                return hocSinh.GetAllDeThi(maHS);
             }
             catch (Exception Ex)
             {
@@ -75,11 +75,11 @@ namespace BUS.HS
             }
         }
 
-        public List<De> LayDanhSachDe(string doKho)
+        public List<De> LayDanhSachDe(string doKho, string maHS)
         {
             try
             {
-                return hocSinh.LayDanhSachDe(doKho);
+                return hocSinh.LayDanhSachDe(doKho, maHS);
             }
             catch (Exception Ex)
             {
@@ -183,6 +183,18 @@ namespace BUS.HS
             try
             {
                 return hocSinh.GetAllLichSuKetQuaThi(maHS);
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+        }
+
+        public IQueryable GetLichThi(string maHS)
+        {
+            try
+            {
+                return hocSinh.GetLichThi(maHS);
             }
             catch (Exception Ex)
             {

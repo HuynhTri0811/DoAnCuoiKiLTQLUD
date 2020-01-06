@@ -43,31 +43,37 @@
             this.lbMaHocSinh = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tpLichSuThi = new System.Windows.Forms.TabPage();
-            this.tpThi = new System.Windows.Forms.TabPage();
-            this.btnThi = new System.Windows.Forms.Button();
-            this.btnThiThu = new System.Windows.Forms.Button();
             this.tctrLichSuThi = new System.Windows.Forms.TabControl();
             this.tpThiThu = new System.Windows.Forms.TabPage();
-            this.tpKetQuaThi = new System.Windows.Forms.TabPage();
             this.dgvThiThu = new System.Windows.Forms.DataGridView();
             this.MaDe = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MaKhoi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NgayGioiHan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Diem = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tpKetQuaThi = new System.Windows.Forms.TabPage();
             this.dgvKetQuaThi = new System.Windows.Forms.DataGridView();
             this.MaKyThi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TenKyThi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NgayThi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DiemThi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tpThi = new System.Windows.Forms.TabPage();
+            this.btnThi = new System.Windows.Forms.Button();
+            this.btnThiThu = new System.Windows.Forms.Button();
+            this.tpXemLichThi = new System.Windows.Forms.TabPage();
+            this.dgvXemLichThi = new System.Windows.Forms.DataGridView();
+            this.TenKyThiLT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NgayThiLT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tctrHocSinh.SuspendLayout();
             this.tpThongTinCaNhan.SuspendLayout();
             this.tpLichSuThi.SuspendLayout();
-            this.tpThi.SuspendLayout();
             this.tctrLichSuThi.SuspendLayout();
             this.tpThiThu.SuspendLayout();
-            this.tpKetQuaThi.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvThiThu)).BeginInit();
+            this.tpKetQuaThi.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKetQuaThi)).BeginInit();
+            this.tpThi.SuspendLayout();
+            this.tpXemLichThi.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvXemLichThi)).BeginInit();
             this.SuspendLayout();
             // 
             // lbXinChao
@@ -103,6 +109,7 @@
             this.tctrHocSinh.Controls.Add(this.tpThongTinCaNhan);
             this.tctrHocSinh.Controls.Add(this.tpLichSuThi);
             this.tctrHocSinh.Controls.Add(this.tpThi);
+            this.tctrHocSinh.Controls.Add(this.tpXemLichThi);
             this.tctrHocSinh.Location = new System.Drawing.Point(15, 41);
             this.tctrHocSinh.Name = "tctrHocSinh";
             this.tctrHocSinh.SelectedIndex = 0;
@@ -221,38 +228,6 @@
             this.tpLichSuThi.Text = "Lịch sử thi";
             this.tpLichSuThi.UseVisualStyleBackColor = true;
             // 
-            // tpThi
-            // 
-            this.tpThi.Controls.Add(this.btnThi);
-            this.tpThi.Controls.Add(this.btnThiThu);
-            this.tpThi.Location = new System.Drawing.Point(4, 22);
-            this.tpThi.Name = "tpThi";
-            this.tpThi.Padding = new System.Windows.Forms.Padding(3);
-            this.tpThi.Size = new System.Drawing.Size(565, 240);
-            this.tpThi.TabIndex = 2;
-            this.tpThi.Text = "Thi";
-            this.tpThi.UseVisualStyleBackColor = true;
-            // 
-            // btnThi
-            // 
-            this.btnThi.Location = new System.Drawing.Point(7, 45);
-            this.btnThi.Name = "btnThi";
-            this.btnThi.Size = new System.Drawing.Size(75, 23);
-            this.btnThi.TabIndex = 1;
-            this.btnThi.Text = "Thi";
-            this.btnThi.UseVisualStyleBackColor = true;
-            this.btnThi.Click += new System.EventHandler(this.btnThi_Click);
-            // 
-            // btnThiThu
-            // 
-            this.btnThiThu.Location = new System.Drawing.Point(7, 7);
-            this.btnThiThu.Name = "btnThiThu";
-            this.btnThiThu.Size = new System.Drawing.Size(75, 23);
-            this.btnThiThu.TabIndex = 0;
-            this.btnThiThu.Text = "Thi thử";
-            this.btnThiThu.UseVisualStyleBackColor = true;
-            this.btnThiThu.Click += new System.EventHandler(this.btnThiThu_Click);
-            // 
             // tctrLichSuThi
             // 
             this.tctrLichSuThi.Controls.Add(this.tpThiThu);
@@ -273,17 +248,6 @@
             this.tpThiThu.TabIndex = 0;
             this.tpThiThu.Text = "Thi thử";
             this.tpThiThu.UseVisualStyleBackColor = true;
-            // 
-            // tpKetQuaThi
-            // 
-            this.tpKetQuaThi.Controls.Add(this.dgvKetQuaThi);
-            this.tpKetQuaThi.Location = new System.Drawing.Point(4, 22);
-            this.tpKetQuaThi.Name = "tpKetQuaThi";
-            this.tpKetQuaThi.Padding = new System.Windows.Forms.Padding(3);
-            this.tpKetQuaThi.Size = new System.Drawing.Size(544, 204);
-            this.tpKetQuaThi.TabIndex = 1;
-            this.tpKetQuaThi.Text = "Thi";
-            this.tpKetQuaThi.UseVisualStyleBackColor = true;
             // 
             // dgvThiThu
             // 
@@ -330,6 +294,17 @@
             this.Diem.Name = "Diem";
             this.Diem.ReadOnly = true;
             // 
+            // tpKetQuaThi
+            // 
+            this.tpKetQuaThi.Controls.Add(this.dgvKetQuaThi);
+            this.tpKetQuaThi.Location = new System.Drawing.Point(4, 22);
+            this.tpKetQuaThi.Name = "tpKetQuaThi";
+            this.tpKetQuaThi.Padding = new System.Windows.Forms.Padding(3);
+            this.tpKetQuaThi.Size = new System.Drawing.Size(544, 204);
+            this.tpKetQuaThi.TabIndex = 1;
+            this.tpKetQuaThi.Text = "Thi";
+            this.tpKetQuaThi.UseVisualStyleBackColor = true;
+            // 
             // dgvKetQuaThi
             // 
             this.dgvKetQuaThi.AllowUserToAddRows = false;
@@ -375,6 +350,78 @@
             this.DiemThi.Name = "DiemThi";
             this.DiemThi.ReadOnly = true;
             // 
+            // tpThi
+            // 
+            this.tpThi.Controls.Add(this.btnThi);
+            this.tpThi.Controls.Add(this.btnThiThu);
+            this.tpThi.Location = new System.Drawing.Point(4, 22);
+            this.tpThi.Name = "tpThi";
+            this.tpThi.Padding = new System.Windows.Forms.Padding(3);
+            this.tpThi.Size = new System.Drawing.Size(565, 240);
+            this.tpThi.TabIndex = 2;
+            this.tpThi.Text = "Thi";
+            this.tpThi.UseVisualStyleBackColor = true;
+            // 
+            // btnThi
+            // 
+            this.btnThi.Location = new System.Drawing.Point(7, 45);
+            this.btnThi.Name = "btnThi";
+            this.btnThi.Size = new System.Drawing.Size(75, 23);
+            this.btnThi.TabIndex = 1;
+            this.btnThi.Text = "Thi";
+            this.btnThi.UseVisualStyleBackColor = true;
+            this.btnThi.Click += new System.EventHandler(this.btnThi_Click);
+            // 
+            // btnThiThu
+            // 
+            this.btnThiThu.Location = new System.Drawing.Point(7, 7);
+            this.btnThiThu.Name = "btnThiThu";
+            this.btnThiThu.Size = new System.Drawing.Size(75, 23);
+            this.btnThiThu.TabIndex = 0;
+            this.btnThiThu.Text = "Thi thử";
+            this.btnThiThu.UseVisualStyleBackColor = true;
+            this.btnThiThu.Click += new System.EventHandler(this.btnThiThu_Click);
+            // 
+            // tpXemLichThi
+            // 
+            this.tpXemLichThi.Controls.Add(this.dgvXemLichThi);
+            this.tpXemLichThi.Location = new System.Drawing.Point(4, 22);
+            this.tpXemLichThi.Name = "tpXemLichThi";
+            this.tpXemLichThi.Padding = new System.Windows.Forms.Padding(3);
+            this.tpXemLichThi.Size = new System.Drawing.Size(565, 240);
+            this.tpXemLichThi.TabIndex = 3;
+            this.tpXemLichThi.Text = "Xem lịch thi";
+            this.tpXemLichThi.UseVisualStyleBackColor = true;
+            // 
+            // dgvXemLichThi
+            // 
+            this.dgvXemLichThi.AllowUserToAddRows = false;
+            this.dgvXemLichThi.AllowUserToDeleteRows = false;
+            this.dgvXemLichThi.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvXemLichThi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvXemLichThi.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.TenKyThiLT,
+            this.NgayThiLT});
+            this.dgvXemLichThi.Location = new System.Drawing.Point(0, 0);
+            this.dgvXemLichThi.Name = "dgvXemLichThi";
+            this.dgvXemLichThi.ReadOnly = true;
+            this.dgvXemLichThi.Size = new System.Drawing.Size(565, 240);
+            this.dgvXemLichThi.TabIndex = 0;
+            // 
+            // TenKyThiLT
+            // 
+            this.TenKyThiLT.DataPropertyName = "TenKyThi";
+            this.TenKyThiLT.HeaderText = "Tên kỳ thi";
+            this.TenKyThiLT.Name = "TenKyThiLT";
+            this.TenKyThiLT.ReadOnly = true;
+            // 
+            // NgayThiLT
+            // 
+            this.NgayThiLT.DataPropertyName = "NgayThi";
+            this.NgayThiLT.HeaderText = "Ngày thi";
+            this.NgayThiLT.Name = "NgayThiLT";
+            this.NgayThiLT.ReadOnly = true;
+            // 
             // HocSinhGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -392,12 +439,14 @@
             this.tpThongTinCaNhan.ResumeLayout(false);
             this.tpThongTinCaNhan.PerformLayout();
             this.tpLichSuThi.ResumeLayout(false);
-            this.tpThi.ResumeLayout(false);
             this.tctrLichSuThi.ResumeLayout(false);
             this.tpThiThu.ResumeLayout(false);
-            this.tpKetQuaThi.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvThiThu)).EndInit();
+            this.tpKetQuaThi.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvKetQuaThi)).EndInit();
+            this.tpThi.ResumeLayout(false);
+            this.tpXemLichThi.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvXemLichThi)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -436,5 +485,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TenKyThi;
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayThi;
         private System.Windows.Forms.DataGridViewTextBoxColumn DiemThi;
+        private System.Windows.Forms.TabPage tpXemLichThi;
+        private System.Windows.Forms.DataGridView dgvXemLichThi;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TenKyThiLT;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NgayThiLT;
     }
 }

@@ -34,7 +34,7 @@ namespace GUI
             List<DeVaCauHoiDTO> danhSachDeVaCauHoi = new List<DeVaCauHoiDTO>();
             try
             {
-                danhSachDeVaCauHoi = hocSinhBUS.GetAllDeThi();
+                danhSachDeVaCauHoi = hocSinhBUS.GetAllDeThi(hocSinhLogin.MaHocSinh);
             }
             catch (Exception Ex)
             {
@@ -50,7 +50,7 @@ namespace GUI
 
             List<De> danhSachDe = new List<De>();
 
-            danhSachDe = hocSinhBUS.LayDanhSachDe(cbbChonMucDo.Text);
+            danhSachDe = hocSinhBUS.LayDanhSachDe(cbbChonMucDo.Text, hocSinhLogin.MaHocSinh);
             if (danhSachDe != null)
             {
                 cbbChonDeThi.DataSource = danhSachDe;
@@ -115,7 +115,7 @@ namespace GUI
         {
             List<De> danhSachDe = new List<De>();
 
-            danhSachDe = hocSinhBUS.LayDanhSachDe(cbbChonMucDo.Text);
+            danhSachDe = hocSinhBUS.LayDanhSachDe(cbbChonMucDo.Text, hocSinhLogin.MaHocSinh);
             if (danhSachDe != null)
             {
                 cbbChonDeThi.DataSource = danhSachDe;

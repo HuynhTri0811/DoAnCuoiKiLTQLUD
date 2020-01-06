@@ -193,7 +193,7 @@ namespace DAO.HT
             using (DataContextDataContext DB = new DataContextDataContext())
             {
                 string MaKyThi = "0";
-                if (MaKT != "15" && MaKT != "1T" && MaKT != "CK")
+                if (MaKT != "GK" && MaKT != "CK")
                 {
                     return 1;
                 }

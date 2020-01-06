@@ -27,9 +27,13 @@ namespace GUI.GiaoVienGUII
 
         void LoadComboBoxKiThi()
         {
-            comboBoxThemKiThiKT.Items.Add("15");
-            comboBoxThemKiThiKT.Items.Add("1T");
-            comboBoxThemKiThiKT.Items.Add("CK");
+            Dictionary<string, string> test = new Dictionary<string, string>();
+            test.Add("GK", "Kiểm tra giữa kỳ");
+            test.Add("CK", "Kiểm tra cuối kỳ");
+            comboBoxThemKiThiKT.DataSource = new BindingSource(test, null);
+            comboBoxThemKiThiKT.DisplayMember = "Value";
+            comboBoxThemKiThiKT.ValueMember = "Key";
+ 
             comboBoxThemKiThiKT.SelectedIndex = 0;
         }
         private void label2_Click(object sender, EventArgs e)
@@ -44,10 +48,10 @@ namespace GUI.GiaoVienGUII
             {
                 return;
             }
-            int temp =  kiThiBUS.InsertKiThi(comboBoxThemKiThiKT.Text, comboBoxThemKiThiKT.Text, dateTimeThi.Value.Date);
+            int temp =  kiThiBUS.InsertKiThi(comboBoxThemKiThiKT.SelectedValue.ToString(), comboBoxThemKiThiKT.Text, dateTimeThi.Value.Date);
             if(temp == 1)
             {
-                MessageBox.Show("Lỗi , mã kiểm tra phải là 15 hoặc 1T hoặc CK", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Lỗi , mã kiểm tra phải là GK hoặc CK", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             if(temp == 2)
@@ -56,7 +60,7 @@ namespace GUI.GiaoVienGUII
                 return;
             }
             MessageBox.Show("Thành công", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            KyThi kiThi = kiThiBUS.GetOneKiThiCuoiCung(comboBoxThemKiThiKT.Text);
+            KyThi kiThi = kiThiBUS.GetOneKiThiCuoiCung(comboBoxThemKiThiKT.SelectedValue.ToString());
             DanhSachDeTrongKiThi danhSachDeTrongKiThi = new DanhSachDeTrongKiThi(kiThi);
             danhSachDeTrongKiThi.ShowDialog();
             this.Hide();
