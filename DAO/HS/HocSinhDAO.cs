@@ -494,7 +494,7 @@ namespace DAO.HS
                              join hstkt in db.HocSinhTrongKiThis on hs.MaHocSinh equals hstkt.MaHocSinh
                              join dvktkt in db.DeVaKhoiTrongKyThis on hstkt.MaDeVaKhoiTrongKiThi equals dvktkt.MaDeVaKhoiTrongKyThi
                              join kt in db.KyThis on dvktkt.MaKyThi equals kt.MaKyThi
-                             where hs.MaHocSinh == maHS
+                             where hs.MaHocSinh == maHS && hstkt.Diem != null
                              select new { kt.MaKyThi, kt.TenKyThi, kt.NgayThi, hstkt.Diem }).Distinct();
                 if (query.Count() == 0)
                 {

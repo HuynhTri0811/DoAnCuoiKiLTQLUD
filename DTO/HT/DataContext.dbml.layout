@@ -118,21 +118,21 @@
         <elementListCompartment Id="038b372e-6ad3-4ad8-9d14-89ffa407de5a" absoluteBounds="3.8899999999999997, 4.96, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(5.51562625 : 4.5); (5.51562625 : 2.47679768880208); (5.36458083333333 : 2.47679768880208 : JumpStart); (5.19791416666667 : 2.47679768880208 : JumpEnd); (2.625 : 2.47679768880208)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(5.59375125 : 4.5); (5.59375125 : 2.47679768880208); (5.52083083333333 : 2.47679768880208 : JumpStart); (5.35416416666667 : 2.47679768880208 : JumpEnd); (2.625 : 2.47679768880208)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/DataContextDataContext/Khoi/Khoi_CauHoi" />
       <nodes>
         <classShapeMoniker Id="6cc44a11-17a1-4435-b057-6459d246ea66" />
         <classShapeMoniker Id="45f5d72b-f7fe-4749-97e5-06de4fd4de07" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(5.2812475 : 4.5); (5.2812475 : 2.13869466145833); (5.75 : 2.13869466145833)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(5.4374975 : 4.5); (5.4374975 : 2.13869466145833); (5.75 : 2.13869466145833)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/DataContextDataContext/Khoi/Khoi_De" />
       <nodes>
         <classShapeMoniker Id="6cc44a11-17a1-4435-b057-6459d246ea66" />
         <classShapeMoniker Id="fa0c14c2-421a-45dc-881a-4a793f2769a9" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(3.875 : 5.09699625651042); (2.625 : 5.09699625651042)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(3.875 : 5.09699625651042); (2.625 : 5.09699625651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/DataContextDataContext/Khoi/Khoi_GiaoVien" />
       <nodes>
         <classShapeMoniker Id="6cc44a11-17a1-4435-b057-6459d246ea66" />

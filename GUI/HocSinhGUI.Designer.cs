@@ -108,8 +108,8 @@
             // 
             this.tctrHocSinh.Controls.Add(this.tpThongTinCaNhan);
             this.tctrHocSinh.Controls.Add(this.tpLichSuThi);
-            this.tctrHocSinh.Controls.Add(this.tpThi);
             this.tctrHocSinh.Controls.Add(this.tpXemLichThi);
+            this.tctrHocSinh.Controls.Add(this.tpThi);
             this.tctrHocSinh.Location = new System.Drawing.Point(15, 41);
             this.tctrHocSinh.Name = "tctrHocSinh";
             this.tctrHocSinh.SelectedIndex = 0;

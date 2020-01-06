@@ -270,7 +270,7 @@
             this.Controls.Add(this.pnCauHoi);
             this.Name = "CauHoiHocSinhForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "CauHoiHocSinhForm";
+            this.Text = "Câu hỏi trắc nghiệm";
             this.Load += new System.EventHandler(this.CauHoiHocSinhForm_Load);
             this.pnCauHoi.ResumeLayout(false);
             this.pnCauHoi.PerformLayout();
