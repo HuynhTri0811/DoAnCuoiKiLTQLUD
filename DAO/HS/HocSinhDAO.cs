@@ -140,7 +140,7 @@ namespace DAO.HS
             }
         }
 
-        public void UpdateHocSinh(string maHS, string hoTen, DateTime ngaySinh, string diaChi)
+        public void UpdateHocSinh(string maHS, string hoTen, DateTime ngaySinh, string diaChi, string maLop)
         {
             try
             {
@@ -148,6 +148,7 @@ namespace DAO.HS
                 hocSinhUpdate.HoTen = hoTen;
                 hocSinhUpdate.NgaySinh = ngaySinh;
                 hocSinhUpdate.DiaChi = diaChi;
+                hocSinhUpdate.MaLop = maLop;
                
                 db.SubmitChanges();
             }
@@ -524,6 +525,34 @@ namespace DAO.HS
                     return null;
                 }
                 return query;
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+        }
+
+        //lấy danh sách lớp
+        public List<Lop> LayDanhSachLop()
+        {
+            List<Lop> dsLop = new List<Lop>();
+            try
+            {
+                var query = from l in db.Lops
+                            select l;
+                if(query.Count() == 0)
+                {
+                    dsLop = null;
+                }
+                else
+                {
+                    foreach(var q in query)
+                    {
+                        dsLop.Add(q);
+                    }
+                }
+
+                return dsLop;
             }
             catch (Exception Ex)
             {

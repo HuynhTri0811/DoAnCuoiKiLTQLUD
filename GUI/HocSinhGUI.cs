@@ -18,6 +18,7 @@ namespace GUI
     {
         HocSinh hocSinhLogin;
         HocSinhBUS hocSinhBUS = new HocSinhBUS();
+        public delegate void reLoadForm();
         public HocSinhGUI(HocSinh hocSinh)
         {
             InitializeComponent();
@@ -60,7 +61,7 @@ namespace GUI
 
         private void btnSuaThongTin_Click(object sender, EventArgs e)
         {
-            SuaThongTinHocSinhForm suaThongTinHS = new SuaThongTinHocSinhForm(hocSinhLogin);
+            SuaThongTinHocSinhForm suaThongTinHS = new SuaThongTinHocSinhForm(hocSinhLogin, LoadFormHocSinhGUI);
             suaThongTinHS.Show();
         }
 

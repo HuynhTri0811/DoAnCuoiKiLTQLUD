@@ -51,11 +51,11 @@ namespace BUS.HS
             }
         }
 
-        public void UpdateHocSinh(string maHS, string hoTen, DateTime ngaySinh, string diaChi)
+        public void UpdateHocSinh(string maHS, string hoTen, DateTime ngaySinh, string diaChi, string maLop)
         {
             try
             {
-                hocSinh.UpdateHocSinh(maHS, hoTen, ngaySinh, diaChi);    
+                hocSinh.UpdateHocSinh(maHS, hoTen, ngaySinh, diaChi, maLop);    
             }
             catch (Exception Ex)
             {
@@ -195,6 +195,19 @@ namespace BUS.HS
             try
             {
                 return hocSinh.GetLichThi(maHS);
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+        }
+
+        //lấy danh sách lớp
+        public List<Lop> LayDanhSachLop()
+        {
+            try
+            {
+                return hocSinh.LayDanhSachLop();
             }
             catch (Exception Ex)
             {
