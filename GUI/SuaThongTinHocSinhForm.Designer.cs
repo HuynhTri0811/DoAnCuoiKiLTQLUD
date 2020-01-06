@@ -37,11 +37,13 @@
             this.tbHoTen = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnLuu = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.cbbLop = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // btnHuy
             // 
-            this.btnHuy.Location = new System.Drawing.Point(194, 211);
+            this.btnHuy.Location = new System.Drawing.Point(196, 243);
             this.btnHuy.Name = "btnHuy";
             this.btnHuy.Size = new System.Drawing.Size(75, 23);
             this.btnHuy.TabIndex = 42;
@@ -110,7 +112,7 @@
             // 
             // btnLuu
             // 
-            this.btnLuu.Location = new System.Drawing.Point(80, 211);
+            this.btnLuu.Location = new System.Drawing.Point(82, 243);
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.Size = new System.Drawing.Size(75, 23);
             this.btnLuu.TabIndex = 29;
@@ -118,11 +120,30 @@
             this.btnLuu.UseVisualStyleBackColor = true;
             this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(34, 205);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(25, 13);
+            this.label4.TabIndex = 44;
+            this.label4.Text = "Lớp";
+            // 
+            // cbbLop
+            // 
+            this.cbbLop.FormattingEnabled = true;
+            this.cbbLop.Location = new System.Drawing.Point(150, 202);
+            this.cbbLop.Name = "cbbLop";
+            this.cbbLop.Size = new System.Drawing.Size(171, 21);
+            this.cbbLop.TabIndex = 43;
+            // 
             // SuaThongTinHocSinhForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(358, 258);
+            this.ClientSize = new System.Drawing.Size(358, 297);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.cbbLop);
             this.Controls.Add(this.btnHuy);
             this.Controls.Add(this.dtpNgaySinh);
             this.Controls.Add(this.label5);
@@ -153,5 +174,7 @@
         private System.Windows.Forms.TextBox tbHoTen;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnLuu;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox cbbLop;
     }
 }
