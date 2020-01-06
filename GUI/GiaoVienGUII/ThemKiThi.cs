@@ -59,6 +59,8 @@ namespace GUI.GiaoVienGUII
             KyThi kiThi = kiThiBUS.GetOneKiThiCuoiCung(comboBoxThemKiThiKT.Text);
             DanhSachDeTrongKiThi danhSachDeTrongKiThi = new DanhSachDeTrongKiThi(kiThi);
             danhSachDeTrongKiThi.ShowDialog();
+            this.Hide();
+            this.Close();
         }
 
         private void ThemKiThi_Load(object sender, EventArgs e)

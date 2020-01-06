@@ -110,6 +110,22 @@ namespace DAO.HT
 
             using (DataContextDataContext DB = new DataContextDataContext())
             {
+                var finDeCoCauHoiHayChua = from d in DB.Des
+                                           join c in DB.CauHoiTrongDeNaos on new { d.MaKhoi, d.MaDe } equals new { c.MaKhoi, c.MaDe }
+                                           where d.MaDe == MaDe && d.MaKhoi == MaKhoi
+                                           select c;
+                if(finDeCoCauHoiHayChua.Count() != 0)
+                {
+                    return false;
+                }
+                var finDeCoCauHoiHayChua2 = from d in DB.Des
+                                           join c in DB.DeVaKhoiTrongKyThis on new { d.MaKhoi, d.MaDe } equals new { c.MaKhoi, c.MaDe }
+                                           where d.MaDe == MaDe && d.MaKhoi == MaKhoi
+                                           select c;
+                if (finDeCoCauHoiHayChua2.Count() != 0)
+                {
+                    return false;
+                }
                 var findOneDeOnMaDeVaMaKhoi = from D in DB.Des
                                               where D.MaDe == MaDe && D.MaKhoi == MaKhoi
                                               select D;

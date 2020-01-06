@@ -35,9 +35,9 @@
             this.txtMaKiThi = new System.Windows.Forms.TextBox();
             this.btnLoadDanhSachCauHoi = new System.Windows.Forms.Button();
             this.listViewDanhSachHocSinh = new System.Windows.Forms.ListView();
-            this.btnAddHocSInh = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.btnXemCauHoiTrongDe = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // cbKhoi
@@ -60,6 +60,7 @@
             // 
             // listViewDanhSachDeTheoMaKhoi
             // 
+            this.listViewDanhSachDeTheoMaKhoi.CheckBoxes = true;
             this.listViewDanhSachDeTheoMaKhoi.HideSelection = false;
             this.listViewDanhSachDeTheoMaKhoi.Location = new System.Drawing.Point(12, 133);
             this.listViewDanhSachDeTheoMaKhoi.Name = "listViewDanhSachDeTheoMaKhoi";
@@ -88,32 +89,23 @@
             // 
             // btnLoadDanhSachCauHoi
             // 
-            this.btnLoadDanhSachCauHoi.Enabled = false;
-            this.btnLoadDanhSachCauHoi.Location = new System.Drawing.Point(367, 182);
+            this.btnLoadDanhSachCauHoi.Location = new System.Drawing.Point(358, 232);
             this.btnLoadDanhSachCauHoi.Name = "btnLoadDanhSachCauHoi";
             this.btnLoadDanhSachCauHoi.Size = new System.Drawing.Size(84, 23);
             this.btnLoadDanhSachCauHoi.TabIndex = 6;
             this.btnLoadDanhSachCauHoi.Text = "Chọn";
             this.btnLoadDanhSachCauHoi.UseVisualStyleBackColor = true;
+            this.btnLoadDanhSachCauHoi.Click += new System.EventHandler(this.btnLoadDanhSachCauHoi_Click);
             // 
             // listViewDanhSachHocSinh
             // 
             this.listViewDanhSachHocSinh.CheckBoxes = true;
             this.listViewDanhSachHocSinh.HideSelection = false;
-            this.listViewDanhSachHocSinh.Location = new System.Drawing.Point(457, 133);
+            this.listViewDanhSachHocSinh.Location = new System.Drawing.Point(448, 133);
             this.listViewDanhSachHocSinh.Name = "listViewDanhSachHocSinh";
-            this.listViewDanhSachHocSinh.Size = new System.Drawing.Size(333, 344);
+            this.listViewDanhSachHocSinh.Size = new System.Drawing.Size(342, 394);
             this.listViewDanhSachHocSinh.TabIndex = 7;
             this.listViewDanhSachHocSinh.UseCompatibleStateImageBehavior = false;
-            // 
-            // btnAddHocSInh
-            // 
-            this.btnAddHocSInh.Location = new System.Drawing.Point(353, 494);
-            this.btnAddHocSInh.Name = "btnAddHocSInh";
-            this.btnAddHocSInh.Size = new System.Drawing.Size(98, 23);
-            this.btnAddHocSInh.TabIndex = 8;
-            this.btnAddHocSInh.Text = "Thêm vào kì thi";
-            this.btnAddHocSInh.UseVisualStyleBackColor = true;
             // 
             // label3
             // 
@@ -133,14 +125,24 @@
             this.label4.TabIndex = 10;
             this.label4.Text = "Danh sách học sinh";
             // 
+            // btnXemCauHoiTrongDe
+            // 
+            this.btnXemCauHoiTrongDe.Location = new System.Drawing.Point(12, 377);
+            this.btnXemCauHoiTrongDe.Name = "btnXemCauHoiTrongDe";
+            this.btnXemCauHoiTrongDe.Size = new System.Drawing.Size(131, 23);
+            this.btnXemCauHoiTrongDe.TabIndex = 11;
+            this.btnXemCauHoiTrongDe.Text = "Xem Câu Hỏi Trong Đề";
+            this.btnXemCauHoiTrongDe.UseVisualStyleBackColor = true;
+            this.btnXemCauHoiTrongDe.Click += new System.EventHandler(this.btnXemCauHoiTrongDe_Click);
+            // 
             // DanhSachDeTrongKiThi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(854, 539);
+            this.ClientSize = new System.Drawing.Size(813, 539);
+            this.Controls.Add(this.btnXemCauHoiTrongDe);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.btnAddHocSInh);
             this.Controls.Add(this.listViewDanhSachHocSinh);
             this.Controls.Add(this.btnLoadDanhSachCauHoi);
             this.Controls.Add(this.txtMaKiThi);
@@ -165,8 +167,8 @@
         private System.Windows.Forms.TextBox txtMaKiThi;
         private System.Windows.Forms.Button btnLoadDanhSachCauHoi;
         private System.Windows.Forms.ListView listViewDanhSachHocSinh;
-        private System.Windows.Forms.Button btnAddHocSInh;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btnXemCauHoiTrongDe;
     }
 }

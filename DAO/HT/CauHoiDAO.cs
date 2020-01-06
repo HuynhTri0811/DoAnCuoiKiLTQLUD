@@ -41,6 +41,23 @@ namespace DAO.HT
             }
         }
 
+        public bool getCauHoiOnCauHoi(string NoiDung)
+        {
+            using(DataContextDataContext DB = new DataContextDataContext())
+            {
+                var find = from c in DB.CauHois
+                           where c.NoiDung == NoiDung
+                           select c;
+                if(find.Count() != 0)
+                {
+                    return true;
+                }
+                return false;
+
+            }
+
+        }
+
         public List<CauHoi> getAllCauHoiCauHoi()
         {
             /*

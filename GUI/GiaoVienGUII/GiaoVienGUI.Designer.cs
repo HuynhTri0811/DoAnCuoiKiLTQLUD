@@ -34,8 +34,8 @@
             this.tabQuanLyKiThiAll = new System.Windows.Forms.TabControl();
             this.tabThongKeHocSinh = new System.Windows.Forms.TabPage();
             this.tabQuanLyKiThi = new System.Windows.Forms.TabPage();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.tabThongKeCauHoi = new System.Windows.Forms.TabPage();
-            this.btnDuyetCauHoi = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.txtMaCauHoi = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -57,10 +57,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.listCauHoi = new System.Windows.Forms.ListView();
-            this.btnAddCauHoi = new System.Windows.Forms.Button();
             this.ThongKeKiThi = new System.Windows.Forms.TabPage();
-            this.btnAddTDeThi = new System.Windows.Forms.Button();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.btnXoaDeThi = new System.Windows.Forms.Button();
             this.btnUpdateDanhSachCauHoiONDeThi = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.btnLoadDanhSachCauHoiONDeThi = new System.Windows.Forms.Button();
@@ -70,11 +69,15 @@
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.label12 = new System.Windows.Forms.Label();
             this.listViewCauHoiOnMaDeAndKhoi = new System.Windows.Forms.ListView();
+            this.btnAddTDeThi = new System.Windows.Forms.Button();
+            this.btnDuyetCauHoi = new System.Windows.Forms.Button();
+            this.btnAddCauHoi = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnThemKiThi = new System.Windows.Forms.Button();
-            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.listView1 = new System.Windows.Forms.ListView();
             this.tabQuanLyKiThiAll.SuspendLayout();
             this.tabQuanLyKiThi.SuspendLayout();
+            this.groupBox7.SuspendLayout();
             this.tabThongKeCauHoi.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -147,6 +150,17 @@
             this.tabQuanLyKiThi.Text = "Quản Lý kì thi";
             this.tabQuanLyKiThi.UseVisualStyleBackColor = true;
             // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.listView1);
+            this.groupBox7.Location = new System.Drawing.Point(6, 6);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(396, 479);
+            this.groupBox7.TabIndex = 1;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "Danh sách kì thi";
+            this.groupBox7.UseCompatibleTextRendering = true;
+            // 
             // tabThongKeCauHoi
             // 
             this.tabThongKeCauHoi.Controls.Add(this.groupBox3);
@@ -158,16 +172,6 @@
             this.tabThongKeCauHoi.TabIndex = 2;
             this.tabThongKeCauHoi.Text = "Thống kê câu hỏi ";
             this.tabThongKeCauHoi.UseVisualStyleBackColor = true;
-            // 
-            // btnDuyetCauHoi
-            // 
-            this.btnDuyetCauHoi.Location = new System.Drawing.Point(18, 137);
-            this.btnDuyetCauHoi.Name = "btnDuyetCauHoi";
-            this.btnDuyetCauHoi.Size = new System.Drawing.Size(168, 27);
-            this.btnDuyetCauHoi.TabIndex = 1;
-            this.btnDuyetCauHoi.Text = "Duyệt câu hỏi thêm vào";
-            this.btnDuyetCauHoi.UseVisualStyleBackColor = true;
-            this.btnDuyetCauHoi.Click += new System.EventHandler(this.btnDuyetCauHoi_Click);
             // 
             // groupBox3
             // 
@@ -394,19 +398,8 @@
             this.listCauHoi.SelectedIndexChanged += new System.EventHandler(this.listCauHoi_SelectedIndexChanged);
             this.listCauHoi.Click += new System.EventHandler(this.listCauHoi_Click);
             // 
-            // btnAddCauHoi
-            // 
-            this.btnAddCauHoi.Location = new System.Drawing.Point(18, 105);
-            this.btnAddCauHoi.Name = "btnAddCauHoi";
-            this.btnAddCauHoi.Size = new System.Drawing.Size(168, 24);
-            this.btnAddCauHoi.TabIndex = 0;
-            this.btnAddCauHoi.Text = "Thêm câu hỏi";
-            this.btnAddCauHoi.UseVisualStyleBackColor = true;
-            this.btnAddCauHoi.Click += new System.EventHandler(this.btnAddCauHoi_Click);
-            // 
             // ThongKeKiThi
             // 
-            this.ThongKeKiThi.Controls.Add(this.btnAddTDeThi);
             this.ThongKeKiThi.Controls.Add(this.groupBox6);
             this.ThongKeKiThi.Controls.Add(this.groupBox5);
             this.ThongKeKiThi.Location = new System.Drawing.Point(4, 22);
@@ -417,18 +410,9 @@
             this.ThongKeKiThi.Text = "Quản lý đề thi";
             this.ThongKeKiThi.UseVisualStyleBackColor = true;
             // 
-            // btnAddTDeThi
-            // 
-            this.btnAddTDeThi.Location = new System.Drawing.Point(762, 232);
-            this.btnAddTDeThi.Name = "btnAddTDeThi";
-            this.btnAddTDeThi.Size = new System.Drawing.Size(186, 37);
-            this.btnAddTDeThi.TabIndex = 7;
-            this.btnAddTDeThi.Text = "Thêm đề thi";
-            this.btnAddTDeThi.UseVisualStyleBackColor = true;
-            this.btnAddTDeThi.Click += new System.EventHandler(this.btnAddTDeThi_Click);
-            // 
             // groupBox6
             // 
+            this.groupBox6.Controls.Add(this.btnXoaDeThi);
             this.groupBox6.Controls.Add(this.btnUpdateDanhSachCauHoiONDeThi);
             this.groupBox6.Controls.Add(this.label10);
             this.groupBox6.Controls.Add(this.btnLoadDanhSachCauHoiONDeThi);
@@ -437,16 +421,26 @@
             this.groupBox6.Controls.Add(this.label11);
             this.groupBox6.Location = new System.Drawing.Point(702, 6);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(267, 220);
+            this.groupBox6.Size = new System.Drawing.Size(267, 187);
             this.groupBox6.TabIndex = 6;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Thao tác trên đề thi";
             // 
+            // btnXoaDeThi
+            // 
+            this.btnXoaDeThi.Location = new System.Drawing.Point(60, 145);
+            this.btnXoaDeThi.Name = "btnXoaDeThi";
+            this.btnXoaDeThi.Size = new System.Drawing.Size(186, 30);
+            this.btnXoaDeThi.TabIndex = 8;
+            this.btnXoaDeThi.Text = "Xóa đề thi";
+            this.btnXoaDeThi.UseVisualStyleBackColor = true;
+            this.btnXoaDeThi.Click += new System.EventHandler(this.btnXoaDeThi_Click);
+            // 
             // btnUpdateDanhSachCauHoiONDeThi
             // 
-            this.btnUpdateDanhSachCauHoiONDeThi.Location = new System.Drawing.Point(148, 110);
+            this.btnUpdateDanhSachCauHoiONDeThi.Location = new System.Drawing.Point(148, 83);
             this.btnUpdateDanhSachCauHoiONDeThi.Name = "btnUpdateDanhSachCauHoiONDeThi";
-            this.btnUpdateDanhSachCauHoiONDeThi.Size = new System.Drawing.Size(98, 74);
+            this.btnUpdateDanhSachCauHoiONDeThi.Size = new System.Drawing.Size(98, 56);
             this.btnUpdateDanhSachCauHoiONDeThi.TabIndex = 6;
             this.btnUpdateDanhSachCauHoiONDeThi.Text = "chỉnh sửa câu hỏi trong đề";
             this.btnUpdateDanhSachCauHoiONDeThi.UseVisualStyleBackColor = true;
@@ -463,9 +457,9 @@
             // 
             // btnLoadDanhSachCauHoiONDeThi
             // 
-            this.btnLoadDanhSachCauHoiONDeThi.Location = new System.Drawing.Point(60, 110);
+            this.btnLoadDanhSachCauHoiONDeThi.Location = new System.Drawing.Point(60, 83);
             this.btnLoadDanhSachCauHoiONDeThi.Name = "btnLoadDanhSachCauHoiONDeThi";
-            this.btnLoadDanhSachCauHoiONDeThi.Size = new System.Drawing.Size(82, 74);
+            this.btnLoadDanhSachCauHoiONDeThi.Size = new System.Drawing.Size(82, 56);
             this.btnLoadDanhSachCauHoiONDeThi.TabIndex = 5;
             this.btnLoadDanhSachCauHoiONDeThi.Text = "danh sách câu hỏi trong đề";
             this.btnLoadDanhSachCauHoiONDeThi.UseVisualStyleBackColor = true;
@@ -487,6 +481,7 @@
             this.comboKhoiONQuyenLyDeThi.Name = "comboKhoiONQuyenLyDeThi";
             this.comboKhoiONQuyenLyDeThi.Size = new System.Drawing.Size(184, 21);
             this.comboKhoiONQuyenLyDeThi.TabIndex = 3;
+            this.comboKhoiONQuyenLyDeThi.SelectedIndexChanged += new System.EventHandler(this.comboKhoiONQuyenLyDeThi_SelectedIndexChanged);
             // 
             // label11
             // 
@@ -511,7 +506,7 @@
             // label12
             // 
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(152, 16);
+            this.label12.Location = new System.Drawing.Point(202, 12);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(300, 35);
             this.label12.TabIndex = 3;
@@ -521,17 +516,48 @@
             // listViewCauHoiOnMaDeAndKhoi
             // 
             this.listViewCauHoiOnMaDeAndKhoi.HideSelection = false;
-            this.listViewCauHoiOnMaDeAndKhoi.Location = new System.Drawing.Point(6, 54);
+            this.listViewCauHoiOnMaDeAndKhoi.Location = new System.Drawing.Point(6, 50);
             this.listViewCauHoiOnMaDeAndKhoi.Name = "listViewCauHoiOnMaDeAndKhoi";
-            this.listViewCauHoiOnMaDeAndKhoi.Size = new System.Drawing.Size(678, 405);
+            this.listViewCauHoiOnMaDeAndKhoi.Size = new System.Drawing.Size(678, 409);
             this.listViewCauHoiOnMaDeAndKhoi.TabIndex = 4;
             this.listViewCauHoiOnMaDeAndKhoi.UseCompatibleStateImageBehavior = false;
             this.listViewCauHoiOnMaDeAndKhoi.SelectedIndexChanged += new System.EventHandler(this.listViewCauHoiOnMaDeAndKhoi_SelectedIndexChanged);
             this.listViewCauHoiOnMaDeAndKhoi.Click += new System.EventHandler(this.listViewCauHoiOnMaDeAndKhoi_Click);
             // 
+            // btnAddTDeThi
+            // 
+            this.btnAddTDeThi.Location = new System.Drawing.Point(18, 170);
+            this.btnAddTDeThi.Name = "btnAddTDeThi";
+            this.btnAddTDeThi.Size = new System.Drawing.Size(168, 27);
+            this.btnAddTDeThi.TabIndex = 7;
+            this.btnAddTDeThi.Text = "Thêm đề thi";
+            this.btnAddTDeThi.UseVisualStyleBackColor = true;
+            this.btnAddTDeThi.Click += new System.EventHandler(this.btnAddTDeThi_Click);
+            // 
+            // btnDuyetCauHoi
+            // 
+            this.btnDuyetCauHoi.Location = new System.Drawing.Point(18, 137);
+            this.btnDuyetCauHoi.Name = "btnDuyetCauHoi";
+            this.btnDuyetCauHoi.Size = new System.Drawing.Size(168, 27);
+            this.btnDuyetCauHoi.TabIndex = 1;
+            this.btnDuyetCauHoi.Text = "Duyệt câu hỏi thêm vào";
+            this.btnDuyetCauHoi.UseVisualStyleBackColor = true;
+            this.btnDuyetCauHoi.Click += new System.EventHandler(this.btnDuyetCauHoi_Click);
+            // 
+            // btnAddCauHoi
+            // 
+            this.btnAddCauHoi.Location = new System.Drawing.Point(18, 105);
+            this.btnAddCauHoi.Name = "btnAddCauHoi";
+            this.btnAddCauHoi.Size = new System.Drawing.Size(168, 24);
+            this.btnAddCauHoi.TabIndex = 0;
+            this.btnAddCauHoi.Text = "Thêm câu hỏi";
+            this.btnAddCauHoi.UseVisualStyleBackColor = true;
+            this.btnAddCauHoi.Click += new System.EventHandler(this.btnAddCauHoi_Click);
+            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.btnDuyetCauHoi);
+            this.groupBox1.Controls.Add(this.btnAddTDeThi);
             this.groupBox1.Controls.Add(this.btnUpdateGiaoVien);
             this.groupBox1.Controls.Add(this.btnThemKiThi);
             this.groupBox1.Controls.Add(this.btnAddCauHoi);
@@ -553,15 +579,14 @@
             this.btnThemKiThi.UseVisualStyleBackColor = true;
             this.btnThemKiThi.Click += new System.EventHandler(this.btnThemKiThi_Click);
             // 
-            // groupBox7
+            // listView1
             // 
-            this.groupBox7.Location = new System.Drawing.Point(6, 6);
-            this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(391, 479);
-            this.groupBox7.TabIndex = 1;
-            this.groupBox7.TabStop = false;
-            this.groupBox7.Text = "Danh sách kì thi";
-            this.groupBox7.UseCompatibleTextRendering = true;
+            this.listView1.HideSelection = false;
+            this.listView1.Location = new System.Drawing.Point(6, 19);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(384, 440);
+            this.listView1.TabIndex = 2;
+            this.listView1.UseCompatibleStateImageBehavior = false;
             // 
             // GiaoVienGUI
             // 
@@ -577,6 +602,7 @@
             this.Load += new System.EventHandler(this.GiaoVienGUI_Load);
             this.tabQuanLyKiThiAll.ResumeLayout(false);
             this.tabQuanLyKiThi.ResumeLayout(false);
+            this.groupBox7.ResumeLayout(false);
             this.tabThongKeCauHoi.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
@@ -639,5 +665,7 @@
         private System.Windows.Forms.Button btnAddTDeThi;
         private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.Button btnThemKiThi;
+        private System.Windows.Forms.Button btnXoaDeThi;
+        private System.Windows.Forms.ListView listView1;
     }
 }

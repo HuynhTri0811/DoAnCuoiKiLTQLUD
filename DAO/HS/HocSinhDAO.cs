@@ -350,7 +350,7 @@ namespace DAO.HS
                 var query = (from hs in db.HocSinhs
                              join hstkt in db.HocSinhTrongKiThis on hs.MaHocSinh equals hstkt.MaHocSinh
                              join dvktkt in db.DeVaKhoiTrongKyThis on hstkt.MaDeVaKhoiTrongKiThi equals dvktkt.MaDeVaKhoiTrongKyThi                             
-                             join d in db.Des on new { dvktkt.MaDe, dvktkt.MaKhoi }  equals new { d.MaDe, d.MaKhoi }
+                             join d in db.Des on new { dvktkt.MaDe,  dvktkt.MaKhoi }  equals new { d.MaDe, d.MaKhoi }
                              join chtdn in db.CauHoiTrongDeNaos on new { d.MaDe, d.MaKhoi } equals new { chtdn.MaDe, chtdn.MaKhoi }
                              join ch in db.CauHois on chtdn.MaCauHoi equals ch.MaCauHoi
                              join dk in db.DoKhos on ch.DoKho equals dk.maDoKho

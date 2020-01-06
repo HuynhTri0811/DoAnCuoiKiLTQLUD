@@ -47,7 +47,15 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtFileName = new System.Windows.Forms.TextBox();
+            this.btnLayFile = new System.Windows.Forms.Button();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtNoiDungCauHoi
@@ -91,7 +99,7 @@
             this.groupBox1.Controls.Add(this.txtNoiDungCauHoi);
             this.groupBox1.Location = new System.Drawing.Point(12, 63);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(743, 341);
+            this.groupBox1.Size = new System.Drawing.Size(743, 321);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Chi tiết thêm câu hỏi";
@@ -103,7 +111,7 @@
             this.btnCauHoi.ForeColor = System.Drawing.Color.Red;
             this.btnCauHoi.Location = new System.Drawing.Point(248, 275);
             this.btnCauHoi.Name = "btnCauHoi";
-            this.btnCauHoi.Size = new System.Drawing.Size(277, 54);
+            this.btnCauHoi.Size = new System.Drawing.Size(277, 32);
             this.btnCauHoi.TabIndex = 18;
             this.btnCauHoi.Text = "Thêm câu hỏi";
             this.btnCauHoi.UseVisualStyleBackColor = true;
@@ -233,12 +241,83 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Nội dung câu hỏi :";
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.button1);
+            this.groupBox2.Controls.Add(this.label11);
+            this.groupBox2.Controls.Add(this.comboBox1);
+            this.groupBox2.Controls.Add(this.btnLayFile);
+            this.groupBox2.Controls.Add(this.txtFileName);
+            this.groupBox2.Controls.Add(this.label10);
+            this.groupBox2.Location = new System.Drawing.Point(12, 390);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(743, 138);
+            this.groupBox2.TabIndex = 3;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "thêm danh sách thông qua file excel";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(70, 28);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(51, 13);
+            this.label10.TabIndex = 4;
+            this.label10.Text = "FileName";
+            // 
+            // txtFileName
+            // 
+            this.txtFileName.Location = new System.Drawing.Point(126, 25);
+            this.txtFileName.Name = "txtFileName";
+            this.txtFileName.ReadOnly = true;
+            this.txtFileName.Size = new System.Drawing.Size(495, 20);
+            this.txtFileName.TabIndex = 5;
+            // 
+            // btnLayFile
+            // 
+            this.btnLayFile.Location = new System.Drawing.Point(627, 23);
+            this.btnLayFile.Name = "btnLayFile";
+            this.btnLayFile.Size = new System.Drawing.Size(91, 23);
+            this.btnLayFile.TabIndex = 6;
+            this.btnLayFile.Text = ".....";
+            this.btnLayFile.UseVisualStyleBackColor = true;
+            this.btnLayFile.Click += new System.EventHandler(this.btnLayFile_Click);
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(126, 63);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 21);
+            this.comboBox1.TabIndex = 7;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(79, 66);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(41, 13);
+            this.label11.TabIndex = 8;
+            this.label11.Text = "Sheet :";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(126, 90);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(121, 23);
+            this.button1.TabIndex = 9;
+            this.button1.Text = "Import";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // AddCauHoi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(785, 540);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label1);
             this.Name = "AddCauHoi";
@@ -246,6 +325,8 @@
             this.Load += new System.EventHandler(this.AddCauHoi_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -271,5 +352,12 @@
         private System.Windows.Forms.TextBox txtNoiDungCauB;
         private System.Windows.Forms.TextBox txtNoiDungCauA;
         private System.Windows.Forms.Button btnCauHoi;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Button btnLayFile;
+        private System.Windows.Forms.TextBox txtFileName;
+        private System.Windows.Forms.Label label10;
     }
 }
