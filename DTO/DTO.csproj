@@ -57,6 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CauHoiGiaoVien.cs" />
+    <Compile Include="DanhSachHocSinhTheoMaKiThi.cs" />
     <Compile Include="DeVaCauHoiDTO.cs" />
     <Compile Include="DeVaCauHoiOnMaDeDTO.cs" />
     <Compile Include="DeVaCauHoiThiDTO.cs" />

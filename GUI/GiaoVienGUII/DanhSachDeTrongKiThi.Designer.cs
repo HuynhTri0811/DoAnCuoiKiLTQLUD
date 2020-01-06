@@ -106,6 +106,7 @@
             this.listViewDanhSachHocSinh.Size = new System.Drawing.Size(342, 394);
             this.listViewDanhSachHocSinh.TabIndex = 7;
             this.listViewDanhSachHocSinh.UseCompatibleStateImageBehavior = false;
+            this.listViewDanhSachHocSinh.SelectedIndexChanged += new System.EventHandler(this.listViewDanhSachHocSinh_SelectedIndexChanged);
             // 
             // label3
             // 

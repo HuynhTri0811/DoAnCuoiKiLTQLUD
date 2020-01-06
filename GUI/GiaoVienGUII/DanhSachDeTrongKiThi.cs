@@ -287,10 +287,20 @@ namespace GUI.GiaoVienGUII
                     break;
                 }
             }
+            
             deVaCauHoiOnMaDeDTO = cauHoiTrongDeNaoBUS_HT.getAllCauHoiTrongDe(Made, this.MaKhoi);
-
+            if(deVaCauHoiOnMaDeDTO == null)
+            {
+                MessageBox.Show("Câu hỏi trong bộ đề này trống", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             ChinhSuaDeThiGUI chinhSuaDeThiGUI = new ChinhSuaDeThiGUI(deVaCauHoiOnMaDeDTO);
             chinhSuaDeThiGUI.ShowDialog();
+        }
+
+        private void listViewDanhSachHocSinh_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

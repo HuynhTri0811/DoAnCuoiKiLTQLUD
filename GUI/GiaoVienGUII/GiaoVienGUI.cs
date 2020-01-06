@@ -21,6 +21,7 @@ using GUI.GiaoVienGUII;
  */
 namespace GUI
 {
+
     public partial class GiaoVienGUI : Form
     {
         // Khoi tao 
@@ -663,6 +664,82 @@ namespace GUI
                     }
                 this.LoadDanhSachKiThi();
             }
+        }
+
+        private void btnInKiThi_Click(object sender, EventArgs e)
+        {
+            using (DataContextDataContext DB = new DataContextDataContext())
+            {
+                var find = from k in DB.DeVaKhoiTrongKyThis
+                                                         join r in DB.HocSinhTrongKiThis on k.MaDeVaKhoiTrongKyThi equals r.MaDeVaKhoiTrongKiThi
+                                                         where k.MaKyThi == MaKiThi
+                                                         select new { r, k };
+                List<DanhSachHocSinhTheoMaKiThi> danhSachHocSinhTheoMaKiThis = new List<DanhSachHocSinhTheoMaKiThi>();
+                foreach(var mem in find)
+                {
+                    DanhSachHocSinhTheoMaKiThi danhSachHocSinhTheoMaKiThi = new DanhSachHocSinhTheoMaKiThi();
+                    danhSachHocSinhTheoMaKiThi.TenHocSinh = mem.r.HocSinh.HoTen;
+                    danhSachHocSinhTheoMaKiThi.MaKiThi = mem.k.KyThi.MaKyThi;
+                    danhSachHocSinhTheoMaKiThi.Lop = mem.r.HocSinh.Lop.TenLop;
+                    danhSachHocSinhTheoMaKiThi.Khoi = mem.r.HocSinh.Lop.Khoi.TenKhoi;
+                    danhSachHocSinhTheoMaKiThi.Diem = mem.r.Diem;
+                    danhSachHocSinhTheoMaKiThis.Add(danhSachHocSinhTheoMaKiThi);
+                }
+            }
+        }
+
+        private void btnLogOut_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            LoginForm loginForm = new LoginForm();
+            loginForm.ShowDialog();
+            this.Close();
+        }
+
+        private void btnTimKiemHocSinh_Click(object sender, EventArgs e)
+        {
+            var findHocSinhOnMAHocSinh = DB.HocSinhs.Where(r => r.MaHocSinh == txtMaHocSinh.Text);
+            if (findHocSinhOnMAHocSinh.Count() == 0)
+            {
+                MessageBox.Show("Không tìm thấy mã học sinh " + txtMaHocSinh.Text, "Thông báo");
+                return;
+            }
+            this.DanhSachKiThiOnMaHocSinh(txtMaHocSinh.Text);
+
+
+        }
+        private void DanhSachKiThiOnMaHocSinh(string MaHocSinh)
+        {
+            this.listViewDanhSachDaThiOnMaHocSinh.Clear();
+            listViewDanhSachDaThiOnMaHocSinh.View = View.Details;
+
+            listViewDanhSachDaThiOnMaHocSinh.Columns.Add("Mã ki thi");
+            listViewDanhSachDaThiOnMaHocSinh.Columns.Add("Tên kì thi");
+            listViewDanhSachDaThiOnMaHocSinh.Columns.Add("Ngày thi");
+            listViewDanhSachDaThiOnMaHocSinh.Columns.Add("Mã đề thi");
+            listViewDanhSachDaThiOnMaHocSinh.Columns.Add("Điểm");
+            listViewDanhSachDaThiOnMaHocSinh.Columns[0].Width = 100;
+            listViewDanhSachDaThiOnMaHocSinh.Columns[1].Width = 100;
+            listViewDanhSachDaThiOnMaHocSinh.Columns[2].Width = 100;
+            listViewDanhSachDaThiOnMaHocSinh.Columns[1].Width = 100;
+            listViewDanhSachDaThiOnMaHocSinh.Columns[2].Width = 100;
+            var getAllKiThi = DB.HocSinhTrongKiThis.Where(r => r.MaHocSinh == txtMaHocSinh.Text);
+            if(getAllKiThi.Count() == 0)
+            {
+                MessageBox.Show("Hiện tại không tìm thấy bất cứ học này thi kì nào cả", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            foreach (var mem in getAllKiThi)
+            {
+                ListViewItem item = new ListViewItem();
+                item.Text = mem.DeVaKhoiTrongKyThi.KyThi.MaKyThi;
+                item.SubItems.Add(new ListViewItem.ListViewSubItem() { Text = mem.DeVaKhoiTrongKyThi.KyThi.TenKyThi });
+                item.SubItems.Add(new ListViewItem.ListViewSubItem() { Text = mem.DeVaKhoiTrongKyThi.KyThi.NgayThi.ToString() });
+                item.SubItems.Add(new ListViewItem.ListViewSubItem() { Text = mem.DeVaKhoiTrongKyThi.De.MaDe.ToString() });
+                item.SubItems.Add(new ListViewItem.ListViewSubItem() { Text = mem.Diem.ToString() });
+                listViewDanhSachDaThiOnMaHocSinh.Items.Add(item);
+            }
+
         }
     }
 }
