@@ -24,11 +24,14 @@ namespace GUI
     public partial class GiaoVienGUI : Form
     {
         // Khoi tao 
+        DataContextDataContext DB = new DataContextDataContext();
         public DTO.HT.GiaoVien newGiaoVien;
         int MaCauHoi;
         GiaoVienBUS_HT giaoVienBUS_HT = new GiaoVienBUS_HT();
         CauHoiBUS_HT cauHoiBUS_HT = new CauHoiBUS_HT();
         DoKhoBUS_HT doKhoBUS_HT = new DoKhoBUS_HT();
+        string MaKiThi;
+
 
         KhoiBUS_HT khoiBUS_HT = new KhoiBUS_HT();
         List<Khoi> khois;
@@ -46,6 +49,9 @@ namespace GUI
         List<CauHoi> cauHois;
         CauHoi cauHoiHienTai;
 
+
+        KiThiBUS kiThiBUS = new KiThiBUS();
+
         public GiaoVienGUI(DTO.HT.GiaoVien GiaoViens)
         {
             this.doKhos = doKhoBUS_HT.getAll();
@@ -53,12 +59,13 @@ namespace GUI
             this.cauHoiHienTai = null;
             this.newGiaoVien = GiaoViens;
             this.khois = khoiBUS_HT.GetKhoiAll();
-            
-        
+
+
             InitializeComponent();
             this.LoadListView();
             this.loadDoKho();
             this.loadDeThiVaKhoi();
+            this.LoadDanhSachKiThi();
         }
 
         public void GETVALUE(DTO.HT.GiaoVien giaoVien)
@@ -87,9 +94,9 @@ namespace GUI
         {
             this.comboDeThiONQuyenLyDeThi.Items.Clear();
             int MaKhoi = -1;
-            foreach(var mem in khoiBUS_HT.GetKhoiAll())
+            foreach (var mem in khoiBUS_HT.GetKhoiAll())
             {
-                if(mem.TenKhoi == TenKhoi)
+                if (mem.TenKhoi == TenKhoi)
                 {
                     MaKhoi = mem.MaKhoi;
                     break;
@@ -116,7 +123,7 @@ namespace GUI
             this.comboKhoiONQuyenLyDeThi.Text = khoiInDeThi.TenKhoi;
 
             this.LoadDeThi(this.comboKhoiONQuyenLyDeThi.Text);
-            
+
         }
         private void LoadListView()// Load danh sách câu hỏi
         {
@@ -176,7 +183,7 @@ namespace GUI
             listViewCauHoiOnMaDeAndKhoi.Columns[2].Width = 80;
             listViewCauHoiOnMaDeAndKhoi.Columns[3].Width = 80;
             cauHoiTrongDeNao = cauHoiTrongDeNaoBUS_HT.getAllCauHoiTrongDe(MaDe, MaKhoi);
-            if(cauHoiTrongDeNao == null) 
+            if (cauHoiTrongDeNao == null)
             {
                 return;
             }
@@ -184,7 +191,7 @@ namespace GUI
             {
                 ListViewItem item = new ListViewItem();
                 item.Text = cauhoi.MaCauHoi.ToString();
-                
+
                 item.SubItems.Add(new ListViewItem.ListViewSubItem() { Text = cauhoi.NoiDung });
                 foreach (var mem2 in doKhos)
                 {
@@ -365,7 +372,7 @@ namespace GUI
                 {
                     tempMaKhoi = mem.MaKhoi;
                     break;
-                } 
+                }
             }
             string tempMaDe = "";
             foreach (var mem in des)
@@ -472,6 +479,7 @@ namespace GUI
         {
             ThemKiThi themKiThi = new ThemKiThi();
             themKiThi.ShowDialog();
+            this.LoadChiTietKiThi();
         }
 
         // Load Tam xam
@@ -502,7 +510,7 @@ namespace GUI
 
         private void comboDeThiONQuyenLyDeThi_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+
         }
 
         private void comboKhoiONQuyenLyDeThi_SelectedIndexChanged(object sender, EventArgs e)
@@ -514,28 +522,29 @@ namespace GUI
         {
             int MaKhoi = -1;
             DAO.HT.DeDAO deDAO = new DAO.HT.DeDAO();
-            foreach(var mem in khoiBUS_HT.GetKhoiAll())
+            foreach (var mem in khoiBUS_HT.GetKhoiAll())
             {
-                if(mem.TenKhoi == comboKhoiONQuyenLyDeThi.Text)
+                if (mem.TenKhoi == comboKhoiONQuyenLyDeThi.Text)
                 {
                     MaKhoi = mem.MaKhoi;
                 }
             }
-            foreach(var mem in deBUS_HT.getAllMaKhoi(MaKhoi))
+            foreach (var mem in deBUS_HT.getAllMaKhoi(MaKhoi))
             {
-                if(mem.TenDe == comboDeThiONQuyenLyDeThi.Text)
+                if (mem.TenDe == comboDeThiONQuyenLyDeThi.Text)
                 {
                     bool thanhconghaykhong = deDAO.DeleteDeOnMaDeAndMaKhoi(mem.MaDe, MaKhoi);
-                    if(thanhconghaykhong == true)
+                    if (thanhconghaykhong == true)
                     {
                         MessageBox.Show("Thành công", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         this.LoadDeThi(comboKhoiONQuyenLyDeThi.Text);
+                        break;
                     }
                     else
                     {
                         MessageBox.Show("Không thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                } 
+                }
             }
         }
 
@@ -543,5 +552,117 @@ namespace GUI
 
 
         //
+
+        // QuanLyKiThi
+        private void LoadDanhSachKiThi()
+        {
+            this.ListViewQuanLyKiThi.Clear();
+            ListViewQuanLyKiThi.View = View.Details;
+
+            ListViewQuanLyKiThi.Columns.Add("Mã ki thi");
+            ListViewQuanLyKiThi.Columns.Add("Tên kì thi");
+            ListViewQuanLyKiThi.Columns.Add("Ngày thi");
+            ListViewQuanLyKiThi.Columns[0].Width = 100;
+            ListViewQuanLyKiThi.Columns[1].Width = 100;
+            ListViewQuanLyKiThi.Columns[2].Width = 100;
+            var getAllKiThi = DB.KyThis;
+            foreach (var mem in getAllKiThi)
+            {
+                ListViewItem item = new ListViewItem();
+                item.Text = mem.MaKyThi.ToString();
+                item.SubItems.Add(new ListViewItem.ListViewSubItem() { Text = mem.TenKyThi });
+                item.SubItems.Add(new ListViewItem.ListViewSubItem() { Text = mem.NgayThi.ToString() });
+                ListViewQuanLyKiThi.Items.Add(item);
+            }
+
+        }
+
+        private void tabQuanLyKiThi_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LoadChiTietKiThi()
+        {
+            using (DataContextDataContext DB = new DataContextDataContext())
+            {
+                var find = from k in DB.DeVaKhoiTrongKyThis
+                           join r in DB.HocSinhTrongKiThis on k.MaDeVaKhoiTrongKyThi equals r.MaDeVaKhoiTrongKiThi
+                           where k.MaKyThi == MaKiThi
+                           select new { k, r };
+
+
+                var find2 = DB.KyThis.Where(r => r.MaKyThi == MaKiThi).Single();
+
+                this.ChiTietKiThi.Clear();
+                ChiTietKiThi.View = View.Details;
+
+                ChiTietKiThi.Columns.Add("Ma đề thi");
+                ChiTietKiThi.Columns.Add("Học sinh thi");
+                ChiTietKiThi.Columns.Add("Điểm");
+                ChiTietKiThi.Columns.Add("Mã khôi");
+                ChiTietKiThi.Columns[0].Width = 100;
+                ChiTietKiThi.Columns[1].Width = 100;
+                ChiTietKiThi.Columns[2].Width = 100;
+                ChiTietKiThi.Columns[3].Width = 100;
+                foreach (var mem in find)
+                {
+                    ListViewItem item = new ListViewItem();
+                    item.Text = mem.k.MaDe.ToString();
+                    item.SubItems.Add(new ListViewItem.ListViewSubItem() { Text = mem.r.HocSinh.HoTen });
+                    item.SubItems.Add(new ListViewItem.ListViewSubItem() { Text = mem.r.Diem.ToString() });
+                    item.SubItems.Add(new ListViewItem.ListViewSubItem() { Text = mem.k.MaKhoi.ToString() });
+                    ChiTietKiThi.Items.Add(item);
+                }
+                MaKiThiLb.Text = MaKiThi;
+                TenKiThiLB.Text = find2.TenKyThi;
+                NgayThi.Text = find2.NgayThi.ToString();
+            }
+        }
+        
+
+        private void ListViewQuanLyKiThi_Click(object sender, EventArgs e)
+        {
+            ListView lsv = sender as ListView;
+            ListViewItem item;
+            if (lsv.SelectedItems.Count > 0)
+            {
+                item = lsv.SelectedItems[0];
+
+                this.MaKiThi = item.Text;
+                this.LoadChiTietKiThi();
+            }
+        }
+
+        private void ChiTietKiThi_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label16_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnXoaKiThi_Click(object sender, EventArgs e)
+        {
+            var find = DB.DeVaKhoiTrongKyThis.Where(r => r.MaKyThi == MaKiThi);
+            if (find.Count() != 0)
+            {
+                MessageBox.Show("Đề này đã được sử dụng ", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            else
+            {
+                    using(DataContextDataContext DB =new DataContextDataContext())
+                    {
+                    var find2 = DB.KyThis.Where(r => r.MaKyThi == MaKiThi).Single();
+                    DB.KyThis.DeleteOnSubmit(find2);
+                        DB.SubmitChanges();
+                        MessageBox.Show("Xóa thành công", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                this.LoadDanhSachKiThi();
+            }
+        }
     }
 }

@@ -35,6 +35,7 @@
             this.tabThongKeHocSinh = new System.Windows.Forms.TabPage();
             this.tabQuanLyKiThi = new System.Windows.Forms.TabPage();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.ListViewQuanLyKiThi = new System.Windows.Forms.ListView();
             this.tabThongKeCauHoi = new System.Windows.Forms.TabPage();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.txtMaCauHoi = new System.Windows.Forms.TextBox();
@@ -70,11 +71,19 @@
             this.label12 = new System.Windows.Forms.Label();
             this.listViewCauHoiOnMaDeAndKhoi = new System.Windows.Forms.ListView();
             this.btnAddTDeThi = new System.Windows.Forms.Button();
-            this.btnDuyetCauHoi = new System.Windows.Forms.Button();
             this.btnAddCauHoi = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnThemKiThi = new System.Windows.Forms.Button();
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.ChiTietKiThi = new System.Windows.Forms.ListView();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.MaKiThiLb = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.TenKiThiLB = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.NgayThi = new System.Windows.Forms.Label();
+            this.btnXoaKiThi = new System.Windows.Forms.Button();
+            this.btnInKiThi = new System.Windows.Forms.Button();
             this.tabQuanLyKiThiAll.SuspendLayout();
             this.tabQuanLyKiThi.SuspendLayout();
             this.groupBox7.SuspendLayout();
@@ -86,6 +95,7 @@
             this.groupBox6.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.groupBox8.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -141,6 +151,7 @@
             // 
             // tabQuanLyKiThi
             // 
+            this.tabQuanLyKiThi.Controls.Add(this.groupBox8);
             this.tabQuanLyKiThi.Controls.Add(this.groupBox7);
             this.tabQuanLyKiThi.Location = new System.Drawing.Point(4, 22);
             this.tabQuanLyKiThi.Name = "tabQuanLyKiThi";
@@ -149,17 +160,28 @@
             this.tabQuanLyKiThi.TabIndex = 1;
             this.tabQuanLyKiThi.Text = "Quản Lý kì thi";
             this.tabQuanLyKiThi.UseVisualStyleBackColor = true;
+            this.tabQuanLyKiThi.Click += new System.EventHandler(this.tabQuanLyKiThi_Click);
             // 
             // groupBox7
             // 
-            this.groupBox7.Controls.Add(this.listView1);
+            this.groupBox7.Controls.Add(this.ListViewQuanLyKiThi);
             this.groupBox7.Location = new System.Drawing.Point(6, 6);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(396, 479);
+            this.groupBox7.Size = new System.Drawing.Size(337, 479);
             this.groupBox7.TabIndex = 1;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Danh sách kì thi";
             this.groupBox7.UseCompatibleTextRendering = true;
+            // 
+            // ListViewQuanLyKiThi
+            // 
+            this.ListViewQuanLyKiThi.HideSelection = false;
+            this.ListViewQuanLyKiThi.Location = new System.Drawing.Point(6, 19);
+            this.ListViewQuanLyKiThi.Name = "ListViewQuanLyKiThi";
+            this.ListViewQuanLyKiThi.Size = new System.Drawing.Size(315, 454);
+            this.ListViewQuanLyKiThi.TabIndex = 2;
+            this.ListViewQuanLyKiThi.UseCompatibleStateImageBehavior = false;
+            this.ListViewQuanLyKiThi.Click += new System.EventHandler(this.ListViewQuanLyKiThi_Click);
             // 
             // tabThongKeCauHoi
             // 
@@ -526,23 +548,13 @@
             // 
             // btnAddTDeThi
             // 
-            this.btnAddTDeThi.Location = new System.Drawing.Point(18, 170);
+            this.btnAddTDeThi.Location = new System.Drawing.Point(18, 135);
             this.btnAddTDeThi.Name = "btnAddTDeThi";
             this.btnAddTDeThi.Size = new System.Drawing.Size(168, 27);
             this.btnAddTDeThi.TabIndex = 7;
             this.btnAddTDeThi.Text = "Thêm đề thi";
             this.btnAddTDeThi.UseVisualStyleBackColor = true;
             this.btnAddTDeThi.Click += new System.EventHandler(this.btnAddTDeThi_Click);
-            // 
-            // btnDuyetCauHoi
-            // 
-            this.btnDuyetCauHoi.Location = new System.Drawing.Point(18, 137);
-            this.btnDuyetCauHoi.Name = "btnDuyetCauHoi";
-            this.btnDuyetCauHoi.Size = new System.Drawing.Size(168, 27);
-            this.btnDuyetCauHoi.TabIndex = 1;
-            this.btnDuyetCauHoi.Text = "Duyệt câu hỏi thêm vào";
-            this.btnDuyetCauHoi.UseVisualStyleBackColor = true;
-            this.btnDuyetCauHoi.Click += new System.EventHandler(this.btnDuyetCauHoi_Click);
             // 
             // btnAddCauHoi
             // 
@@ -556,7 +568,6 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.btnDuyetCauHoi);
             this.groupBox1.Controls.Add(this.btnAddTDeThi);
             this.groupBox1.Controls.Add(this.btnUpdateGiaoVien);
             this.groupBox1.Controls.Add(this.btnThemKiThi);
@@ -579,14 +590,104 @@
             this.btnThemKiThi.UseVisualStyleBackColor = true;
             this.btnThemKiThi.Click += new System.EventHandler(this.btnThemKiThi_Click);
             // 
-            // listView1
+            // ChiTietKiThi
             // 
-            this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(6, 19);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(384, 440);
-            this.listView1.TabIndex = 2;
-            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.ChiTietKiThi.HideSelection = false;
+            this.ChiTietKiThi.Location = new System.Drawing.Point(6, 107);
+            this.ChiTietKiThi.Name = "ChiTietKiThi";
+            this.ChiTietKiThi.Size = new System.Drawing.Size(428, 364);
+            this.ChiTietKiThi.TabIndex = 3;
+            this.ChiTietKiThi.UseCompatibleStateImageBehavior = false;
+            this.ChiTietKiThi.SelectedIndexChanged += new System.EventHandler(this.ChiTietKiThi_SelectedIndexChanged);
+            // 
+            // groupBox8
+            // 
+            this.groupBox8.Controls.Add(this.btnInKiThi);
+            this.groupBox8.Controls.Add(this.btnXoaKiThi);
+            this.groupBox8.Controls.Add(this.NgayThi);
+            this.groupBox8.Controls.Add(this.label17);
+            this.groupBox8.Controls.Add(this.TenKiThiLB);
+            this.groupBox8.Controls.Add(this.label15);
+            this.groupBox8.Controls.Add(this.MaKiThiLb);
+            this.groupBox8.Controls.Add(this.label13);
+            this.groupBox8.Controls.Add(this.ChiTietKiThi);
+            this.groupBox8.Location = new System.Drawing.Point(349, 6);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(451, 479);
+            this.groupBox8.TabIndex = 5;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "Chi tiết kì thi";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(6, 33);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(53, 13);
+            this.label13.TabIndex = 4;
+            this.label13.Text = "Mã kì thi :";
+            // 
+            // MaKiThiLb
+            // 
+            this.MaKiThiLb.AutoSize = true;
+            this.MaKiThiLb.Location = new System.Drawing.Point(69, 33);
+            this.MaKiThiLb.Name = "MaKiThiLb";
+            this.MaKiThiLb.Size = new System.Drawing.Size(0, 13);
+            this.MaKiThiLb.TabIndex = 5;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(6, 54);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(57, 13);
+            this.label15.TabIndex = 6;
+            this.label15.Text = "Tên kì thi :";
+            // 
+            // TenKiThiLB
+            // 
+            this.TenKiThiLB.AutoSize = true;
+            this.TenKiThiLB.Location = new System.Drawing.Point(69, 54);
+            this.TenKiThiLB.Name = "TenKiThiLB";
+            this.TenKiThiLB.Size = new System.Drawing.Size(0, 13);
+            this.TenKiThiLB.TabIndex = 7;
+            this.TenKiThiLB.Click += new System.EventHandler(this.label16_Click);
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(6, 78);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(52, 13);
+            this.label17.TabIndex = 8;
+            this.label17.Text = "Ngày thi :";
+            // 
+            // NgayThi
+            // 
+            this.NgayThi.AutoSize = true;
+            this.NgayThi.Location = new System.Drawing.Point(69, 78);
+            this.NgayThi.Name = "NgayThi";
+            this.NgayThi.Size = new System.Drawing.Size(0, 13);
+            this.NgayThi.TabIndex = 9;
+            // 
+            // btnXoaKiThi
+            // 
+            this.btnXoaKiThi.Location = new System.Drawing.Point(298, 28);
+            this.btnXoaKiThi.Name = "btnXoaKiThi";
+            this.btnXoaKiThi.Size = new System.Drawing.Size(136, 23);
+            this.btnXoaKiThi.TabIndex = 10;
+            this.btnXoaKiThi.Text = "Xóa kì thi";
+            this.btnXoaKiThi.UseVisualStyleBackColor = true;
+            this.btnXoaKiThi.Click += new System.EventHandler(this.btnXoaKiThi_Click);
+            // 
+            // btnInKiThi
+            // 
+            this.btnInKiThi.Location = new System.Drawing.Point(298, 68);
+            this.btnInKiThi.Name = "btnInKiThi";
+            this.btnInKiThi.Size = new System.Drawing.Size(136, 23);
+            this.btnInKiThi.TabIndex = 11;
+            this.btnInKiThi.Text = "In Kì Thi";
+            this.btnInKiThi.UseVisualStyleBackColor = true;
             // 
             // GiaoVienGUI
             // 
@@ -614,6 +715,8 @@
             this.groupBox6.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
+            this.groupBox8.ResumeLayout(false);
+            this.groupBox8.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -628,7 +731,6 @@
         private System.Windows.Forms.TabPage tabQuanLyKiThi;
         private System.Windows.Forms.TabPage tabThongKeCauHoi;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button btnDuyetCauHoi;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnAddCauHoi;
         private System.Windows.Forms.GroupBox groupBox3;
@@ -666,6 +768,16 @@
         private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.Button btnThemKiThi;
         private System.Windows.Forms.Button btnXoaDeThi;
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ListView ListViewQuanLyKiThi;
+        private System.Windows.Forms.ListView ChiTietKiThi;
+        private System.Windows.Forms.GroupBox groupBox8;
+        private System.Windows.Forms.Label TenKiThiLB;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label MaKiThiLb;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label NgayThi;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Button btnInKiThi;
+        private System.Windows.Forms.Button btnXoaKiThi;
     }
 }
