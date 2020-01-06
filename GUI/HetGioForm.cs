@@ -55,7 +55,15 @@ namespace GUI
                 else
                 {
                     lbNoiDungThongBao.Text = "Kết quả bài thi";
-                    lbThoiGian.Text = (10 - phutHS).ToString() + " phút, " + (60 - giayHS).ToString() + " giây";
+                    lbThoiGian.Text = (7 - phutHS).ToString() + " phút, ";
+                    if (phutHS == 7)
+                    {
+                        lbThoiGian.Text += (30 - giayHS).ToString() + " giây";
+                    }
+                    else
+                    {
+                        lbThoiGian.Text += (59 - giayHS).ToString() + " giây";
+                    }
                 }
                 lbSoCauDung.Text = soCauDungHS.ToString("00") + "/15";
                 lbSoDiem.Text = soDiemHS.ToString("0.00") + " điểm";
@@ -72,7 +80,15 @@ namespace GUI
                 else
                 {
                     lbNoiDungThongBao.Text = "Kết quả bài thi";
-                    lbThoiGian.Text = (10 - phutHS).ToString() + " phút, " + (60 - giayHS).ToString() + " giây";
+                    lbThoiGian.Text = (7 - phutHS).ToString() + " phút, ";
+                    if (phutHS == 7)
+                    {
+                        lbThoiGian.Text += (30 - giayHS).ToString() + " giây";
+                    }
+                    else
+                    {
+                        lbThoiGian.Text += (59 - giayHS).ToString() + " giây";
+                    }
                 }
                 lbSoCauDung.Text = soCauDungHS.ToString("00") + "/15";
                 lbSoDiem.Text = soDiemHS.ToString("0.00") + " điểm";
