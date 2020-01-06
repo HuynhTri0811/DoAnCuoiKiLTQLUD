@@ -12,6 +12,15 @@ namespace DAO.HT
     public class CauHoiTrongDeNaoDAO
     {
         DataContextDataContext DB = new DataContextDataContext();
+
+        public CauHoi cauHoiNamODeNao(string MaDe,int MaCauHoi,int MaKhoi)
+        {
+            var ca = from c in DB.CauHoiTrongDeNaos
+                     where c.MaKhoi == MaKhoi && c.MaDe == MaDe && c.MaCauHoi == MaCauHoi
+                     select c.CauHoi;
+            return ca.Single();
+        }
+
         public List<CauHoiTrongDeNao> getAllCauHoiTrongDeNao()
         {
             /*

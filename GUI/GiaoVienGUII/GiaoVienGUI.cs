@@ -82,9 +82,30 @@ namespace GUI
                 comboxDoKho.Items.Add(dokho.TenDoKho);
             }
         }
-        private void loadDeThiVaKhoi() // Load lý đề thi
+
+        private void LoadDeThi(string TenKhoi)
         {
             this.comboDeThiONQuyenLyDeThi.Items.Clear();
+            int MaKhoi = -1;
+            foreach(var mem in khoiBUS_HT.GetKhoiAll())
+            {
+                if(mem.TenKhoi == TenKhoi)
+                {
+                    MaKhoi = mem.MaKhoi;
+                    break;
+                }
+            }
+            this.des = deBUS_HT.getAllMaKhoi(MaKhoi);
+            this.de = des[0];
+            foreach (var de in des)
+            {
+                comboDeThiONQuyenLyDeThi.Items.Add(de.TenDe);
+            }
+
+            this.comboDeThiONQuyenLyDeThi.Text = de.TenDe;
+        }
+        private void loadDeThiVaKhoi() // Load lý đề thi
+        {
             this.comboKhoiONQuyenLyDeThi.Items.Clear();
             this.khois = khoiBUS_HT.GetKhoiAll();
             this.khoiInDeThi = khois[0];
@@ -94,13 +115,8 @@ namespace GUI
             }
             this.comboKhoiONQuyenLyDeThi.Text = khoiInDeThi.TenKhoi;
 
-            this.des = deBUS_HT.getAllDe();
-            this.de = des[0];
-            foreach (var de in des)
-            {
-                comboDeThiONQuyenLyDeThi.Items.Add(de.TenDe);
-            }
-            this.comboDeThiONQuyenLyDeThi.Text = de.TenDe;
+            this.LoadDeThi(this.comboKhoiONQuyenLyDeThi.Text);
+            
         }
         private void LoadListView()// Load danh sách câu hỏi
         {
@@ -431,7 +447,7 @@ namespace GUI
             }
             ChinhSuaDeThiGUI chinhSuaDeThiGUI = new ChinhSuaDeThiGUI(cauHoiTrongDeNao);
             chinhSuaDeThiGUI.ShowDialog();
-
+            this.LoadDanhSachCauHoi(cauHoiTrongDeNao.MaKhoi, cauHoiTrongDeNao.MaDe);
         }
         private void btnAddTDeThi_Click(object sender, EventArgs e)
         {
@@ -487,6 +503,40 @@ namespace GUI
         private void comboDeThiONQuyenLyDeThi_SelectedIndexChanged(object sender, EventArgs e)
         {
             
+        }
+
+        private void comboKhoiONQuyenLyDeThi_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.LoadDeThi(comboKhoiONQuyenLyDeThi.Text);
+        }
+
+        private void btnXoaDeThi_Click(object sender, EventArgs e)
+        {
+            int MaKhoi = -1;
+            DAO.HT.DeDAO deDAO = new DAO.HT.DeDAO();
+            foreach(var mem in khoiBUS_HT.GetKhoiAll())
+            {
+                if(mem.TenKhoi == comboKhoiONQuyenLyDeThi.Text)
+                {
+                    MaKhoi = mem.MaKhoi;
+                }
+            }
+            foreach(var mem in deBUS_HT.getAllMaKhoi(MaKhoi))
+            {
+                if(mem.TenDe == comboDeThiONQuyenLyDeThi.Text)
+                {
+                    bool thanhconghaykhong = deDAO.DeleteDeOnMaDeAndMaKhoi(mem.MaDe, MaKhoi);
+                    if(thanhconghaykhong == true)
+                    {
+                        MessageBox.Show("Thành công", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        this.LoadDeThi(comboKhoiONQuyenLyDeThi.Text);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Không thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                } 
+            }
         }
 
 

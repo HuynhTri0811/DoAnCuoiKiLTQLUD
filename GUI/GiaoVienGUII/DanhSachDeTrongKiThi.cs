@@ -44,6 +44,22 @@ namespace GUI.GiaoVienGUII
                     break;
                 }
             }
+            if (listViewDanhSachDeTheoMaKhoi.CheckedItems.Count > 1)
+            {
+                MessageBox.Show("Bạn đã chọn nhiều hơn 1 mã đề . Làm hơn chọn 1 mã đề", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            string MaDe = null;
+            List<HocSinh> find = null;
+            if (listViewDanhSachDeTheoMaKhoi.CheckedItems.Count != 0)
+            {
+                string Made = listViewDanhSachDeTheoMaKhoi.CheckedItems[0].Text;
+
+               find = (from hs in DB.HocSinhTrongKiThis
+                            where hs.DeVaKhoiTrongKyThi.MaKyThi == txtMaKiThi.Text && hs.DeVaKhoiTrongKyThi.MaKhoi == MaKhoi && hs.DeVaKhoiTrongKyThi.MaDe == Made
+                            select hs.HocSinh).ToList();
+            }
+            
             List<HocSinh> hocSinhs = hocSinhBUS.getAllHocSinhTheoMaKhoi(this.MaKhoi);
             listViewDanhSachHocSinh.Clear();
             listViewDanhSachHocSinh.View = View.Details;
@@ -57,9 +73,20 @@ namespace GUI.GiaoVienGUII
             {
                 return;
             }
+
             foreach (var mem in hocSinhs)
             {
                 ListViewItem item = new ListViewItem();
+                if(find != null)
+                {
+                    foreach (var hocsinhtontai in find)
+                    {
+                        if (hocsinhtontai.MaHocSinh == mem.MaHocSinh)
+                        {
+                            item.Checked = true;
+                        }
+                    }
+                }
                 item.Text = mem.MaHocSinh.ToString();
                 item.SubItems.Add(new ListViewItem.ListViewSubItem() { Text = mem.HoTen });
                 item.SubItems.Add(new ListViewItem.ListViewSubItem() { Text = mem.MaLop });
@@ -166,6 +193,104 @@ namespace GUI.GiaoVienGUII
         private void btnDanhSachHocSinh_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnLoadDanhSachCauHoi_Click(object sender, EventArgs e)
+        {
+            if (listViewDanhSachDeTheoMaKhoi.CheckedItems.Count > 1)
+            {
+                MessageBox.Show("Bạn đã chọn nhiều hơn 1 mã đề . Làm hơn chọn 1 mã đề", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (listViewDanhSachDeTheoMaKhoi.CheckedItems.Count == 0)
+            {
+                MessageBox.Show("Bạn đã không chọn mã đề nào . Làm hơn chọn 1 mã đề", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            string Made = listViewDanhSachDeTheoMaKhoi.CheckedItems[0].Text;
+            foreach (var mem in khoiBUS_HT.GetKhoiAll())
+            {
+                if (mem.TenKhoi == cbKhoi.Text)
+                {
+                    this.MaKhoi = mem.MaKhoi;
+                    break;
+                }
+            }
+            string MaDeVaKhoiTrongKiThi = MaKhoi.ToString() + Made.Substring(6, 4) + txtMaKiThi.Text.Substring(6, 4);
+            DTO.HT.DeVaKhoiTrongKyThi deVaKhoiTrongKyThi = new DeVaKhoiTrongKyThi();
+            deVaKhoiTrongKyThi.MaDe = Made;
+            deVaKhoiTrongKyThi.MaKhoi = this.MaKhoi;
+            deVaKhoiTrongKyThi.MaKyThi = txtMaKiThi.Text;
+            deVaKhoiTrongKyThi.MaDeVaKhoiTrongKyThi = MaDeVaKhoiTrongKiThi;
+            var find = DB.DeVaKhoiTrongKyThis.Where(r => r.MaDe == Made && r.MaKhoi == MaKhoi && r.MaKyThi == txtMaKiThi.Text);
+            
+            if(find.Count() == 0)
+            {
+                using (DataContextDataContext DB = new DataContextDataContext())
+                {
+                    DB.DeVaKhoiTrongKyThis.InsertOnSubmit(deVaKhoiTrongKyThi);
+                    DB.SubmitChanges();
+                }
+            }
+            int temp = 0;
+            for(int i = 0; i < listViewDanhSachHocSinh.CheckedItems.Count; i++)
+            {
+                string Ma = (from mdevakhoitrongkithi in DB.DeVaKhoiTrongKyThis
+                             where mdevakhoitrongkithi.MaDe == Made && mdevakhoitrongkithi.MaKhoi == this.MaKhoi && mdevakhoitrongkithi.MaKyThi == txtMaKiThi.Text
+                             select mdevakhoitrongkithi.MaDeVaKhoiTrongKyThi).Single();
+                var find2 = DB.HocSinhTrongKiThis.Where(r => r.MaHocSinh == listViewDanhSachHocSinh.CheckedItems[i].Text && r.MaDeVaKhoiTrongKiThi == Ma);
+                HocSinhTrongKiThi hocSinhTrongKiThi = new HocSinhTrongKiThi();
+                hocSinhTrongKiThi.MaDeVaKhoiTrongKiThi = Ma;
+                hocSinhTrongKiThi.MaHocSinh = listViewDanhSachHocSinh.CheckedItems[i].Text;
+                hocSinhTrongKiThi.Diem = null;
+                if(find2.Count() == 0)
+                {
+                    using (DataContextDataContext DB = new DataContextDataContext())
+                    {
+                        temp++;
+                        DB.HocSinhTrongKiThis.InsertOnSubmit(hocSinhTrongKiThi);
+                        DB.SubmitChanges();
+                        
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Không thành công khi thêm hoc sinh " + listViewDanhSachHocSinh.CheckedItems[i].Text, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                
+            }
+            if(temp == listViewDanhSachHocSinh.CheckedItems.Count)
+            {
+                MessageBox.Show("Thành công", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void btnXemCauHoiTrongDe_Click(object sender, EventArgs e)
+        {
+            DTO.DeVaCauHoiOnMaDeDTO deVaCauHoiOnMaDeDTO = new DTO.DeVaCauHoiOnMaDeDTO();
+            if(listViewDanhSachDeTheoMaKhoi.CheckedItems.Count > 1)
+            {
+                MessageBox.Show("Bạn đã chọn nhiều hơn 1 mã đề . Làm hơn chọn 1 mã đề", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (listViewDanhSachDeTheoMaKhoi.CheckedItems.Count == 0)
+            {
+                MessageBox.Show("Bạn đã không chọn mã đề nào . Làm hơn chọn 1 mã đề", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            string Made = listViewDanhSachDeTheoMaKhoi.CheckedItems[0].Text;
+            foreach (var mem in khoiBUS_HT.GetKhoiAll())
+            {
+                if (mem.TenKhoi == cbKhoi.Text)
+                {
+                    this.MaKhoi = mem.MaKhoi;
+                    break;
+                }
+            }
+            deVaCauHoiOnMaDeDTO = cauHoiTrongDeNaoBUS_HT.getAllCauHoiTrongDe(Made, this.MaKhoi);
+
+            ChinhSuaDeThiGUI chinhSuaDeThiGUI = new ChinhSuaDeThiGUI(deVaCauHoiOnMaDeDTO);
+            chinhSuaDeThiGUI.ShowDialog();
         }
     }
 }

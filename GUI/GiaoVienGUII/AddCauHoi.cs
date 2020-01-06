@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BUS.HT;
+using DAO.HT;
 using DTO.HT;
-
+using ExcelDataReader;
 
 namespace GUI
 {
@@ -20,6 +22,7 @@ namespace GUI
         CauHoiBUS_HT cauHoiBUS_HT = new CauHoiBUS_HT();
         DoKhoBUS_HT doKhoBUS_HT = new DoKhoBUS_HT();
         List<DoKho> doKhos;
+        List<CauHoi> cauHois = new List<CauHoi>();
         public AddCauHoi()
         {
             doKhos = doKhoBUS_HT.getAll();
@@ -144,6 +147,91 @@ namespace GUI
                 cbboxDoKho.Items.Add(dokho.TenDoKho);
             }
             cbboxDoKho.SelectedIndex = 0;
+        }
+
+
+        DataTableCollection tableCollection;
+
+        private void btnLayFile_Click(object sender, EventArgs e)
+        {
+            using(OpenFileDialog openFileDialog = new OpenFileDialog() { Filter="Excel Workbook|*.xlsx" })
+            {
+                if(openFileDialog.ShowDialog()== DialogResult.OK)
+                {
+                    txtFileName.Text = openFileDialog.FileName;
+                    using(var steam = File.Open(openFileDialog.FileName, FileMode.Open, FileAccess.Read))
+                    {
+                        using (IExcelDataReader reader = ExcelReaderFactory.CreateReader(steam))
+                        {
+                            DataSet dataSet = reader.AsDataSet(new ExcelDataSetConfiguration()
+                            {
+                                ConfigureDataTable=(_)=>new ExcelDataTableConfiguration() { UseHeaderRow  = true}
+                            });
+                            tableCollection = dataSet.Tables;
+                            comboBox1.Items.Clear();
+                            foreach(DataTable table in tableCollection)
+                            {
+                                comboBox1.Items.Add(table.TableName);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DataTable dt = tableCollection[comboBox1.SelectedItem.ToString()];
+            if(dt != null)
+            {
+                List<CauHoi> caus = new List<CauHoi>();
+                for(int i = 0; i < dt.Rows.Count; i++)
+                {
+                    CauHoi cau = new CauHoi();
+                    cau.NoiDung = dt.Rows[i]["NoiDung"].ToString();
+                    cau.CauA = dt.Rows[i]["CauA"].ToString();
+                    cau.CauB = dt.Rows[i]["CauB"].ToString();
+                    cau.CauC = dt.Rows[i]["CauC"].ToString();
+                    cau.CauD = dt.Rows[i]["CauD"].ToString();
+                    cau.CauDung = dt.Rows[i]["CauDung"].ToString();
+                    cau.MaKhoi = Int32.Parse(dt.Rows[i]["MaKhoi"].ToString());
+                    cau.HocSinhDongGop = Boolean.Parse(dt.Rows[i]["HocSinhDongGop"].ToString());
+                    cau.DoKho = Int32.Parse(dt.Rows[i]["DoKho"].ToString());
+                    caus.Add(cau);
+                }
+                cauHois = caus;
+            }
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            using(DataContextDataContext DB = new DataContextDataContext())
+            {
+                DAO.HT.CauHoiDAO cauHoiDAO = new CauHoiDAO();
+                if(String.IsNullOrEmpty(txtFileName.Text)== true)
+                {
+                    MessageBox.Show("File trống", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                if (String.IsNullOrEmpty(comboBox1.Text) == true)
+                {
+                    MessageBox.Show("sheet trông", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                foreach (var mem in cauHois)
+                {
+                    if(cauHoiDAO.getCauHoiOnCauHoi(mem.NoiDung) == true)
+                    {
+                        MessageBox.Show("Câu hỏi có nội dung là :" + mem.NoiDung + " . Đã là tồn tại trong csdl ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        continue;
+                    }
+                    DB.CauHois.InsertOnSubmit(mem);
+                }
+                DB.SubmitChanges();
+                MessageBox.Show("Thành công", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
     }
 }
