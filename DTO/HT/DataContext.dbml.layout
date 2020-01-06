@@ -14,7 +14,7 @@
         <elementListCompartment Id="5b58b433-e52d-4699-a70e-bf6deb7f1432" absoluteBounds="2.89, 5.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(2.5 : 5.44314697265625); (2.875 : 5.44314697265625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(2.5 : 5.44314697265625); (2.875 : 5.44314697265625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/DataContextDataContext/CauHoi/CauHoi_CauHoiTrongDeNao" />
       <nodes>
         <classShapeMoniker Id="034a9a21-b396-4aa1-8925-3c69c8ed27ad" />
@@ -27,24 +27,11 @@
         <elementListCompartment Id="fbbf51c2-1e6a-4070-a153-288197436f4b" absoluteBounds="5.265, 5.21, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(5.25 : 5.44314697265625); (4.875 : 5.44314697265625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(5.25 : 5.44314697265625); (4.875 : 5.44314697265625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/DataContextDataContext/De/De_CauHoiTrongDeNao" />
       <nodes>
         <classShapeMoniker Id="0169a00f-e95e-42d8-99f3-8a7ce2cca4a8" />
         <classShapeMoniker Id="25c2330f-58f0-45c5-8b62-7416b53fac02" />
-      </nodes>
-    </associationConnector>
-    <classShape Id="b6b8041b-d51e-4e32-bb2f-5916db975fcf" absoluteBounds="5.75, 8.5, 2, 1.7708968098958331">
-      <DataClassMoniker Name="/DataContextDataContext/DeOnTap" />
-      <nestedChildShapes>
-        <elementListCompartment Id="6e2a5563-2535-4bf2-a7ee-6eee485fdaf1" absoluteBounds="5.7650000000000006, 8.96, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <associationConnector edgePoints="[(6.59375 : 6.32859537760417); (6.59375 : 8.5)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/DataContextDataContext/De/De_DeOnTap" />
-      <nodes>
-        <classShapeMoniker Id="0169a00f-e95e-42d8-99f3-8a7ce2cca4a8" />
-        <classShapeMoniker Id="b6b8041b-d51e-4e32-bb2f-5916db975fcf" />
       </nodes>
     </associationConnector>
     <classShape Id="7b584aca-2f5d-4071-acd6-86098ecf6cb1" absoluteBounds="7.625, 4.75, 2, 1.5785953776041666">
@@ -66,7 +53,7 @@
         <elementListCompartment Id="5fc5d3be-7d42-4edf-b4af-285b5c96d8db" absoluteBounds="3.14, 7.085, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(3.125 : 7.05370198567708); (2.5 : 7.05370198567708)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(3.125 : 7.05370198567708); (2.5 : 7.05370198567708)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/DataContextDataContext/DoKho/DoKho_CauHoi" />
       <nodes>
         <classShapeMoniker Id="9c05dfed-2fa2-4bee-9de4-d98338688332" />
@@ -85,13 +72,6 @@
         <elementListCompartment Id="e6dfa65a-b231-4e64-bd40-d2cd56c6406e" absoluteBounds="9.265, 10.46, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(9.25 : 10.5416989049479); (6.5625 : 10.5416989049479); (6.5625 : 10.2708968098958)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/DataContextDataContext/HocSinh/HocSinh_DeOnTap" />
-      <nodes>
-        <classShapeMoniker Id="e0e53cd7-3aec-40fe-a9e7-7650ff09e9f4" />
-        <classShapeMoniker Id="b6b8041b-d51e-4e32-bb2f-5916db975fcf" />
-      </nodes>
-    </associationConnector>
     <classShape Id="579d86c2-6492-4a7e-8bf5-649ef7ce1a1d" absoluteBounds="9.875, 4.875, 2, 1.3862939453125">
       <DataClassMoniker Name="/DataContextDataContext/HocSinhTrongKiThi" />
       <nestedChildShapes>
@@ -125,7 +105,7 @@
         <classShapeMoniker Id="034a9a21-b396-4aa1-8925-3c69c8ed27ad" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(5.46875 : 10.875); (5.46875 : 6.32859537760417)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(5.53125 : 10.875); (5.53125 : 6.32859537760417)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/DataContextDataContext/Khoi/Khoi_De" />
       <nodes>
         <classShapeMoniker Id="8f19c7ac-6dee-4b4e-98a2-5d9e6242f254" />
@@ -158,18 +138,38 @@
         <elementListCompartment Id="aba4242f-28b1-48ff-b5e2-b2131323674b" absoluteBounds="6.765, 11.335, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(8.75 : 11.5152498372396); (9.25 : 11.5152498372396)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(8.75 : 11.6530989583333); (9.25 : 11.6530989583333)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/DataContextDataContext/Lop/Lop_HocSinh" />
       <nodes>
         <classShapeMoniker Id="29048130-47cc-47e6-a7db-d6385f47fa68" />
         <classShapeMoniker Id="e0e53cd7-3aec-40fe-a9e7-7650ff09e9f4" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(6.375 : 11.4719962565104); (6.75 : 11.4719962565104)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(6.375 : 11.4719962565104); (6.75 : 11.4719962565104)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/DataContextDataContext/Khoi/Khoi_Lop" />
       <nodes>
         <classShapeMoniker Id="8f19c7ac-6dee-4b4e-98a2-5d9e6242f254" />
         <classShapeMoniker Id="29048130-47cc-47e6-a7db-d6385f47fa68" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="32390fea-69f0-4c1a-853c-c8695a2721e3" absoluteBounds="5.875, 8.375, 2, 1.9631982421875">
+      <DataClassMoniker Name="/DataContextDataContext/DeOnTap" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d87685e4-1d17-41a7-a95f-2a3d53dbdb79" absoluteBounds="5.89, 8.835, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(6.5625 : 6.32859537760417); (6.5625 : 8.375)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DataContextDataContext/De/De_DeOnTap" />
+      <nodes>
+        <classShapeMoniker Id="0169a00f-e95e-42d8-99f3-8a7ce2cca4a8" />
+        <classShapeMoniker Id="32390fea-69f0-4c1a-853c-c8695a2721e3" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(10.2343725 : 10); (10.2343725 : 9.19314447265625); (7.875 : 9.19314447265625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DataContextDataContext/HocSinh/HocSinh_DeOnTap" />
+      <nodes>
+        <classShapeMoniker Id="e0e53cd7-3aec-40fe-a9e7-7650ff09e9f4" />
+        <classShapeMoniker Id="32390fea-69f0-4c1a-853c-c8695a2721e3" />
       </nodes>
     </associationConnector>
   </nestedChildShapes>

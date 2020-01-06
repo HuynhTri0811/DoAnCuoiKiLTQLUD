@@ -44,6 +44,15 @@ namespace GUI
             setDA();
             LoadFormCauHoiHS();
             timer1.Start();
+            if(loai == "ThiThu")
+            {
+                lbTenKyThi.Text = "Thi thử";
+            }
+
+            if(loai == "Thi")
+            {
+                lbTenKyThi.Text = hocSinhBUS.GetNameKyThi(hocSinhLogin.MaHocSinh);
+            }
         }
 
         public void setDA()

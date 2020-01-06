@@ -3,6 +3,7 @@ using DTO;
 using DTO.HT;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,11 +13,10 @@ namespace BUS.HS
     public class HocSinhBUS
     {
         DTO.HT.DataContextDataContext db = new DataContextDataContext();
+        HocSinhDAO hocSinh = new HocSinhDAO();
 
         public HocSinh FindOneHocSinh(string maHS, string passHS)
         {
-            HocSinhDAO hocSinh = new HocSinhDAO();
-
             try
             {
                 return hocSinh.FindOneHocSinh(maHS, passHS);
@@ -29,8 +29,6 @@ namespace BUS.HS
 
         public string LastMaHocSinh()
         {
-            HocSinhDAO hocSinh = new HocSinhDAO();
-
             try
             {
                 return hocSinh.LastMaHocSinh();
@@ -43,8 +41,6 @@ namespace BUS.HS
 
         public Boolean AddHocSinh(string maHS, string hoTen, DateTime ngaySinh, string diaChi, string password)
         {
-            HocSinhDAO hocSinh = new HocSinhDAO();
-
             try
             {
                 return hocSinh.AddHocSinh(maHS, hoTen, ngaySinh, diaChi, password);
@@ -57,8 +53,6 @@ namespace BUS.HS
 
         public void UpdateHocSinh(string maHS, string hoTen, DateTime ngaySinh, string diaChi)
         {
-            HocSinhDAO hocSinh = new HocSinhDAO();
-
             try
             {
                 hocSinh.UpdateHocSinh(maHS, hoTen, ngaySinh, diaChi);    
@@ -71,8 +65,6 @@ namespace BUS.HS
 
         public List<DeVaCauHoiDTO> GetAllDeThi()
         {
-            HocSinhDAO hocSinh = new HocSinhDAO();
-
             try
             {
                 return hocSinh.GetAllDeThi();
@@ -85,8 +77,6 @@ namespace BUS.HS
 
         public List<De> LayDanhSachDe(string doKho)
         {
-            HocSinhDAO hocSinh = new HocSinhDAO();
-
             try
             {
                 return hocSinh.LayDanhSachDe(doKho);
@@ -100,7 +90,6 @@ namespace BUS.HS
 
         public List<DeVaCauHoiDTO> LayDeTheoMaDe(string maDe)
         {
-            HocSinhDAO hocSinh = new HocSinhDAO();
             try
             {
                 return hocSinh.LayDeTheoMaDe(maDe);
@@ -113,7 +102,6 @@ namespace BUS.HS
 
         public int LayMaKhoiTheoMaDe(string maDe)
         {
-            HocSinhDAO hocSinh = new HocSinhDAO();
             try
             {
                 return hocSinh.LayMaKhoiTheoMaDe(maDe);
@@ -127,7 +115,6 @@ namespace BUS.HS
         //thêm kết quả thi thử vào database
         public Boolean AddKetQuaThiThu(string maHS, string maDe, int maKhoi, double diem)
         {
-            HocSinhDAO hocSinh = new HocSinhDAO();
             try
             {
                 return hocSinh.AddKetQuaThiThu(maHS, maDe, maKhoi, diem);
@@ -141,8 +128,6 @@ namespace BUS.HS
         //tìm kỳ thi cho học sinh theo mã
         public List<DeVaCauHoiThiDTO> FindDeVaCauHoiTrongKyThi(string maHS)
         {
-            HocSinhDAO hocSinh = new HocSinhDAO();
-
             try
             {
                 return hocSinh.FindDeVaCauHoiTrongKyThi(maHS);
@@ -153,14 +138,51 @@ namespace BUS.HS
             }
         }
 
+        //lấy tên kỳ thi
+        public string GetNameKyThi(string maHS)
+        {
+            try
+            {                
+                return hocSinh.GetNameKyThi(maHS);
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+        }
+
         //thêm kết quả thi vào database
         public void AddKetQuaThi(string maHS, string maDeVaKhoiTrongKyThi, double diem)
         {
-            HocSinhDAO hocSinh = new HocSinhDAO();
-
             try
             {
                 hocSinh.AddKetQuaThi(maHS, maDeVaKhoiTrongKyThi, diem);
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+        }
+
+        //lấy lịch sử thi thử
+        public IQueryable GetAllLichSuThiThu(string maHS)
+        {
+            try
+            {
+                return hocSinh.GetAllLichSuThiThu(maHS);
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+        }
+
+        //lấy lịch sử thi
+        public IQueryable GetAllLichSuKetQuaThi(string maHS)
+        {
+            try
+            {
+                return hocSinh.GetAllLichSuKetQuaThi(maHS);
             }
             catch (Exception Ex)
             {

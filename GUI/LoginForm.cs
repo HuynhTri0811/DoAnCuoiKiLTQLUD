@@ -92,14 +92,9 @@ namespace GUI
             } 
         }
 
-        private void tbEmail_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void LoginForm_Load(object sender, EventArgs e)
         {
-            
+            tbEmail.Focus();
         }
     }
 }

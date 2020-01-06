@@ -46,9 +46,28 @@
             this.tpThi = new System.Windows.Forms.TabPage();
             this.btnThi = new System.Windows.Forms.Button();
             this.btnThiThu = new System.Windows.Forms.Button();
+            this.tctrLichSuThi = new System.Windows.Forms.TabControl();
+            this.tpThiThu = new System.Windows.Forms.TabPage();
+            this.tpKetQuaThi = new System.Windows.Forms.TabPage();
+            this.dgvThiThu = new System.Windows.Forms.DataGridView();
+            this.MaDe = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MaKhoi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NgayGioiHan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Diem = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvKetQuaThi = new System.Windows.Forms.DataGridView();
+            this.MaKyThi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenKyThi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NgayThi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DiemThi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tctrHocSinh.SuspendLayout();
             this.tpThongTinCaNhan.SuspendLayout();
+            this.tpLichSuThi.SuspendLayout();
             this.tpThi.SuspendLayout();
+            this.tctrLichSuThi.SuspendLayout();
+            this.tpThiThu.SuspendLayout();
+            this.tpKetQuaThi.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvThiThu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvKetQuaThi)).BeginInit();
             this.SuspendLayout();
             // 
             // lbXinChao
@@ -193,6 +212,7 @@
             // 
             // tpLichSuThi
             // 
+            this.tpLichSuThi.Controls.Add(this.tctrLichSuThi);
             this.tpLichSuThi.Location = new System.Drawing.Point(4, 22);
             this.tpLichSuThi.Name = "tpLichSuThi";
             this.tpLichSuThi.Padding = new System.Windows.Forms.Padding(3);
@@ -233,6 +253,128 @@
             this.btnThiThu.UseVisualStyleBackColor = true;
             this.btnThiThu.Click += new System.EventHandler(this.btnThiThu_Click);
             // 
+            // tctrLichSuThi
+            // 
+            this.tctrLichSuThi.Controls.Add(this.tpThiThu);
+            this.tctrLichSuThi.Controls.Add(this.tpKetQuaThi);
+            this.tctrLichSuThi.Location = new System.Drawing.Point(7, 4);
+            this.tctrLichSuThi.Name = "tctrLichSuThi";
+            this.tctrLichSuThi.SelectedIndex = 0;
+            this.tctrLichSuThi.Size = new System.Drawing.Size(552, 230);
+            this.tctrLichSuThi.TabIndex = 0;
+            // 
+            // tpThiThu
+            // 
+            this.tpThiThu.Controls.Add(this.dgvThiThu);
+            this.tpThiThu.Location = new System.Drawing.Point(4, 22);
+            this.tpThiThu.Name = "tpThiThu";
+            this.tpThiThu.Padding = new System.Windows.Forms.Padding(3);
+            this.tpThiThu.Size = new System.Drawing.Size(544, 204);
+            this.tpThiThu.TabIndex = 0;
+            this.tpThiThu.Text = "Thi thử";
+            this.tpThiThu.UseVisualStyleBackColor = true;
+            // 
+            // tpKetQuaThi
+            // 
+            this.tpKetQuaThi.Controls.Add(this.dgvKetQuaThi);
+            this.tpKetQuaThi.Location = new System.Drawing.Point(4, 22);
+            this.tpKetQuaThi.Name = "tpKetQuaThi";
+            this.tpKetQuaThi.Padding = new System.Windows.Forms.Padding(3);
+            this.tpKetQuaThi.Size = new System.Drawing.Size(544, 204);
+            this.tpKetQuaThi.TabIndex = 1;
+            this.tpKetQuaThi.Text = "Thi";
+            this.tpKetQuaThi.UseVisualStyleBackColor = true;
+            // 
+            // dgvThiThu
+            // 
+            this.dgvThiThu.AllowUserToAddRows = false;
+            this.dgvThiThu.AllowUserToDeleteRows = false;
+            this.dgvThiThu.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvThiThu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvThiThu.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.MaDe,
+            this.MaKhoi,
+            this.NgayGioiHan,
+            this.Diem});
+            this.dgvThiThu.Location = new System.Drawing.Point(0, 0);
+            this.dgvThiThu.Name = "dgvThiThu";
+            this.dgvThiThu.ReadOnly = true;
+            this.dgvThiThu.Size = new System.Drawing.Size(544, 204);
+            this.dgvThiThu.TabIndex = 0;
+            // 
+            // MaDe
+            // 
+            this.MaDe.DataPropertyName = "MaDe";
+            this.MaDe.HeaderText = "Mã đề";
+            this.MaDe.Name = "MaDe";
+            this.MaDe.ReadOnly = true;
+            // 
+            // MaKhoi
+            // 
+            this.MaKhoi.DataPropertyName = "MaKhoi";
+            this.MaKhoi.HeaderText = "Mã khối";
+            this.MaKhoi.Name = "MaKhoi";
+            this.MaKhoi.ReadOnly = true;
+            // 
+            // NgayGioiHan
+            // 
+            this.NgayGioiHan.DataPropertyName = "NgayGioiHan";
+            this.NgayGioiHan.HeaderText = "Ngày giới hạn";
+            this.NgayGioiHan.Name = "NgayGioiHan";
+            this.NgayGioiHan.ReadOnly = true;
+            // 
+            // Diem
+            // 
+            this.Diem.DataPropertyName = "Diem";
+            this.Diem.HeaderText = "Điểm";
+            this.Diem.Name = "Diem";
+            this.Diem.ReadOnly = true;
+            // 
+            // dgvKetQuaThi
+            // 
+            this.dgvKetQuaThi.AllowUserToAddRows = false;
+            this.dgvKetQuaThi.AllowUserToDeleteRows = false;
+            this.dgvKetQuaThi.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvKetQuaThi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvKetQuaThi.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.MaKyThi,
+            this.TenKyThi,
+            this.NgayThi,
+            this.DiemThi});
+            this.dgvKetQuaThi.Location = new System.Drawing.Point(0, 0);
+            this.dgvKetQuaThi.Name = "dgvKetQuaThi";
+            this.dgvKetQuaThi.ReadOnly = true;
+            this.dgvKetQuaThi.Size = new System.Drawing.Size(544, 208);
+            this.dgvKetQuaThi.TabIndex = 0;
+            // 
+            // MaKyThi
+            // 
+            this.MaKyThi.DataPropertyName = "MaKyThi";
+            this.MaKyThi.HeaderText = "Mã kỳ thi";
+            this.MaKyThi.Name = "MaKyThi";
+            this.MaKyThi.ReadOnly = true;
+            // 
+            // TenKyThi
+            // 
+            this.TenKyThi.DataPropertyName = "TenKyThi";
+            this.TenKyThi.HeaderText = "Tên kỳ thi";
+            this.TenKyThi.Name = "TenKyThi";
+            this.TenKyThi.ReadOnly = true;
+            // 
+            // NgayThi
+            // 
+            this.NgayThi.DataPropertyName = "NgayThi";
+            this.NgayThi.HeaderText = "Ngày thi";
+            this.NgayThi.Name = "NgayThi";
+            this.NgayThi.ReadOnly = true;
+            // 
+            // DiemThi
+            // 
+            this.DiemThi.DataPropertyName = "Diem";
+            this.DiemThi.HeaderText = "Điểm";
+            this.DiemThi.Name = "DiemThi";
+            this.DiemThi.ReadOnly = true;
+            // 
             // HocSinhGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -249,7 +391,13 @@
             this.tctrHocSinh.ResumeLayout(false);
             this.tpThongTinCaNhan.ResumeLayout(false);
             this.tpThongTinCaNhan.PerformLayout();
+            this.tpLichSuThi.ResumeLayout(false);
             this.tpThi.ResumeLayout(false);
+            this.tctrLichSuThi.ResumeLayout(false);
+            this.tpThiThu.ResumeLayout(false);
+            this.tpKetQuaThi.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvThiThu)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvKetQuaThi)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -275,5 +423,18 @@
         private System.Windows.Forms.Button btnSuaThongTin;
         private System.Windows.Forms.Button btnThi;
         private System.Windows.Forms.Button btnThiThu;
+        private System.Windows.Forms.TabControl tctrLichSuThi;
+        private System.Windows.Forms.TabPage tpThiThu;
+        private System.Windows.Forms.TabPage tpKetQuaThi;
+        private System.Windows.Forms.DataGridView dgvThiThu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaDe;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaKhoi;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NgayGioiHan;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Diem;
+        private System.Windows.Forms.DataGridView dgvKetQuaThi;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaKyThi;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TenKyThi;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NgayThi;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DiemThi;
     }
 }

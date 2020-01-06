@@ -2,6 +2,7 @@
 using DTO.HT;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -355,7 +356,7 @@ namespace DAO.HS
                              join ch in db.CauHois on chtdn.MaCauHoi equals ch.MaCauHoi
                              join dk in db.DoKhos on ch.DoKho equals dk.maDoKho
                              join kt in db.KyThis on dvktkt.MaKyThi equals kt.MaKyThi
-                             where hs.MaHocSinh == maHS
+                             where hs.MaHocSinh == maHS && kt.NgayThi == DateTime.Now.Date
                              select new { kt.MaKyThi, kt.TenKyThi, kt.NgayThi, hstkt.MaDeVaKhoiTrongKiThi, d.MaDe, d.TenDe, dk.TenDoKho, d.MaKhoi, ch.MaCauHoi, ch.NoiDung, ch.CauA, ch.CauB, ch.CauC, ch.CauD, ch.CauDung }).Distinct();
                 if(query.Count() == 0)
                 {
@@ -394,6 +395,39 @@ namespace DAO.HS
             }
         }
 
+        //lấy tên kỳ thi
+        public string GetNameKyThi(string maHS)
+        {
+            string tenKyThi = "";
+
+            try
+            {
+                var query = (from hs in db.HocSinhs
+                             join hstkt in db.HocSinhTrongKiThis on hs.MaHocSinh equals hstkt.MaHocSinh
+                             join dvktkt in db.DeVaKhoiTrongKyThis on hstkt.MaDeVaKhoiTrongKiThi equals dvktkt.MaDeVaKhoiTrongKyThi
+                             join kt in db.KyThis on dvktkt.MaKyThi equals kt.MaKyThi
+                             where hs.MaHocSinh == maHS
+                             select new { kt.TenKyThi}).Distinct();
+                if (query.Count() == 0)
+                {
+                    tenKyThi = "";
+                }
+
+                foreach (var q in query)
+                {                
+                    tenKyThi = q.TenKyThi;
+                    break;
+                }
+
+                return tenKyThi;
+
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+        }
+
         //thêm kết quả thi vào database
         public void AddKetQuaThi(string maHS, string maDeVaKhoiTrongKyThi, double diem)
         {
@@ -403,6 +437,49 @@ namespace DAO.HS
                 hsTrongKyThi.Diem = diem;
 
                 db.SubmitChanges();
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+        }
+
+        //lấy lịch sử thi thử
+        public IQueryable GetAllLichSuThiThu(string maHS)
+        {
+            try
+            {
+                var query =(from dot in db.DeOnTaps
+                            where dot.MaHocSinh == maHS
+                            select new { dot.MaDe, dot.MaKhoi, dot.NgayGioiHan, dot.Diem });
+                if(query.Count() == 0)
+                {
+                    return null;
+                }
+                return query;
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+        }
+
+        //lấy lịch sử thi
+        public IQueryable GetAllLichSuKetQuaThi(string maHS)
+        {
+            try
+            {
+                var query = (from hs in db.HocSinhs
+                             join hstkt in db.HocSinhTrongKiThis on hs.MaHocSinh equals hstkt.MaHocSinh
+                             join dvktkt in db.DeVaKhoiTrongKyThis on hstkt.MaDeVaKhoiTrongKiThi equals dvktkt.MaDeVaKhoiTrongKyThi
+                             join kt in db.KyThis on dvktkt.MaKyThi equals kt.MaKyThi
+                             where hs.MaHocSinh == maHS
+                             select new { kt.MaKyThi, kt.TenKyThi, kt.NgayThi, hstkt.Diem }).Distinct();
+                if (query.Count() == 0)
+                {
+                    return null;
+                }
+                return query;
             }
             catch (Exception Ex)
             {

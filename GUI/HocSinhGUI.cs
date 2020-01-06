@@ -1,4 +1,6 @@
 ﻿
+using BUS.HS;
+using DTO;
 using DTO.HT;
 using System;
 using System.Collections.Generic;
@@ -15,6 +17,7 @@ namespace GUI
     public partial class HocSinhGUI : Form
     {
         HocSinh hocSinhLogin;
+        HocSinhBUS hocSinhBUS = new HocSinhBUS();
         public HocSinhGUI(HocSinh hocSinh)
         {
             InitializeComponent();
@@ -40,6 +43,10 @@ namespace GUI
             {
                 lbMaLop.Text = hocSinhLogin.MaLop;
             }
+            dgvThiThu.DataSource = hocSinhBUS.GetAllLichSuThiThu(hocSinhLogin.MaHocSinh);
+            dgvThiThu.Columns[3].DefaultCellStyle.Format = "N2";
+            dgvKetQuaThi.DataSource = hocSinhBUS.GetAllLichSuKetQuaThi(hocSinhLogin.MaHocSinh);
+            dgvKetQuaThi.Columns[3].DefaultCellStyle.Format = "N2";
         }
         private void btnDangXuat_Click(object sender, EventArgs e)
         {
@@ -67,11 +74,20 @@ namespace GUI
 
         private void btnThi_Click(object sender, EventArgs e)
         {
-            CauHoiHocSinhForm chHocSinh = new CauHoiHocSinhForm(hocSinhLogin, "", 0, "Thi");
-            this.Hide();
-            chHocSinh.ShowDialog();
-            this.Close();
-            Application.Exit();
+            List<DeVaCauHoiThiDTO> dsCauHoiThi = new List<DeVaCauHoiThiDTO>();
+            dsCauHoiThi = hocSinhBUS.FindDeVaCauHoiTrongKyThi(hocSinhLogin.MaHocSinh);
+            if(dsCauHoiThi == null)
+            {
+                MessageBox.Show("Không có kỳ thi nào cho bạn ngày hôm nay!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                CauHoiHocSinhForm chHocSinh = new CauHoiHocSinhForm(hocSinhLogin, "", 0, "Thi");
+                this.Hide();
+                chHocSinh.ShowDialog();
+                this.Close();
+                Application.Exit();
+            }            
         }
     }
 }
